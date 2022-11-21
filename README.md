@@ -1,3 +1,3 @@
 # Workmatch
 
-Project for WebApp course
+University of Bologna - Web Services and Applications
