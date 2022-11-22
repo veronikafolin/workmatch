@@ -1,0 +1,25 @@
+[{
+    "_id": {
+      "$oid": "62f1460ecab5eb0861361c4d"
+    },
+    "email": "davidedomini@gmail.com",
+    "grade": "88",
+    "name": "Davide",
+    "school": {
+      "name": "Itis Nullo Baldini",
+      "type": "Technical institute"
+    },
+    "surname": "Domini"
+  },{
+    "_id": {
+      "$oid": "62f1471bcab5eb0861361c50"
+    },
+    "email": "simonemontanari@gmail.com",
+    "grade": "76",
+    "name": "Simone",
+    "school": {
+      "name": "Itis Nullo Baldini",
+      "type": "Technical institute"
+    },
+    "surname": "Montanari"
+  }]
