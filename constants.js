@@ -1,0 +1,1 @@
+exports.FRONTEND_PATH = __dirname + "/frontend/" 
