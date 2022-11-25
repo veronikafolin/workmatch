@@ -5,6 +5,8 @@
     "email": "davidedomini@gmail.com",
     "grade": "88",
     "name": "Davide",
+    "username": "davidedomini",
+    "password": "Inter99",
     "school": {
       "name": "Itis Nullo Baldini",
       "type": "Technical institute"
@@ -17,6 +19,8 @@
     "email": "simonemontanari@gmail.com",
     "grade": "76",
     "name": "Simone",
+    "username": "zimon99",
+    "password": "Forzajuve99",
     "school": {
       "name": "Itis Nullo Baldini",
       "type": "Technical institute"
