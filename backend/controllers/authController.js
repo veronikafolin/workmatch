@@ -7,7 +7,7 @@ exports.signup = (req, res) => {
     let user = req.body.user;
     Student
         .findOne()
-        .where('name').equals(user.username)
+        .where('username').equals(user.username)
         .exec(function(err, student) {
             if (student == null) {
                 const salt = bcrypt.genSaltSync(10);

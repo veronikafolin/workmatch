@@ -9,9 +9,7 @@ global.appRoot = path.resolve(__dirname);
 
 var PORT = 3000;
 
-console.log(__dirname)
-
-mongoose.connect('mongodb://localhost:27017/DegreeWork');
+mongoose.connect('mongodb://localhost:27018/workmatch');
 routes(app);
 
 app.use(express.json());
