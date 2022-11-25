@@ -1,7 +1,8 @@
 module.exports = (app) => {
     var controller = require('../controllers/controller')
     var authController = require('../controllers/authController')
-    
+    const bodyParser = require('body-parser')
+    const jsonParser = bodyParser.json()
     app
         .route('/api/greet/')
         .get(controller.greet);
@@ -12,5 +13,5 @@ module.exports = (app) => {
 
     app
         .route('/api/signup')
-        .post(authController.signup);
+        .post(jsonParser, authController.signup);
 }
