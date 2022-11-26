@@ -45,3 +45,16 @@ exports.login = (req, res) => {
             }
         });
 }
+
+function authorization(token, id){ 
+    let valid;
+    if(token == null) valid = { isValid: false };
+    try {
+        const decoded = jsonwebtoken.verify(token, SECRET_KEY);
+        if(decoded.id == id) valid = { isValid: true }
+        else valid = { isValid: false }
+    }catch(ex){
+        valid = { isValid: false };
+    }
+    return valid;
+} 
