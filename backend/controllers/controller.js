@@ -6,7 +6,7 @@ exports.greet = (req, res) => {
 };
 
 
-exports.list_students = (req, res)=> {
+exports.list_students = (req, res) => {
 	Student.find().exec((err, student)=> {
 		if (err) res.send(err);
         console.log(student)

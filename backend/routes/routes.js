@@ -1,15 +1,15 @@
 module.exports = (app) => {
-    var controller = require('../controllers/controller')
-    var authController = require('../controllers/authController')
-    const bodyParser = require('body-parser')
-    const jsonParser = bodyParser.json()
+    var controller = require('../controllers/controller');
+    var authController = require('../controllers/authController');
+    const bodyParser = require('body-parser');
+    const jsonParser = bodyParser.json();
     app
         .route('/api/greet/')
         .get(controller.greet);
     
     app
         .route('/api/students')
-        .get(controller.list_students)
+        .get(controller.list_students);
 
     app
         .route('/api/signup')

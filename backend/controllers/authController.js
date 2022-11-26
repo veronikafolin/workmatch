@@ -1,4 +1,4 @@
-const Student = require("../models/student.js")
+const Student = require("../models/student.js");
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 
@@ -8,19 +8,19 @@ exports.signup = (req, res) => {
     Student
         .findOne()
         .where('username').equals(user.username)
-        .exec(function(err, student) {
+        .exec((err, student) => {
             if (student == null) {
                 const salt = bcrypt.genSaltSync(10);
                 const hash = bcrypt.hashSync(user.password, salt);
                 user.salt = salt;
                 user.password = hash;
                 var newStudent = new Student(user);
-                newStudent.save(function(err, st){
+                newStudent.save((err, st) => {
                     if(err) res.json({ message: 'Error! Retry later' });
                     else res.json({ message: 'OK! User registerd! '});
-                })
+                });
             } else{
                 res.json({ message: 'Error! User already registered' })
             }
-        })
+        });
 }
