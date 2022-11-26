@@ -46,7 +46,7 @@ exports.login = (req, res) => {
         });
 }
 
-function authorization(token, id){ 
+exports.authorization = (token, id) => { 
     let valid;
     if(token == null) valid = { isValid: false };
     try {
