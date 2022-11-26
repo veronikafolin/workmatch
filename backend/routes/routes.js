@@ -14,4 +14,8 @@ module.exports = (app) => {
     app
         .route('/api/signup')
         .post(jsonParser, authController.signup);
+
+    app
+        .route('/api/login')
+        .post(jsonParser, authController.login)
 }
