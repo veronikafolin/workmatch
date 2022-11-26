@@ -1,9 +1,10 @@
 const Student = require("../models/student.js");
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
+const SECRET_KEY = 'E79FB19FDC927E709F250F01CAFED631971E3ECD';
 
 exports.signup = (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Origin', '*');
     let user = req.body.user;
     Student
         .findOne()
@@ -21,6 +22,26 @@ exports.signup = (req, res) => {
                 });
             } else{
                 res.json({ message: 'Error! User already registered' })
+            }
+        });
+}
+
+exports.login = (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    let user = req.body.user;
+    Student
+        .findOne()
+        .where('username').equals(user.username)
+        .exec((err, student) => {
+            if (student != null && !err) {
+                if(bcrypt.compareSync(user.password, student.password)){
+                    let token = jsonwebtoken.sign({ username: student.username, id: student._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
+                    res.json({ result: 'ok', token: token });
+                } else {
+                    res.json({ message: 'Error! Wrong password'});
+                }
+            } else {
+                res.json({ message: 'Error! The specified user does not exist'});
             }
         });
 }
