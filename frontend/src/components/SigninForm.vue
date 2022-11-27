@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup> </script>
 
 <script>
 export default {
