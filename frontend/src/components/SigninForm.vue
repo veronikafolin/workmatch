@@ -29,29 +29,22 @@ export default {
 </script>
 
 <template id="loginsection">
-    <h1>WorkMatch</h1>
-    <div>
-        Welcome on WorkMatch!
+    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-12">
+        <h1 class="text-center mb-5" >WorkMatch</h1>
+        <div class="text-center mb-5">
+            Welcome on WorkMatch!
+        </div>
+        <form id="loginform " @submit.prevent="signin">
+            <div>
+                <label for="username" class="block text-900 font-medium mb-2">Username</label>
+                <InputText id="username" type="text" class="w-full mb-3" v-model="form.username" required/>
+            </div>
+            <div>
+                <label for="password" class="block text-900 font-medium mb-2">Password</label>
+                <PasswordComp id="password" type="password" class="w-full mb-3" v-model="form.password" :feedback="false" required/>
+            </div>
+            <Button type="submit" label="Submit" icon="pi pi-check" />
+        </form>
     </div>
-    <form id="loginform " @submit.prevent="signin">
-        <div>
-            Username:
-            <input type="text" v-model="form.username" required/>
-        </div>
-        <div>
-            Password:
-            <input type="password" v-model="form.password" required/>
-        </div>
-        <Button type="submit" label="Submit" icon="pi pi-check" />
-    </form>
+    
 </template>
-<style>
-#loginsection{
-    align-items: center;
-}
-#loginform {
-    display: block;
-    justify-content: center;
-    align-items: center;
-}
-</style>
