@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import PrimeVue from 'primevue/config';
 import './assets/main.css';
+import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import InputText from "primevue/inputtext";
 import Password from "primevue/password";

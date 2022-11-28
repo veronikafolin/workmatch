@@ -1,17 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import SignupForm from './components/SignupForm.vue';
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    
 
     <div class="wrapper">
-      <SignupForm/>
+      <!--<SignupForm/>
 
-      <!--<HelloWorld msg="You did it!" />
+      <HelloWorld msg="You did it!" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
