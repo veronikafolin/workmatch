@@ -40,38 +40,59 @@ export default {
 
 <template>
     <form @submit.prevent="registerStudent">
-        <div>
-            Name: 
-            <input type="text" v-model="form.name" required/>
-        </div> 
-        <div>
-            Surname: 
-            <input type="text" v-model="form.surname" required/>
-        </div>
-        <div>
-            Email: 
-            <input type="text" v-model="form.email" required/>
-        </div>
-        <div>
-            Username: 
-            <input type="text" v-model="form.username" required/>
-        </div>
-        <div>
-            Password: 
-            <input type="password" v-model="form.password" required/>
-        </div>
-        <div>
-            School Name: 
-            <input type="text" v-model="form.schoolName" required/>
-        </div> 
-        <div>
-            School Type: 
-            <input type="text" v-model="form.schoolType" required/>
-        </div>
-        <div>
-            Grade: 
-            <input type="number" min="60" max="100" v-model="form.grade" required/>
+
+        <div class="p-form-group-inline">
+            <div clsss="p-field">
+                <label for="name" class="p-sr-only">Name </label>
+                <InputText id="name" type="text" v-model="form.name" placeholder="Name" required/>
+            </div>
+            <div clsss="p-field">
+                <label for="surname" class="p-sr-only">Surname </label>
+                <InputText id="surname" type="text" v-model="form.surname" placeholder="Surname" required/>
+            </div>
+            <div clsss="p-field">
+                <label for="email" class="p-sr-only">Email </label>
+                <InputText id="email" type="text" v-model="form.email" placeholder="Email" required/>
+            </div>
+            <div clsss="p-field">
+                <label for="username" class="p-sr-only">Username </label>
+                <InputText id="username" type="text" v-model="form.username" placeholder="Username" required/>
+            </div>
+            <div clsss="p-field">
+                <label for="password" class="p-sr-only">Password </label>
+                <PasswordComp id="password" v-model="form.password" placeHolder="Password" toggleMask /> 
+            </div>
+            <div clsss="p-field">
+                <label for="schoolName" class="p-sr-only">School Name </label>
+                <InputText id="schoolName" type="text" v-model="form.schoolName" placeholder="School Name" required/>
+            </div>
+            <div clsss="p-field">
+                <label for="schoolType" class="p-sr-only">School Type </label>
+                <InputText id="schoolType" type="text" v-model="form.schoolType" placeholder="School Type" required/>
+            </div>
+            <div clsss="p-field">
+                <label for="grade" class="p-sr-only">Grade </label>
+                <InputText id="grade" type="text" v-model="form.grade" placeholder="Grade" required/>
+            </div>
+
+
         </div>
         <button type="submit"> Submit </button>
     </form>
 </template>
+
+<style scoped>
+  .p-field {
+    margin-top: 5px;
+    text-align: left;
+  }
+  .field-checkbox {
+    margin-top: 10px;
+  }
+  .field-checkbox > label{
+    text-align: left;
+  }
+  p{
+    text-align: left;
+  }
+</style>
