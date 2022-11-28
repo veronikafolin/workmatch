@@ -9,4 +9,5 @@ docker compose up
 
 ```powershell
 docker compose down
+docker volume rm $(docker volume ls -q)
 ```
