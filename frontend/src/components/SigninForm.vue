@@ -36,11 +36,11 @@ export default {
         </div>
         <form id="loginform " @submit.prevent="signin">
             <div>
-                <label for="username" class="block text-900 font-medium mb-2">Username</label>
+                <label for="username" class="block text-900 font-medium mb-2">Username </label>
                 <InputText id="username" type="text" class="w-full mb-3" v-model="form.username" required/>
             </div>
             <div>
-                <label for="password" class="block text-900 font-medium mb-2">Password</label>
+                <label for="password" class="block text-900 font-medium mb-2">Password </label>
                 <PasswordComp id="password" type="password" class="w-full mb-3" v-model="form.password" :feedback="false" required/>
             </div>
             <Button type="submit" label="Submit" icon="pi pi-check" />
