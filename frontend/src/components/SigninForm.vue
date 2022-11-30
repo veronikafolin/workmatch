@@ -29,7 +29,7 @@ export default {
 </script>
 
 <template id="loginsection">
-    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-12">
+    <div id="login" class="surface-card p-4 shadow-2 border-round w-full lg:w-12">
         <h1 class="text-center mb-5" >WorkMatch</h1>
         <div class="text-center mb-5">
             Welcome on WorkMatch!
@@ -48,3 +48,9 @@ export default {
     </div>
     
 </template>
+
+<style>
+#login {
+    margin-top: 30%;
+}
+</style>
