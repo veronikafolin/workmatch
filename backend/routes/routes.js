@@ -14,8 +14,13 @@ module.exports = (app) => {
     app
         .route('/api/signup')
         .post(jsonParser, authController.signup);
-
     app
         .route('/api/login')
-        .post(jsonParser, authController.login)
+        .post(jsonParser, authController.login);
+    app
+        .route('/api/schools')
+        .get(controller.list_schools);
+    app
+        .route('/api/companies')
+        .get(controller.list_companies);
 }

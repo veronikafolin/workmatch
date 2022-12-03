@@ -24,12 +24,7 @@
       "from": {
         "$oid": "6385f89a713127b57f4028de"
       },
-      "timestamp": {
-        "$timestamp": {
-          "t": 0,
-          "i": 0
-        }
-      },
+      "timestamp": "2012-04-23T18:25:43.511Z",
       "message": "prova"
     }
   ]
@@ -59,12 +54,7 @@
       "from": {
         "$oid": "6385f89a713127b57f4028de"
       },
-      "timestamp": {
-        "$timestamp": {
-          "t": 0,
-          "i": 0
-        }
-      },
+      "timestamp": "2012-04-23T18:25:43.511Z",
       "message": "prova"
     }
   ]

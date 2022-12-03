@@ -4,8 +4,8 @@ services:
     container_name: mongodb
     image: mongo:latest
     volumes:
-      - ./init-mongodb:/docker-entrypoint-initdb.d # sets init folder into the docker container; scripts will be executed in an alphabetical order
-      - ./init-mongodb/data:/tmp/data # sets data folder into the docker container
+      - .\init-mongodb:/docker-entrypoint-initdb.d # sets init folder into the docker container; scripts will be executed in an alphabetical order
+      - .\init-mongodb\data:/tmp/data # sets data folder into the docker container
     ports:
       - '27018:27017' # map 27917 container port to the 27018 host port
 
