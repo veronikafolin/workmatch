@@ -1,7 +1,7 @@
 <script setup>
 import Button from 'primevue/button';
 
- </script>
+</script>
 
 <script>
 export default {
@@ -46,7 +46,6 @@ export default {
             <Button type="submit" label="Login" icon="pi pi-check" />
         </form>
     </div>
-    
 </template>
 
 <style>
