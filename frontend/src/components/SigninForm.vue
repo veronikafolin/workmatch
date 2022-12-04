@@ -1,6 +1,5 @@
 <script setup>
 import Button from 'primevue/button';
-
 </script>
 
 <script>
@@ -37,10 +36,8 @@ export default {
 
 <template id="loginsection">
     <div id="login" class="surface-card p-4 shadow-2 border-round">
-        <h1 class="text-center mb-5" >WorkMatch</h1>
-        <div class="text-center mb-5">
-            Welcome on WorkMatch!
-        </div>
+        <h1 id="title" class="text-center mb-5" >WorkMatch</h1>
+    
         <form id="loginform " @submit.prevent="signin" class="text-center">
             <div>
                 <label for="username" class="block text-900 font-medium mb-2">Username </label>
@@ -67,4 +64,11 @@ export default {
 #roleselector{
     margin-bottom: 10px;
 }
+
+#title{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size:40pt;
+    font-style: italic;
+}
+
 </style>
