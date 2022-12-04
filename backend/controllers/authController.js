@@ -81,14 +81,19 @@ function loginStudent(user, res) {
         .where('username').equals(user.username)
         .exec((err, student) => {
             if (student != null && !err) {
-                if(bcrypt.compareSync(user.password, student.password)){
-                    let token = jsonwebtoken.sign({ username: student.username, id: student._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
-                    res.json({ result: 'ok', token: token });
-                } else {
-                    res.json({ message: 'Error! Wrong password'});
-                }
+                res.json(generateToken(user, student))
             } else {
-                res.json({ message: 'Error! The specified user does not exist'});
+                res.json({ message: 'Error! The specified student does not exist'});
             }
         });
+}
+
+
+function generateToken(remoteUser, dbUser){
+    if(bcrypt.compareSync(remoteUser.password, dbUser.password)){
+        let token = jsonwebtoken.sign({ username: dbUser.username, id: dbUser._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
+        return { result: 'ok', token: token };
+    } else {
+        return { message: 'Error! Wrong password'};
+    }
 }
