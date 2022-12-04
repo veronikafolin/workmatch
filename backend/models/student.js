@@ -11,6 +11,12 @@ var StudentSchema = new mongoose.Schema({
     school: {
         name: { type: String },
         type: { type: String }
+    },
+    jobs: {
+        company: { type: String },
+        role: { type: String },
+        sector: { type: String },
+        duration: { type: String }
     }
 });
 module.exports = mongoose.model('Student', StudentSchema);
