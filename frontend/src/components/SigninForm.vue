@@ -7,6 +7,12 @@ import Button from 'primevue/button';
 export default {
     data() {
         return {
+            selectedRole: "",
+            roles:[
+                {name: 'Student'},
+                {name: 'Company'},
+                {name: 'School'}
+            ],
             form: {
                 username: "",
                 password: ""
@@ -17,6 +23,7 @@ export default {
         signin() {
             axios
                 .post("http://localhost:3000/api/login", {
+                type: this.selectedRole.name,
                 user: {
                     username: this.form.username,
                     password: this.form.password
@@ -43,6 +50,9 @@ export default {
                 <label for="password" class="block text-900 font-medium mb-2">Password </label>
                 <InputText id="password" type="password" class="mb-3" v-model="form.password" :feedback="false" required/>
             </div>
+            <div id="roleselector">
+                <Dropdown v-model="selectedRole" :options="roles" optionLabel="name" placeholder="Select your role"/>
+            </div>
             <Button type="submit" label="Login" icon="pi pi-check" />
         </form>
     </div>
@@ -53,5 +63,8 @@ export default {
 #login {
     margin: auto;
     width: 50%;
+}
+#roleselector{
+    margin-bottom: 10px;
 }
 </style>
