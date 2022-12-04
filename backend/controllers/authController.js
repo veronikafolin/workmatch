@@ -12,23 +12,11 @@ exports.signup = (req, res) => {
 }
 
 exports.login = (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    let type = req.body.type;
     let user = req.body.user;
-    Student
-        .findOne()
-        .where('username').equals(user.username)
-        .exec((err, student) => {
-            if (student != null && !err) {
-                if(bcrypt.compareSync(user.password, student.password)){
-                    let token = jsonwebtoken.sign({ username: student.username, id: student._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
-                    res.json({ result: 'ok', token: token });
-                } else {
-                    res.json({ message: 'Error! Wrong password'});
-                }
-            } else {
-                res.json({ message: 'Error! The specified user does not exist'});
-            }
-        });
+    if(type == 'student'){
+        loginStudent(user, res);
+    }
 }
 
 exports.authorization = (token, id) => { 
@@ -62,6 +50,25 @@ function registerStudent(user, res) {
                 });
             } else{
                 res.json({ message: 'Error! User already registered' })
+            }
+        });
+}
+
+function loginStudent(user, res) {
+    res.header('Access-Control-Allow-Origin', '*');
+    Student
+        .findOne()
+        .where('username').equals(user.username)
+        .exec((err, student) => {
+            if (student != null && !err) {
+                if(bcrypt.compareSync(user.password, student.password)){
+                    let token = jsonwebtoken.sign({ username: student.username, id: student._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
+                    res.json({ result: 'ok', token: token });
+                } else {
+                    res.json({ message: 'Error! Wrong password'});
+                }
+            } else {
+                res.json({ message: 'Error! The specified user does not exist'});
             }
         });
 }
