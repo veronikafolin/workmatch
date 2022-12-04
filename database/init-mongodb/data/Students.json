@@ -12,7 +12,15 @@
     "school": {
       "name": "Itis Nullo Baldini",
       "type": "Technical institute"
-    }
+    },
+    "jobs": [
+      {
+        "company": "ACER Ravenna",
+        "role": "Software Developer",
+        "sector":"IT",
+        "duration": "2 months"
+      }
+    ]
   },{
     "_id": {
       "$oid": "62f1471bcab5eb0861361c50"
@@ -27,5 +35,13 @@
     "school": {
       "name": "Itis Nullo Baldini",
       "type": "Technical institute"
-    }
+    }, 
+    "jobs": [
+      {
+        "company": "Spring Italia",
+        "role": "IT Technician",
+        "sector":"IT",
+        "duration": "1 month"
+      }
+    ]
   }]
