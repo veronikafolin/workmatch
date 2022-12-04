@@ -4,18 +4,38 @@ const jsonwebtoken = require('jsonwebtoken');
 const SECRET_KEY = 'E79FB19FDC927E709F250F01CAFED631971E3ECD';
 
 exports.signup = (req, res) => {
-    let type = req.body.type;
+    let type = req.body.type.toLowerCase();
     let user = req.body.user;
-    if(type == 'student'){
-        registerStudent(user, res);
+    switch(type){
+        case 'student':
+            registerStudent(user, res);
+            break;
+        case 'company':
+            //TODO
+            break;
+        case 'school':
+            //TODO
+            break;
+        default:
+            res.json({message: 'Error! Unknown user type'});
     }
 }
 
 exports.login = (req, res) => {
-    let type = req.body.type;
+    let type = req.body.type.toLowerCase();
     let user = req.body.user;
-    if(type == 'student'){
-        loginStudent(user, res);
+    switch(type){
+        case 'student':
+            loginStudent(user, res);
+            break;
+        case 'company':
+            //TODO
+            break;
+        case 'school':
+            //TODO
+            break;
+        default:
+            res.json({message: 'Error! Unknown user type'});
     }
 }
 
