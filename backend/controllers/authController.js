@@ -4,10 +4,10 @@ const jsonwebtoken = require('jsonwebtoken');
 const SECRET_KEY = 'E79FB19FDC927E709F250F01CAFED631971E3ECD';
 
 exports.signup = (req, res) => {
-    let type = req.body.type
+    let type = req.body.type;
     let user = req.body.user;
     if(type == 'student'){
-        registerStudent(user, res)
+        registerStudent(user, res);
     }
 }
 
