@@ -13,7 +13,8 @@ var CompanySchema = new mongoose.Schema({
         position: {type: String},
         description : {type: String},
         place_of_work: {type: String},
-        working_hours: {type: Number}
+        working_hours: {type: Number},
+        curriculums_requested: {type: [String]}
     }]}, 
     notifications: {type: [{
         from: {type : mongoose.Schema.Types.ObjectId},

@@ -11,7 +11,8 @@
     "grade": "88",
     "school": {
       "name": "Itis Nullo Baldini",
-      "type": "Technical institute"
+      "type": "Technical institute", 
+      "curriculum" : "computer science"
     }
   },{
     "_id": {
@@ -26,6 +27,7 @@
     "grade": "76",
     "school": {
       "name": "Itis Nullo Baldini",
-      "type": "Technical institute"
+      "type": "Technical institute", 
+      "curriculum": "mechanics"
     }
   }]
