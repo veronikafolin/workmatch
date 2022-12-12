@@ -36,7 +36,7 @@ export default {
 
 <template id="loginsection">
     <div id="login" class="surface-card p-4 shadow-2 border-round">
-        <h1 id="title" class="text-center mb-5" >WorkMatch</h1>
+        <h1 id="title" class="text-center" >WorkMatch</h1>
     
         <form id="loginform " @submit.prevent="signin" class="text-center">
             <div>
@@ -69,6 +69,18 @@ export default {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size:40pt;
     font-style: italic;
+}
+
+@media screen and (max-width: 500px){
+    #title{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size:20pt;
+    font-style: italic;
+    }
+
+    #login {
+        width: 90%;
+    }
 }
 
 </style>
