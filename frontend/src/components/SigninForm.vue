@@ -106,7 +106,7 @@ export default {
 
 @media screen and (min-width: 501px) and (max-width: 1000px){
     #logo{
-    width: 260px;
+        width: 260px;
     }
 }
 
