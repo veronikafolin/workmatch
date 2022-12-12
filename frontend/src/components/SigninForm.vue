@@ -15,11 +15,13 @@ export default {
             form: {
                 username: "",
                 password: ""
-            }
+            },
+            messages: []
         };
     },
     methods: {
         signin() {
+            this.messages = []
             axios
                 .post("http://localhost:3000/api/login", {
                 type: this.selectedRole,
@@ -27,7 +29,14 @@ export default {
                     username: this.form.username,
                     password: this.form.password
                 }
-            }).then(res => localStorage.token = res.token);
+            }).then(res => {
+                let response = res.data
+                if(response.message.includes('Error')){
+                    this.messages.push({severity: 'error', content: 'Login error! Please retry'})
+                }else{
+                    localStorage.token = response.token
+                }
+            });
         }
     },
     components: { Button }
@@ -53,6 +62,9 @@ export default {
                 <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
             </div>
             <Button id="loginBtn" type="submit" label="Login" icon="pi pi-check" />
+            <div>
+                <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+            </div>
         </form>
     </div>
 </template>

@@ -10,6 +10,7 @@ import Password from "primevue/password";
 import Button from 'primevue/button'
 import Dropdown from 'primevue/dropdown';
 import SelectButton from 'primevue/selectbutton';
+import Message from 'primevue/message';
 
 const app = createApp(App);
 
@@ -20,5 +21,6 @@ app.component('PasswordComp', Password);
 app.component('Button', Button);
 app.component('Dropdown', Dropdown);
 app.component('SelectButton', SelectButton);
+app.component('Message', Message);
 
 app.mount('#app');
