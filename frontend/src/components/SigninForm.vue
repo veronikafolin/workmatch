@@ -39,7 +39,7 @@ export default {
     
         <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
 
-        <form id="loginform " @submit.prevent="signin" class="text-center">
+        <form id="loginform" @submit.prevent="signin" class="text-center">
             <div>
                 <label for="username" class="block text-900 font-medium mb-2">Username </label>
                 <InputText id="username" type="text" class="mb-3" v-model="form.username" required/>
@@ -48,7 +48,7 @@ export default {
                 <label for="password" class="block text-900 font-medium mb-2">Password </label>
                 <InputText id="password" type="password" class="mb-3" v-model="form.password" :feedback="false" required/>
             </div>
-            <div class="p-fluid">
+            <div>
                 <label for="roleselector" class="block text-900 font-medium mb-2">Please select your role </label>
                 <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
             </div>
