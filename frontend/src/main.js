@@ -9,6 +9,7 @@ import InputText from "primevue/inputtext";
 import Password from "primevue/password";
 import Button from 'primevue/button'
 import Dropdown from 'primevue/dropdown';
+import SelectButton from 'primevue/selectbutton';
 
 const app = createApp(App);
 
@@ -18,5 +19,6 @@ app.component('InputText', InputText);
 app.component('PasswordComp', Password);
 app.component('Button', Button);
 app.component('Dropdown', Dropdown);
+app.component('SelectButton', SelectButton);
 
 app.mount('#app');
