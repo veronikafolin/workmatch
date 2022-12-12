@@ -27,7 +27,7 @@ export default {
                     username: this.form.username,
                     password: this.form.password
                 }
-            }).then(res => console.log(res));
+            }).then(res => localStorage.token = res.token);
         }
     },
     components: { Button }
