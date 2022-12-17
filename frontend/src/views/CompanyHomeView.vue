@@ -2,10 +2,56 @@
 import CompanyMenu from '../components/CompanyMenu.vue'
 </script>
 
+<script>
+
+export default {
+  data() {
+        return {
+          students: [],
+        };
+    },
+  methods:{
+    requestStudents(){
+      axios
+        .get("http://localhost:3000/api/students")
+        .then(res => { this.students = res.data });
+    }
+  },
+  mounted(){
+    this.requestStudents();
+  }
+}
+
+</script>
+
+
 <template>
   <main>
     <nav>
         <CompanyMenu/>
     </nav>
+    
+    <Card v-for="student in students">
+        <template #title>
+            {{student.name}} {{student.surname}}
+        </template>
+        <template #content>
+            School: {{student.school.name}} <br>
+            School type: {{student.school.type}} <br>
+            Grade: {{student.grade}}
+        </template>
+        <template #footer>
+            Vedi altro su questo bellissimo ragazzo!
+        </template>
+    </Card>
+
   </main>
 </template>
+
+
+
+<style>
+.p-card {
+  margin-top: 30px;
+}
+</style>

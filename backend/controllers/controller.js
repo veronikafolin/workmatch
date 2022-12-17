@@ -7,6 +7,7 @@ exports.greet = (req, res) => {
 
 
 exports.list_students = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
 	Student.find().exec((err, student)=> {
 		if (err) res.send(err);
         console.log(student)
