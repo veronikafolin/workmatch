@@ -12,6 +12,10 @@ module.exports = (app) => {
         .get(controller.list_students);
 
     app
+        .route('/api/student')
+        .get(jsonParser, controller.get_student);
+
+    app
         .route('/api/signup')
         .post(jsonParser, authController.signup);
 

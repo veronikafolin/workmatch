@@ -36,4 +36,7 @@ export default {
 </template>
 
 <style>
+.p-menubar{
+    background-color: white;  /* Choose a better color */
+}
 </style>

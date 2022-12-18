@@ -30,7 +30,7 @@ export default {
     <nav>
         <CompanyMenu/>
     </nav>
-    
+  
     <Card v-for="student in students">
         <template #title>
             {{student.name}} {{student.surname}}
@@ -41,7 +41,9 @@ export default {
             Grade: {{student.grade}}
         </template>
         <template #footer>
-            Vedi altro su questo bellissimo ragazzo!
+          <router-link v-bind:to="{name: 'studentdetail', params: { id: student._id }}" custom v-slot="{navigate}">
+            <Button label="See more" class="p-button-raised p-button-rounded" @click="navigate" role="link"/>
+          </router-link>
         </template>
     </Card>
 
