@@ -16,6 +16,10 @@ module.exports = (app) => {
         .get(jsonParser, controller.get_student);
 
     app
+        .route('/api/message')
+        .get(jsonParser, controller.get_message);
+
+    app
         .route('/api/signup')
         .post(jsonParser, authController.signup);
 

@@ -92,7 +92,7 @@ function loginStudent(user, res) {
 function generateToken(remoteUser, dbUser){
     if(bcrypt.compareSync(remoteUser.password, dbUser.password)){
         let token = jsonwebtoken.sign({ username: dbUser.username, id: dbUser._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
-        return { message: 'ok', token: token };
+        return { message: 'ok', token: token, id: dbUser._id };
     } else {
         return { message: 'Error! Wrong password'};
     }

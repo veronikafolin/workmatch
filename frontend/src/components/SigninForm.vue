@@ -36,6 +36,7 @@ export default {
                     this.messages.push({severity: 'error', content: 'Login error! Please retry'})
                 }else{
                     localStorage.token = response.token
+                    localStorage.userId = response.id
                     router.replace({name: `${this.selectedRole.toLowerCase()}home`})
                 }
             });
