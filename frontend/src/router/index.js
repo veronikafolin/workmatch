@@ -11,7 +11,11 @@ const router = createRouter({
     {
       path: '/',
       name: 'signin',
-      //component: SigninView
+      component: SigninView
+    },
+    {
+      path: '/companyhome',
+      name: 'companyhome',
       component: CompanyHomeView
     },
     {

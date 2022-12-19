@@ -1,5 +1,6 @@
 <script setup>
 import Button from 'primevue/button';
+import router from "@/router";
 </script>
 
 <script>
@@ -35,8 +36,13 @@ export default {
                     this.messages.push({severity: 'error', content: 'Login error! Please retry'})
                 }else{
                     localStorage.token = response.token
+                    router.replace({name: `${this.selectedRole}home`})
                 }
             });
+        },
+        resetForm() {
+            this.form.username = ""
+            this.form.password = ""
         }
     },
     components: { Button }
