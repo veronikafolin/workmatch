@@ -20,6 +20,7 @@ export default {
         registerStudent(){
             axios
                 .post('http://localhost:3000/api/signup', {
+                    type: "student",
                     user: {
                         name: this.form.name,
                         surname: this.form.surname,

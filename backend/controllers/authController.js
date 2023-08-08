@@ -4,8 +4,56 @@ const jsonwebtoken = require('jsonwebtoken');
 const SECRET_KEY = 'E79FB19FDC927E709F250F01CAFED631971E3ECD';
 
 exports.signup = (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    let type = req.body.type.toLowerCase();
     let user = req.body.user;
+    switch(type){
+        case 'student':
+            registerStudent(user, res);
+            break;
+        case 'company':
+            //TODO
+            break;
+        case 'school':
+            //TODO
+            break;
+        default:
+            res.json({message: 'Error! Unknown user type'});
+    }
+}
+
+exports.login = (req, res) => {
+    let type = req.body.type.toLowerCase();
+    let user = req.body.user;
+    switch(type){
+        case 'student':
+            loginStudent(user, res);
+            break;
+        case 'company':
+            //TODO
+            break;
+        case 'school':
+            //TODO
+            break;
+        default:
+            res.json({message: 'Error! Unknown user type'});
+    }
+}
+
+exports.authorization = (token, id) => { 
+    let valid;
+    if(token == null) valid = { isValid: false };
+    try {
+        const decoded = jsonwebtoken.verify(token, SECRET_KEY);
+        if(decoded.id == id) valid = { isValid: true }
+        else valid = { isValid: false }
+    }catch(ex){
+        valid = { isValid: false };
+    }
+    return valid;
+} 
+
+function registerStudent(user, res) {
+    res.header('Access-Control-Allow-Origin', '*');
     Student
         .findOne()
         .where('username').equals(user.username)
@@ -26,35 +74,26 @@ exports.signup = (req, res) => {
         });
 }
 
-exports.login = (req, res) => {
+function loginStudent(user, res) {
     res.header('Access-Control-Allow-Origin', '*');
-    let user = req.body.user;
     Student
         .findOne()
         .where('username').equals(user.username)
         .exec((err, student) => {
             if (student != null && !err) {
-                if(bcrypt.compareSync(user.password, student.password)){
-                    let token = jsonwebtoken.sign({ username: student.username, id: student._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
-                    res.json({ result: 'ok', token: token });
-                } else {
-                    res.json({ message: 'Error! Wrong password'});
-                }
+                res.json(generateToken(user, student))
             } else {
-                res.json({ message: 'Error! The specified user does not exist'});
+                res.json({ message: 'Error! The specified student does not exist'});
             }
         });
 }
 
-exports.authorization = (token, id) => { 
-    let valid;
-    if(token == null) valid = { isValid: false };
-    try {
-        const decoded = jsonwebtoken.verify(token, SECRET_KEY);
-        if(decoded.id == id) valid = { isValid: true }
-        else valid = { isValid: false }
-    }catch(ex){
-        valid = { isValid: false };
+
+function generateToken(remoteUser, dbUser){
+    if(bcrypt.compareSync(remoteUser.password, dbUser.password)){
+        let token = jsonwebtoken.sign({ username: dbUser.username, id: dbUser._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });
+        return { message: 'ok', token: token, id: dbUser._id };
+    } else {
+        return { message: 'Error! Wrong password'};
     }
-    return valid;
-} 
+}

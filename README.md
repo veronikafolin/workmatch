@@ -1,6 +1,8 @@
 # Workmatch
 
-University of Bologna - Web Services and Applications
+University of Bologna
+
+Project for Web Services and Applications
 
 
 Authors: Davide Domini, Veronika Folin

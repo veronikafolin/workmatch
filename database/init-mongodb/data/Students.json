@@ -11,9 +11,17 @@
     "grade": "88",
     "school": {
       "name": "Itis Nullo Baldini",
-      "type": "Technical institute", 
+      "type": "Technical institute",
       "curriculum" : "computer science"
-    }
+    },
+    "jobs": [
+      {
+        "company": "ACER Ravenna",
+        "role": "Software Developer",
+        "sector":"IT",
+        "duration": "2 months"
+      }
+    ]
   },{
     "_id": {
       "$oid": "62f1471bcab5eb0861361c50"
@@ -27,7 +35,15 @@
     "grade": "76",
     "school": {
       "name": "Itis Nullo Baldini",
-      "type": "Technical institute", 
+      "type": "Technical institute",
       "curriculum": "mechanics"
-    }
+    },
+    "jobs": [
+      {
+        "company": "Spring Italia",
+        "role": "IT Technician",
+        "sector":"IT",
+        "duration": "1 month"
+      }
+    ]
   }]
