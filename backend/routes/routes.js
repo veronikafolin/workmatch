@@ -1,6 +1,6 @@
 module.exports = (app) => {
-    var controller = require('../controllers/controller');
-    var authController = require('../controllers/authController');
+    const controller = require('../controllers/controller');
+    const authController = require('../controllers/authController');
     const bodyParser = require('body-parser');
     const jsonParser = bodyParser.json();
     app

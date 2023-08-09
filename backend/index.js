@@ -7,7 +7,7 @@ const cors = require('cors');
 
 global.appRoot = path.resolve(__dirname);
 
-var PORT = 3000;
+const PORT = 3000;
 
 mongoose.connect('mongodb://localhost:27017/workmatch');
 routes(app);
