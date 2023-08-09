@@ -2,7 +2,7 @@ const Student = require("../models/student.js")
 const School = require("../models/school.js")
 const Company = require("../models/company.js")
 
-var authController = require('../controllers/authController');
+const authController = require('../controllers/authController');
 
 exports.greet = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
