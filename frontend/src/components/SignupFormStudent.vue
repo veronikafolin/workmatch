@@ -56,14 +56,6 @@ export default {
                 <InputText id="email" type="text" v-model="form.email" placeholder="Email" required/>
             </div>
             <div clsss="p-float-label">
-                <label for="username" class="p-sr-only">Username </label>
-                <InputText id="username" type="text" v-model="form.username" placeholder="Username" required/>
-            </div>
-            <div clsss="p-float-label">
-                <label for="password" class="p-sr-only">Password </label>
-                <PasswordComp id="password" v-model="form.password" placeHolder="Password" toggleMask /> 
-            </div>
-            <div clsss="p-float-label">
                 <label for="schoolName" class="p-sr-only">School Name </label>
                 <InputText id="schoolName" type="text" v-model="form.schoolName" placeholder="School Name" required/>
             </div>
@@ -74,6 +66,14 @@ export default {
             <div clsss="p-float-label">
                 <label for="grade" class="p-sr-only">Grade </label>
                 <InputText id="grade" type="text" v-model="form.grade" placeholder="Grade" required/>
+            </div>
+            <div clsss="p-float-label">
+              <label for="username" class="p-sr-only">Username </label>
+              <InputText id="username" type="text" v-model="form.username" placeholder="Username" required/>
+            </div>
+            <div clsss="p-float-label">
+              <label for="password" class="p-sr-only">Password </label>
+              <PasswordComp id="password" v-model="form.password" placeHolder="Password" toggleMask />
             </div>
         </div>
         <button type="submit"> Submit </button>

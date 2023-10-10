@@ -81,8 +81,11 @@ function registerCompany(user, res) {
                 user.salt = salt;
                 user.password = hash;
                 var newCompany = new Company(user);
+                console.log(user);
                 newCompany.save((err, co) => {
-                    if(err) res.json({ message: 'Error! Retry later' });
+                    if(err){
+                        res.json({ message: 'Error! Retry later'});
+                    }
                     else res.json({ message: 'OK! User registerd! '});
                 });
             } else{
@@ -118,7 +121,6 @@ function loginCompany(user, res) {
             }
         });
 }
-
 
 function generateToken(remoteUser, dbUser){
     if(bcrypt.compareSync(remoteUser.password, dbUser.password)){
