@@ -10,8 +10,7 @@ export default {
             selectedRole: "",
             roles:[
                 'Student',
-                'Company',
-                'School'
+                'Company'
             ],
             form: {
                 username: "",
@@ -68,7 +67,8 @@ export default {
                 <label for="roleselector" class="block text-900 font-medium mb-2">Please select your role </label>
                 <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
             </div>
-            <Button id="loginBtn" type="submit" label="Login" icon="pi pi-check" />
+              <Button id="loginBtn" type="submit" label="Login" icon="pi pi-check" />
+              <RouterLink to="/signup">Don't have an account yet? Sign Up</RouterLink>
             <div>
                 <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
             </div>
