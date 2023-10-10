@@ -27,8 +27,8 @@ module.exports = (app) => {
         .post(jsonParser, authController.login);
     app
         .route('/api/schools')
-        .get(controller.list_schools);
+        .get(jsonParser, controller.list_schools);
     app
         .route('/api/companies')
-        .get(controller.list_companies);
+        .get(jsonParser, controller.list_companies);
 }

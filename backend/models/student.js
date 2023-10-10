@@ -8,11 +8,7 @@ const StudentSchema = new mongoose.Schema({
     password: {type: String},
     salt: {type: String},
     grade: {type: String},
-    school: {
-        name: {type: String},
-        type: {type: String},
-        curriculum: {type: String}
-    },
+    school: {type: mongoose.Schema.Types.ObjectId},
     jobs: {
         company: {type: String},
         role: {type: String},

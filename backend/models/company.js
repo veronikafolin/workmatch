@@ -2,17 +2,16 @@ const mongoose = require('mongoose');
 
 const CompanySchema = new mongoose.Schema({
     name: {type: String},
-    city: {type: String},
     username: {type: String},
     password: {type: String},
     salt: {type: String},
     address: {type: String},
+    city: {type: String},
     description: {type: String},
     phone_number: {type: String},
     email: {type: String},
     job_offers: {
         type: [{
-            id: {type: mongoose.Schema.Types.ObjectId},
             position: {type: String},
             description: {type: String},
             place_of_work: {type: String},
