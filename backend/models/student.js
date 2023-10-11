@@ -9,6 +9,7 @@ const StudentSchema = new mongoose.Schema({
     salt: {type: String},
     grade: {type: String},
     school: {type: mongoose.Schema.Types.ObjectId},
+    curriculum: {type: String},
     jobs: {
         company: {type: String},
         role: {type: String},

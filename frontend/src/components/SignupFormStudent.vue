@@ -9,14 +9,16 @@ export default {
         return {
             schools: null,
             filteredSchools: null,
-            selectedSchool: null,
+            curriculums: null,
             form: {
                 name: '',
                 surname: '',
                 email: '',
                 username: '',
                 password: '',
-                grade: ''
+                grade: '',
+                school: '',
+                curriculum: ''
             }
         }
     },
@@ -35,7 +37,8 @@ export default {
                         username: this.form.username,
                         password: this.form.password,
                         grade: this.form.grade,
-                        school: this.form.school
+                        school: this.form.school,
+                        curriculum: this.form.curriculum,
                     }
                 }).then(res => console.log(res));
         },
@@ -44,13 +47,19 @@ export default {
               .get("http://localhost:3000/api/schools")
               .then(res => { this.schools = res.data });
         },
+        requestCurriculums(){
+          let schoolId = this.form.school
+          axios
+              .get(`http://localhost:3000/api/curriculum?id=${schoolId}`)
+              .then(res => { this.curriculums = res.data});
+        },
         search(event){
           setTimeout(() => {
             if (!event.query.trim().length) {
               this.filteredSchools = [...this.schools];
             } else {
               this.filteredSchools = this.schools.filter((school) => {
-                return school.name.toLowerCase().startsWith(event.query.toLowerCase());
+                return school.name.toLowerCase().includes(event.query.toLowerCase());
               });
             }
           }, 250);
@@ -76,8 +85,12 @@ export default {
                 <label for="email">Email </label>
             </div>
             <div class="p-float-label">
-                <AutoComplete id="school" v-model="selectedSchool" optionLabel="name" :suggestions="filteredSchools"  @complete="search"/>
+                <AutoComplete id="school" v-model="form.school" optionLabel="name" :suggestions="filteredSchools"  @complete="search"/>
                 <label for="school">School </label>
+            </div>
+            <div class="p-float-label">
+              <Dropdown v-model="form.curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" />
+              <label for="school">Curriculum </label>
             </div>
             <div class="p-float-label">
                 <InputText id="grade" type="text" v-model="form.grade" required/>

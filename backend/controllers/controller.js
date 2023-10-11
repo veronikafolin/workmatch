@@ -52,9 +52,21 @@ exports.list_companies = (req, res) => {
 
 exports.list_schools = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
-	School.find().exec((err, school)=> {
+	School.find().exec((err, school) => {
 		if (err) res.send(err);
 		console.log(school)
 		res.json(school);
 	});
+};
+
+exports.list_curriculums = (req, res) => {
+	let schoolId = req.query.id;
+	School
+		.findOne()
+		.where('_id').equals(schoolId)
+		.select("curriculums")
+		.exec((err, curriculums) => {
+			if (err) res.send(err);
+			res.json(curriculums);
+		});
 };
