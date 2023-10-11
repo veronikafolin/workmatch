@@ -29,6 +29,18 @@ exports.get_student = (req, res) => {
 		});
 };
 
+exports.get_school = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let schoolId = req.query.id;
+	Student
+		.findOne()
+		.where('_id').equals(schoolId)
+		.exec((err, school) => {
+			if (err) res.send(err);
+			res.json(school);
+		});
+};
+
 exports.get_message = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	let token = req.headers['authorization'];

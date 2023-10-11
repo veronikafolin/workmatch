@@ -9,34 +9,27 @@ export default {
             items: [
                 {
                     label:'Students',
-                    icon:'pi pi-fw pi-search'
+                    icon:'pi pi-fw pi-search',
+                    to: '/companyhome'
                 }, 
                 {
-                    label:'Messages',
-                    icon:'pi pi-fw pi-comments'
-                },
-                {
-                    label:'Profile',
-                    icon:'pi pi-fw pi-user'
-                },
-                {
-                    label:'Logout',
-                    icon:'pi pi-fw pi-sign-out'
+                    label:'Notifications',
+                    icon:'pi pi-fw pi-bell',
+                    to: '/companynotification'
                 }
             ]
         };
-    },
-    methods: {
     }
 }
 </script>
 
 <template>
-    <Menubar :model="items" />
+
+  <div class="card">
+    <TabMenu :model="items">
+    </TabMenu>
+    <router-view />
+  </div>
+
 </template>
 
-<style>
-.p-menubar{
-    background-color: white;  /* Choose a better color */
-}
-</style>

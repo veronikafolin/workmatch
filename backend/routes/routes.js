@@ -17,6 +17,10 @@ module.exports = (app) => {
         .get(jsonParser, controller.get_student);
 
     app
+        .route('/api/school')
+        .get(jsonParser, controller.get_school);
+
+    app
         .route('/api/message')
         .get(jsonParser, controller.get_message);
 

@@ -4,6 +4,7 @@ import SigninView from '../views/SigninView.vue'
 import CompanyHomeView from '../views/CompanyHomeView.vue'
 import StudentHomeView from '../views/StudentHomeView.vue'
 import StudentDetailView from '../views/StudentDetailView.vue'
+import CompanyNotificationView from '../views/CompanyNotificationView.vue'
 
 
 const router = createRouter({
@@ -18,6 +19,11 @@ const router = createRouter({
       path: '/companyhome',
       name: 'companyhome',
       component: CompanyHomeView
+    },
+    {
+      path: '/companynotification',
+      name: 'companynotification',
+      component: CompanyNotificationView
     },
     {
       path: '/studenthome',

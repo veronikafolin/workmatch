@@ -14,6 +14,7 @@ import SelectButton from 'primevue/selectbutton';
 import Message from 'primevue/message';
 import Menubar from 'primevue/menubar';
 import Card from 'primevue/card';
+import TabMenu from 'primevue/tabmenu';
 
 const app = createApp(App);
 
@@ -28,5 +29,6 @@ app.component('SelectButton', SelectButton);
 app.component('Message', Message);
 app.component('Menubar', Menubar);
 app.component('Card', Card);
+app.component('TabMenu', TabMenu);
 
 app.mount('#app');

@@ -4,10 +4,13 @@ import CompanyMenu from '../components/CompanyMenu.vue'
 
 <script>
 
+import axios from "axios";
+
 export default {
   data() {
         return {
           students: [],
+          schools: []
         };
     },
   methods:{
@@ -15,10 +18,23 @@ export default {
       axios
         .get("http://localhost:3000/api/students")
         .then(res => { this.students = res.data });
+    },
+    requestSchools(){
+      axios
+          .get("http://localhost:3000/api/schools")
+          .then(res => { this.schools = res.data });
+    },
+    getSchool(schoolId){
+      return this.schools.find(school => {
+        return school._id === schoolId;
+      });
     }
   },
   mounted(){
     this.requestStudents();
+  },
+  beforeMount() {
+    this.requestSchools();
   }
 }
 
@@ -30,14 +46,15 @@ export default {
     <nav>
         <CompanyMenu/>
     </nav>
-  
+
     <Card v-for="student in students">
         <template #title>
             {{student.name}} {{student.surname}}
         </template>
         <template #content>
-            School: {{student.school.name}} <br>
-            School type: {{student.school.type}} <br>
+            School: {{getSchool(student.school)["name"]}} <br>
+            School type: {{getSchool(student.school)["type"]}} <br>
+            Curriculum: {{student.curriculum}} <br>
             Grade: {{student.grade}}
         </template>
         <template #footer>

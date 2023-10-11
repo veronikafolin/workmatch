@@ -47,12 +47,6 @@ export default {
               .get("http://localhost:3000/api/schools")
               .then(res => { this.schools = res.data });
         },
-        requestCurriculums(){
-          let schoolId = this.form.school
-          axios
-              .get(`http://localhost:3000/api/curriculum?id=${schoolId}`)
-              .then(res => { this.curriculums = res.data});
-        },
         search(event){
           setTimeout(() => {
             if (!event.query.trim().length) {
