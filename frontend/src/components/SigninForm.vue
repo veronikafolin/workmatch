@@ -50,30 +50,35 @@ export default {
 </script>
 
 <template id="loginsection">
+
     <div id="login" class="surface-card p-4 shadow-2 border-round">
     
         <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
 
-        <form id="loginform" @submit.prevent="signin" class="text-center">
-            <div>
-                <label for="username" class="block text-900 font-medium mb-2">Username </label>
-                <InputText id="username" type="text" class="mb-3" v-model="form.username" required/>
-            </div>
-            <div class="text-center">
-                <label for="password" class="block text-900 font-medium mb-2">Password </label>
-                <InputText id="password" type="password" class="mb-3" v-model="form.password" :feedback="false" required/>
-            </div>
-            <div>
-                <label for="roleselector" class="block text-900 font-medium mb-2">Please select your role </label>
-                <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
-            </div>
-              <Button id="loginBtn" type="submit" label="Login" icon="pi pi-check" />
-              <RouterLink to="/signup">Don't have an account yet? Sign Up</RouterLink>
-            <div>
-                <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
-            </div>
+        <form id="loginform" @submit.prevent="signin" class="center">
+          <div class="p-form-group-inline">
+            <div class="p-float-label">
+                  <InputText id="username" type="text" v-model="form.username" required/>
+                  <label for="username">Username</label>
+              </div>
+              <div class="p-float-label">
+                  <InputText id="password" type="password" v-model="form.password" :feedback="false" required/>
+                  <label for="password">Password</label>
+              </div>
+              <div>
+                  <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
+                  <label for="roleselector">Please select your role </label>
+              </div>
+                <Button id="loginBtn" type="submit" label="Login" icon="pi pi-check" />
+                <RouterLink to="/signup">Don't have an account yet? Sign Up</RouterLink>
+              <div>
+                  <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+              </div>
+          </div>
         </form>
+
     </div>
+
 </template>
 
 <style>

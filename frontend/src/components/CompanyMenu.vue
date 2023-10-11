@@ -8,14 +8,29 @@ export default {
         return {
             items: [
                 {
-                    label:'Students',
+                    label:'People',
                     icon:'pi pi-fw pi-search',
                     to: '/companyhome'
-                }, 
+                },
+                {
+                  label:'Job Offers',
+                  icon:'pi pi-fw pi-briefcase',
+                  to: '/'
+                },
                 {
                     label:'Notifications',
                     icon:'pi pi-fw pi-bell',
                     to: '/companynotification'
+                },
+                {
+                  label:'Profile',
+                  icon:'pi pi-fw pi-user',
+                  to: '/'
+                },
+                {
+                  label:'Sign out',
+                  icon:'pi pi-fw pi-sign-out',
+                  to: '/'
                 }
             ]
         };
