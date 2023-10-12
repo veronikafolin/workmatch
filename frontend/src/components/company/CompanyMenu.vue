@@ -15,7 +15,7 @@ export default {
                 {
                   label:'Job Offers',
                   icon:'pi pi-fw pi-briefcase',
-                  to: '/'
+                  to: '/companyjoboffers'
                 },
                 {
                     label:'Notifications',
@@ -25,7 +25,7 @@ export default {
                 {
                   label:'Profile',
                   icon:'pi pi-fw pi-user',
-                  to: '/'
+                  to: '/companyprofile'
                 },
                 {
                   label:'Sign out',

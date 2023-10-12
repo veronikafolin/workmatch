@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import SigninForm from '../components/SigninForm.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <SigninForm />
   </main>
 </template>

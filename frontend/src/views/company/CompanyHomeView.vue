@@ -1,5 +1,5 @@
 <script setup>
-import CompanyMenu from '../components/CompanyMenu.vue'
+import CompanyMenu from '../../components/company/CompanyMenu.vue'
 </script>
 
 <script>
@@ -54,8 +54,7 @@ export default {
         <template #content>
             School: {{getSchool(student.school)["name"]}} <br>
             School type: {{getSchool(student.school)["type"]}} <br>
-            Curriculum: {{student.curriculum}} <br>
-            Grade: {{student.grade}}
+            Curriculum: {{student.curriculum}}
         </template>
         <template #footer>
           <router-link v-bind:to="{name: 'studentdetail', params: { id: student._id }}" custom v-slot="{navigate}">

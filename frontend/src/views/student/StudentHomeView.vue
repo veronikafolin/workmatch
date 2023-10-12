@@ -1,5 +1,5 @@
 <script setup>
-import StudentMenu from '../components/StudentMenu.vue'
+import StudentMenu from '../../components/student/StudentMenu.vue'
 </script>
 
 <script>

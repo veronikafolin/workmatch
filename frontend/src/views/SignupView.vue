@@ -1,6 +1,6 @@
 <script setup>
-import SignupFormStudent from '../components/SignupFormStudent.vue'
-import SignupFormCompany from '../components/SignupFormCompany.vue'
+import SignupFormStudent from '../components/student/SignupFormStudent.vue'
+import SignupFormCompany from '../components/company/SignupFormCompany.vue'
 </script>
 
 <script>

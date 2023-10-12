@@ -11,10 +11,19 @@ const StudentSchema = new mongoose.Schema({
     school: {type: mongoose.Schema.Types.ObjectId},
     curriculum: {type: String},
     jobs: {
-        company: {type: String},
-        role: {type: String},
-        sector: {type: String},
-        duration: {type: String}
+        type: [{
+            company: {type: String},
+            role: {type: String},
+            sector: {type: String},
+            duration: {type: String}
+        }]
+    },
+    notifications: {
+        type: [{
+            from: {type: mongoose.Schema.Types.ObjectId},
+            timestamp: {type: Date, default: Date.now},
+            message: {type: String}
+        }]
     }
 });
 module.exports = mongoose.model('Student', StudentSchema);

@@ -15,6 +15,7 @@ import Message from 'primevue/message';
 import Menubar from 'primevue/menubar';
 import Card from 'primevue/card';
 import TabMenu from 'primevue/tabmenu';
+import DataView from 'primevue/dataview';
 
 const app = createApp(App);
 
@@ -30,5 +31,6 @@ app.component('Message', Message);
 app.component('Menubar', Menubar);
 app.component('Card', Card);
 app.component('TabMenu', TabMenu);
+app.component('DataView', DataView);
 
 app.mount('#app');

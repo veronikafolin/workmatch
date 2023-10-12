@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SignupView from '../views/SignupView.vue'
-import SigninView from '../views/SigninView.vue'
-import CompanyHomeView from '../views/CompanyHomeView.vue'
-import StudentHomeView from '../views/StudentHomeView.vue'
-import StudentDetailView from '../views/StudentDetailView.vue'
-import CompanyNotificationView from '../views/CompanyNotificationView.vue'
+import HomeView from '../views/HomeView.vue'
+import CompanyHomeView from '../views/company/CompanyHomeView.vue'
+import StudentHomeView from '../views/student/StudentHomeView.vue'
+import StudentDetailView from '../views/company/CompanyStudentDetailView.vue'
+import CompanyNotificationView from '../views/company/CompanyNotificationView.vue'
+import CompanyProfileView from '../views/company/CompanyProfileView.vue'
+import CompanyJobOffersView from '../views/company/CompanyJobOffersView.vue'
 
 
 const router = createRouter({
@@ -12,8 +14,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'signin',
-      component: SigninView
+      name: 'home',
+      component: HomeView
     },
     {
       path: '/companyhome',
@@ -26,6 +28,16 @@ const router = createRouter({
       component: CompanyNotificationView
     },
     {
+      path: '/companyprofile',
+      name: 'companyprofile',
+      component: CompanyProfileView
+    },
+    {
+      path: '/companyjoboffers',
+      name: 'companyjoboffers',
+      component: CompanyJobOffersView
+    },
+    {
       path: '/studenthome',
       name: 'studenthome',
       component: StudentHomeView
@@ -34,14 +46,6 @@ const router = createRouter({
       path: '/signup',
       name: 'signup',
       component: SignupView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
     },
     {
       path: '/studentdetail:id',
