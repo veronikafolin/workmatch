@@ -9,16 +9,32 @@ import axios from "axios";
 export default{
   data() {
     return {
-      jobOffers: null
+      jobOffers: null,
+      messages: []
     };
   },
-  methods:{
-    requestJobOffers(){
-      let companyId = "652e4278f07e553fc658ec2c";
+  methods: {
+    requestJobOffers() {
+      let companyId = localStorage.userId;
       axios
           .get(`http://localhost:3000/api/jobOffers?id=${companyId}`)
-          .then(res => { this.jobOffers = res.data; });
-    }
+          .then(res => {
+            this.jobOffers = res.data;
+          });
+    },
+    deleteJobOffer(jobOfferId){
+      axios
+          .delete(`http://localhost:3000/api/deleteJobOffer?id=${jobOfferId}`)
+          .then(res => {
+                let response = res.data
+                if (response.message.includes('Error')) {
+                  this.messages.push({severity: 'error', content: response.message})
+                } else {
+                  this.messages.push({severity: 'success', content: response.message})
+                }
+              }
+          )
+    },
   },
   mounted() {
     this.requestJobOffers();
@@ -44,11 +60,10 @@ export default{
               <p>
                 {{slotProps.data.description}}
               </p>
-              <Button icon="pi pi-trash" rounded></Button>
             </div>
-
-            <div >
-
+            <div>
+              <Button icon="pi pi-trash" rounded @click="deleteJobOffer(slotProps.data._id)"></Button>
+              <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
             </div>
           </div>
         </template>

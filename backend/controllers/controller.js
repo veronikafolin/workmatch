@@ -118,7 +118,11 @@ exports.delete_jobOffer = (req, res) => {
 		.where('_id')
 		.equals(jobOfferId)
 		.exec((err, result) => {
-			if (err) res.send(err);
-			res.json(result);
+			if (err || result == null) {
+				res.json({ message: 'Error on delete.'});
+			}
+			else{
+				res.json({ message: 'Deletion completed successfully.', result: result});
+			}
 	});
 };
