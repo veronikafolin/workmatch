@@ -1,63 +1,46 @@
 [{
   "_id": {
-    "$oid": "6385f89a713127b57f4028de"
-  },
-  "name": "Iconsulting",
-  "city": "Casalecchio di Reno",
-  "address": "Via Bazzanese, 32",
-  "description": "Siamo una Data Driven Transformation Company specializzata in design e delivery di soluzioni, metodologie, algoritmi e tecnologie capaci di trasformare e potenziare le aziende clienti con la valorizzazione del principale e più abbondante asset del mercato odierno: i dati.",
-  "phone_number": "0514391311",
-  "email": "info@iconsulting.biz",
-  "job_offers": [
-    {
-      "id": {
-        "$oid": "6386078c713127b57f4028e2"
-      },
-      "position": "Support Junior Analyst",
-      "description": "Il/La candidato/a selezionato/a sarà inserito all’interno di un team di lavoro condiviso che si occuperà della gestione di più servizi presso diversi clienti, sviluppati su tecnologie e architetture diverse tra loro. La persona si occuperà del presidio quotidiano dei servizi running presso il cliente per verificarne il corretto funzionamento e intervenire tempestivamente in caso di anomalie o guasti, dandone comunicazione direttamente al cliente, e lavorerà alla risoluzione dei ticket e delle richieste aperte per risolverli nei tempi preposti (SLA). Il/La candidato/a selezionato/a è appassionato del mondo informatico, curioso di capire il funzionamento dei processi e non si ferma di fronte a tematiche non note: dimostra attitudine al problem solving e al multi-tasking. E’ inoltre interessato a crescere in un contesto giovane, dinamico e collaborativo. Cerchiamo persone con grande curiosità e voglia di imparare e mettersi in gioco, interessati alla risoluzione di problemi e alla creazione di soluzioni orientate al miglioramento del servizio di assistenza verso il cliente.",
-      "place_of_work": "Casalecchio di Reno",
-      "working_hours": 40, 
-      "curriculums_requested" : ["computer science", "accounting"]
-    }
-  ],
-  "notifications": [
-    {
-      "from": {
-        "$oid": "6385f89a713127b57f4028de"
-      },
-      "timestamp": "2012-04-23T18:25:43.511Z",
-      "message": "prova"
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "638607c6713127b57f4028e3"
+    "$oid": "65254822fbe25d1cbd3b57cc"
   },
   "name": "IMA Group",
   "city": "Ozzano dell'Emilia",
+  "username": "imagroup",
+  "password": "$2b$10$0BzwSL21TBpyv1B8WsxY9u2x6U.30v0GgtGlKzkibhDFvYBx/JRma",
+  "salt": "$2b$10$0BzwSL21TBpyv1B8WsxY9u",
   "address": "Via Emilia, 428",
-  "description": "Il Gruppo IMA, nato nel 1961, oggi rappresenta un punto di riferimento nel mercato mondiale della progettazione e della produzione di macchine automatiche. Tale leadership è stata acquisita grazie ad investimenti significativi nella ricerca e sviluppo, ad un dialogo costante e costruttivo con gli end-user del settore di riferimento ed alla capacità del Gruppo di internazionalizzarsi e conquistare nuovi mercati.",
-  "phone_number": "0516514111",
+  "description": "",
+  "phone_number": "+39 0516514111",
   "email": "info@imagroup.com",
-  "job_offers": [
-    {
-      "id": {
-        "$oid": "6386078c713127b57f4028e2"
-      },
-      "position": "Montatore Meccanico Trasfertista",
-      "description": "Si occupa dell’assemblaggio e del collaudo delle macchine e delle linee di macchine, gestendo lo stato di avanzamento lavori, nel rispetto dei tempi e delle specifiche assegnate. Riceve parti di macchine e di gruppi meccanici pre-assemblati da fornitori esterni. Si occupa di aggregare le parti ricevute e montare i gruppi mancanti. Procede con il collaudo della macchina base, con l’installazione e il successivo collaudo di gruppi e formati, per la personalizzazione della stessa. Segue i collaudi di FAT in presenza del cliente. In caso di non conformità rilevata in fase di collaudo, si interfaccia con il Responsabile per trovare la soluzione con gli Enti interessati. Terminati con esito positivo i collaudi, smonta in diverse parti la macchina e/o la linea e li carica su cassoni numerati, provvedendo alla verifica della completezza di quanto inviato, nel rispetto delle leggi locali sulla sicurezza sui luoghi di lavoro. Presso il cliente si occupa dell’installazione, della messa in marcia e del SAT della macchina/linea. È il rappresentante dell’Azienda presso il cliente. Rilascia la dichiarazione di fine lavoro al cliente una volta completata la messa a punto della macchina/linea. Esegue gli interventi di assistenza Post vendita (riparazione, manutenzione, installazione di nuovi gruppi supplementari (GR), ricambi) e si occupa del training sulla macchina/linea e/o cliente. Al rientro da ogni trasferta si relaziona al PV e redige una relazione di intervento che condivide con gli enti interessati. Per il candidato ricercato, si richiede formazione scolastica in ambito meccanico, ottima manualità ed esperienza pregressa di almeno 2-3 anni in ruoli analoghi di montaggio meccanico in ambito automazione. Completano il profilo: buona conoscenza della lingua inglese, ottime doti relazionali che garantiscano un buon lavoro in team, e predisposizione al cliente. E' necessaria la disponibilità a trasferte sul territorio nazionale ed internazionale.",
-      "place_of_work": "Ozzano dell'Emilia",
-      "working_hours": 40, 
-      "curriculums_requested" : ["mechanics"]
-    }
-  ],
-  "notifications": [
-    {
-      "from": {
-        "$oid": "6385f89a713127b57f4028de"
-      },
-      "timestamp": "2012-04-23T18:25:43.511Z",
-      "message": "prova"
-    }
-  ]
+  "notifications": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "65254901fbe25d1cbd3b57cf"
+  },
+  "name": "Data Reply",
+  "city": "Bologna",
+  "username": "datareply",
+  "password": "$2b$10$C.mSkyYxySoIp8yd.1pBR.xKvFR0MYWMoNwJGKikNfSgXA2cFs2oi",
+  "salt": "$2b$10$C.mSkyYxySoIp8yd.1pBR.",
+  "address": "Viale Masini, 12",
+  "description": "",
+  "phone_number": "+39 02 535761",
+  "email": "info.data.it@reply.it",
+  "notifications": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "name": "Iconsulting",
+  "username": "iconsulting",
+  "password": "$2b$10$86E/86DgRNS9plJ5NE30SeNEW3mwemNkW0AO5Gu8YT348NFMj3lXO",
+  "salt": "$2b$10$86E/86DgRNS9plJ5NE30Se",
+  "address": "Via Bazzanese, 32",
+  "city": "Casalecchio di Reno",
+  "description": "",
+  "phone_number": "0514391311",
+  "email": "info@iconsulting.biz",
+  "notifications": [],
+  "__v": 0
 }]

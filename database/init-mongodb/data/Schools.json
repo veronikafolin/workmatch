@@ -1,32 +1,46 @@
 [{
-    "_id": {
-      "$oid": "6385f89a713127b57f4028de"
-    },
-    "name": "ITIS Nullo Baldini",
-    "city": "Ravenna",
-    "type": "technical institute",
-    "curriculums": [
-      "computer science",
-      "mechanics",
-      "logistics",
-      "electronics",
-      "chemistry",
-      "electrotechnical",
-      "naval"
-    ],
-    "phone_number": "0544404002",
-    "email": "itis.ra@gmail.com"
-  },{
-    "_id": {
-      "$oid": "6385fac6713127b57f4028df"
-    },
-    "name": "ITCG Pier Crescenzi Pacinotti",
-    "city": "Bologna",
-    "type": "technical institute",
-    "curriculums": [
-      "accounting",
-      "surveyor"
-    ],
-    "phone_number": "0513397411",
-    "email": "BOIS02700V@istruzione.it"
-  }]
+  "_id": {
+    "$oid": "6385f89a713127b57f4028de"
+  },
+  "name": "ITIS Nullo Baldini",
+  "city": "Ravenna",
+  "type": "technical institute",
+  "curriculums": [
+    "computer science",
+    "mechanics",
+    "logistics",
+    "electronics",
+    "chemistry",
+    "electrotechnical",
+    "naval"
+  ],
+  "phone_number": "0544404002",
+  "email": "itis.ra@gmail.com"
+},{
+  "_id": {
+    "$oid": "6385fac6713127b57f4028df"
+  },
+  "name": "ITCG Pier Crescenzi Pacinotti",
+  "city": "Bologna",
+  "type": "technical institute",
+  "curriculums": [
+    "accounting",
+    "surveyor"
+  ],
+  "phone_number": "0513397411",
+  "email": "BOIS02700V@istruzione.it"
+},{
+  "_id": {
+    "$oid": "65265615296c18b4abf6fce9"
+  },
+  "city": "Forlì",
+  "curriculums": [
+    "scientific",
+    "applied sciences",
+    "sports"
+  ],
+  "name": "Liceo Scientifico Statale Fulcieri Paulucci di Calboli",
+  "type": "scientific high school",
+  "email": "fops040002@istruzione.it",
+  "phone_number": "0543 63095"
+}]
