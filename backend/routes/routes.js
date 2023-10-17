@@ -40,4 +40,12 @@ module.exports = (app) => {
     app
         .route('/api/curriculum')
         .get(jsonParser, controller.list_curriculums);
+
+    app
+        .route('/api/jobOffers')
+        .get(jsonParser, controller.get_jobOffers);
+
+    app
+        .route('/api/deleteJobOffer')
+        .delete(jsonParser, controller.delete_jobOffer);
 }

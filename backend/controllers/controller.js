@@ -1,6 +1,7 @@
 const Student = require("../models/student.js")
 const School = require("../models/school.js")
 const Company = require("../models/company.js")
+const JobOffer = require("../models/jobOffer.js")
 
 const authController = require('../controllers/authController');
 
@@ -81,4 +82,43 @@ exports.list_curriculums = (req, res) => {
 			if (err) res.send(err);
 			res.json(curriculums);
 		});
+};
+
+/*exports.get_jobOffers = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let companyId = req.query.id;
+	Company
+		.findOne()
+		.where('_id').equals(companyId)
+		.select("job_offers")
+		.exec((err, jobOffers) => {
+			if (err) res.send(err);
+			res.json(jobOffers);
+		});
+};*/
+
+exports.get_jobOffers = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let companyId = req.query.id;
+	JobOffer
+		.find()
+		.where('from')
+		.equals(companyId)
+		.exec((err, jobOffers) => {
+			if (err) res.send(err);
+			res.json(jobOffers);
+		});
+};
+
+exports.delete_jobOffer = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let jobOfferId = req.query.id;
+	JobOffer
+		.findOneAndDelete()
+		.where('_id')
+		.equals(jobOfferId)
+		.exec((err, result) => {
+			if (err) res.send(err);
+			res.json(result);
+	});
 };

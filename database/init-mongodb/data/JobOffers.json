@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "652e511791e864510df5a691"
+  },
+  "position": "Support Junior Analyst",
+  "description": "Il/La candidato/a selezionato/a sarà inserito all’interno di un team di lavoro condiviso che si occuperà della gestione di più servizi presso diversi clienti, sviluppati su tecnologie e architetture diverse tra loro. La persona si occuperà del presidio quotidiano dei servizi running presso il cliente per verificarne il corretto funzionamento e intervenire tempestivamente in caso di anomalie o guasti, dandone comunicazione direttamente al cliente, e lavorerà alla risoluzione dei ticket e delle richieste aperte per risolverli nei tempi preposti (SLA). Il/La candidato/a selezionato/a è appassionato del mondo informatico, curioso di capire il funzionamento dei processi e non si ferma di fronte a tematiche non note: dimostra attitudine al problem solving e al multi-tasking. E’ inoltre interessato a crescere in un contesto giovane, dinamico e collaborativo. Cerchiamo persone con grande curiosità e voglia di imparare e mettersi in gioco, interessati alla risoluzione di problemi e alla creazione di soluzioni orientate al miglioramento del servizio di assistenza verso il cliente.",
+  "place_of_work": "Casalecchio di Reno",
+  "working_hours": 40,
+  "curriculums_requested": [
+    "computer science",
+    "accounting"
+  ],
+  "from": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  }
+}]

@@ -10,15 +10,6 @@ const CompanySchema = new mongoose.Schema({
     description: {type: String},
     phone_number: {type: String},
     email: {type: String},
-    job_offers: {
-        type: [{
-            position: {type: String},
-            description: {type: String},
-            place_of_work: {type: String},
-            working_hours: {type: Number},
-            curriculums_requested: {type: [String]}
-        }]
-    },
     notifications: {
         type: [{
             from: {type: mongoose.Schema.Types.ObjectId},
