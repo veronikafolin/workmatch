@@ -84,19 +84,6 @@ exports.list_curriculums = (req, res) => {
 		});
 };
 
-/*exports.get_jobOffers = (req, res) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	let companyId = req.query.id;
-	Company
-		.findOne()
-		.where('_id').equals(companyId)
-		.select("job_offers")
-		.exec((err, jobOffers) => {
-			if (err) res.send(err);
-			res.json(jobOffers);
-		});
-};*/
-
 exports.get_jobOffers = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	let companyId = req.query.id;

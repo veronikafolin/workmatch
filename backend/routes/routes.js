@@ -1,9 +1,9 @@
-const controller = require("../controllers/controller");
 module.exports = (app) => {
     const controller = require('../controllers/controller');
     const authController = require('../controllers/authController');
     const bodyParser = require('body-parser');
     const jsonParser = bodyParser.json();
+
     app
         .route('/api/greet/')
         .get(controller.greet);
@@ -48,4 +48,8 @@ module.exports = (app) => {
     app
         .route('/api/deleteJobOffer')
         .delete(jsonParser, controller.delete_jobOffer);
+
+    app
+        .route('/api/deleteProfile')
+        .delete(jsonParser, authController.deleteProfile);
 }
