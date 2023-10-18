@@ -16,6 +16,8 @@ import Menubar from 'primevue/menubar';
 import Card from 'primevue/card';
 import TabMenu from 'primevue/tabmenu';
 import DataView from 'primevue/dataview';
+import MultiSelect from "primevue/multiselect";
+import Textarea from "primevue/textarea";
 
 const app = createApp(App);
 
@@ -32,5 +34,7 @@ app.component('Menubar', Menubar);
 app.component('Card', Card);
 app.component('TabMenu', TabMenu);
 app.component('DataView', DataView);
+app.component('MultiSelect', MultiSelect);
+app.component('TextArea', Textarea);
 
 app.mount('#app');

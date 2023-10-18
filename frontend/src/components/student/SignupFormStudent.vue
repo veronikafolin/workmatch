@@ -9,7 +9,6 @@ export default {
         return {
             schools: null,
             filteredSchools: null,
-            curriculums: null,
             form: {
                 name: '',
                 surname: '',
@@ -83,8 +82,8 @@ export default {
                 <label for="school">School </label>
             </div>
             <div class="p-float-label">
-              <Dropdown v-model="form.curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" />
-              <label for="school">Curriculum </label>
+              <Dropdown id="curriculum" v-model="form.curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" />
+              <label for="curriculum">Curriculum </label>
             </div>
             <div class="p-float-label">
                 <InputText id="grade" type="text" v-model="form.grade" required/>

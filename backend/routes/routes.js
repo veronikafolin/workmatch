@@ -38,12 +38,16 @@ module.exports = (app) => {
         .get(jsonParser, controller.list_companies);
 
     app
-        .route('/api/curriculum')
+        .route('/api/curriculums')
         .get(jsonParser, controller.list_curriculums);
 
     app
         .route('/api/jobOffers')
         .get(jsonParser, controller.get_jobOffers);
+
+    app
+        .route('/api/insertJobOffer')
+        .post(jsonParser, controller.insert_jobOffer);
 
     app
         .route('/api/deleteJobOffer')

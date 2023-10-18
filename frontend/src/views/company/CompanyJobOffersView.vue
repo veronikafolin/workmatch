@@ -1,5 +1,7 @@
 <script setup>
 import CompanyMenu from '../../components/company/CompanyMenu.vue'
+import InsertJobOfferForm from '../../components/company/InsertJobOfferForm.vue'
+
 </script>
 
 <script>
@@ -10,7 +12,8 @@ export default{
   data() {
     return {
       jobOffers: null,
-      messages: []
+      messages: [],
+      addJobOffer: false
     };
   },
   methods: {
@@ -49,6 +52,12 @@ export default{
       <CompanyMenu/>
     </nav>
 
+    <div>
+      <Button icon="pi pi-plus" rounded @click="addJobOffer=true"></Button>
+    </div>
+
+    <InsertJobOfferForm v-if="addJobOffer"></InsertJobOfferForm>
+
     <div class="card">
       <DataView :value="jobOffers">
         <template #list="slotProps">
@@ -63,12 +72,13 @@ export default{
             </div>
             <div>
               <Button icon="pi pi-trash" rounded @click="deleteJobOffer(slotProps.data._id)"></Button>
-              <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
             </div>
           </div>
         </template>
       </DataView>
     </div>
+
+    <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 
   </main>
 </template>

@@ -55,7 +55,7 @@ export default {
             </div>
             <div clsss="p-float-label">
               <label for="description" class="p-sr-only">Description </label>
-              <Textarea id="description" type="text" v-model="form.description" placeholder="Description" required/>
+              <TextArea id="description" type="text" v-model="form.description" placeholder="Description" required/>
             </div>
             <div clsss="p-float-label">
               <label for="phone_number" class="p-sr-only">Phone number </label>

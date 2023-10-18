@@ -72,12 +72,22 @@ exports.list_schools = (req, res) => {
 	});
 };
 
-exports.list_curriculums = (req, res) => {
+/*exports.list_curriculums = (req, res) => {
 	let schoolId = req.query.id;
 	School
 		.findOne()
 		.where('_id').equals(schoolId)
 		.select("curriculums")
+		.exec((err, curriculums) => {
+			if (err) res.send(err);
+			res.json(curriculums);
+		});
+};*/
+
+exports.list_curriculums = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	School
+		.distinct('curriculums')
 		.exec((err, curriculums) => {
 			if (err) res.send(err);
 			res.json(curriculums);
@@ -96,6 +106,20 @@ exports.get_jobOffers = (req, res) => {
 			res.json(jobOffers);
 		});
 };
+
+exports.insert_jobOffer = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	var newJobOffer = new JobOffer(req.body.jobOffer);
+	newJobOffer
+		.save((err, result) => {
+			if (err) {
+				res.json({ message: 'Error on insert the job offer.'});
+			}
+			else{
+				res.json({ message: 'Insertion completed successfully.', result: result});
+			}
+		});
+}
 
 exports.delete_jobOffer = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
