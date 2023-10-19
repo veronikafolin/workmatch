@@ -30,6 +30,18 @@ exports.get_student = (req, res) => {
 		});
 };
 
+exports.get_company = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let companyId = req.query.id;
+	Company
+		.findOne()
+		.where('_id').equals(companyId)
+		.exec((err, company) => {
+			if (err) res.send(err);
+			res.json(company);
+		});
+};
+
 exports.get_school = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	let schoolId = req.query.id;
@@ -71,18 +83,6 @@ exports.list_schools = (req, res) => {
 		res.json(school);
 	});
 };
-
-/*exports.list_curriculums = (req, res) => {
-	let schoolId = req.query.id;
-	School
-		.findOne()
-		.where('_id').equals(schoolId)
-		.select("curriculums")
-		.exec((err, curriculums) => {
-			if (err) res.send(err);
-			res.json(curriculums);
-		});
-};*/
 
 exports.list_curriculums = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");

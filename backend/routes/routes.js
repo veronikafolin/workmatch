@@ -1,3 +1,4 @@
+const controller = require("../controllers/controller");
 module.exports = (app) => {
     const controller = require('../controllers/controller');
     const authController = require('../controllers/authController');
@@ -21,6 +22,10 @@ module.exports = (app) => {
         .get(jsonParser, controller.get_school);
 
     app
+        .route('/api/company')
+        .get(jsonParser, controller.get_company);
+
+    app
         .route('/api/message')
         .get(jsonParser, controller.get_message);
 
@@ -33,6 +38,7 @@ module.exports = (app) => {
     app
         .route('/api/schools')
         .get(jsonParser, controller.list_schools);
+
     app
         .route('/api/companies')
         .get(jsonParser, controller.list_companies);

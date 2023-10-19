@@ -18,6 +18,7 @@ import TabMenu from 'primevue/tabmenu';
 import DataView from 'primevue/dataview';
 import MultiSelect from "primevue/multiselect";
 import Textarea from "primevue/textarea";
+import Dialog from "primevue/dialog";
 
 const app = createApp(App);
 
@@ -36,5 +37,6 @@ app.component('TabMenu', TabMenu);
 app.component('DataView', DataView);
 app.component('MultiSelect', MultiSelect);
 app.component('TextArea', Textarea);
+app.component('Dialog', Dialog);
 
 app.mount('#app');

@@ -10,7 +10,7 @@ export default {
                 {
                     label:'People',
                     icon:'pi pi-fw pi-search',
-                    to: '/companyhome'
+                    to: '/studentlist'
                 },
                 {
                   label:'Job Offers',
