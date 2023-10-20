@@ -41,40 +41,40 @@ export default {
     <form @submit.prevent="registerCompany">
 
         <div class="p-form-group-inline">
-            <div clsss="p-float-label">
-                <label for="name" class="p-sr-only">Name </label>
-                <InputText id="name" type="text" v-model="form.name" placeholder="Name" required/>
+            <div class="p-float-label">
+                <InputText id="name" type="text" v-model="form.name" required/>
+                <label for="name">Name </label>
             </div>
-            <div clsss="p-float-label">
-                <label for="city" class="p-sr-only">City </label>
-                <InputText id="city" type="text" v-model="form.city" placeholder="City" required/>
+            <div class="p-float-label">
+                <InputText id="city" type="text" v-model="form.city" required/>
+                <label for="city">City </label>
             </div>
-            <div clsss="p-float-label">
-                <label for="address" class="p-sr-only">Address </label>
-                <InputText id="address" type="text" v-model="form.address" placeholder="Address" required/>
+            <div class="p-float-label">
+                <InputText id="address" type="text" v-model="form.address" required/>
+                <label for="address">Address </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="description" class="p-sr-only">Description </label>
-              <TextArea id="description" type="text" v-model="form.description" placeholder="Description" required/>
+            <div class="p-float-label">
+              <TextArea id="description" type="text" v-model="form.description" required/>
+              <label for="description">Description </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="phone_number" class="p-sr-only">Phone number </label>
-              <InputText id="phone_number" type="text" v-model="form.phone_number" placeholder="Phone number" required/>
+            <div class="p-float-label">
+              <InputText id="phone_number" type="text" v-model="form.phone_number" required/>
+              <label for="phone_number">Phone number </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="email" class="p-sr-only">Email </label>
-              <InputText id="email" type="text" v-model="form.email" placeholder="Email" required/>
+            <div class="p-float-label">
+              <InputText id="email" type="text" v-model="form.email" required/>
+              <label for="email">Email </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="username" class="p-sr-only">Username </label>
-              <InputText id="username" type="text" v-model="form.username" placeholder="Username" required/>
+            <div class="p-float-label">
+              <InputText id="username" type="text" v-model="form.username" required/>
+              <label for="username">Username </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="password" class="p-sr-only">Password </label>
-              <PasswordComp id="password" v-model="form.password" placeHolder="Password" toggleMask />
+            <div class="p-float-label">
+              <PasswordComp id="password" v-model="form.password" toggleMask />
+              <label for="password">Password </label>
             </div>
         </div>
-        <button type="submit"> Submit </button>
+        <Button type="submit"> Submit </Button>
     </form>
 </template>
 <style scoped>

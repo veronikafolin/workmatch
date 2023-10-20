@@ -24,7 +24,7 @@ export default {
       <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
 
       <div>
-        <label for="roleselector" class="block text-900 font-medium mb-2">Please select your role </label>
+        <label for="roleselector" >Please select your role </label>
         <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
       </div>
 

@@ -54,33 +54,31 @@ export default {
 <template>
     <form @submit.prevent="insertJobOffer">
         <div class="p-form-group-inline">
-            <div clsss="p-float-label">
-                <label for="position" class="p-sr-only">Position </label>
-                <InputText id="position" type="text" v-model="form.position" placeholder="Position" required/>
+            <div class="p-float-label">
+                <InputText id="position" type="text" v-model="form.position" required/>
+                <label for="position">Position </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="description" class="p-sr-only">Description </label>
-              <TextArea id="description" type="text" v-model="form.description" placeholder="Description" required/>
+            <div class="p-float-label">
+              <TextArea id="description" type="text" v-model="form.description" required/>
+              <label for="description">Description </label>
             </div>
-            <div clsss="p-float-label">
-                <label for="place_of_work" class="p-sr-only">City </label>
-                <InputText id="place_of_work" type="text" v-model="form.place_of_work" placeholder="City" required/>
+            <div class="p-float-label">
+                <InputText id="place_of_work" type="text" v-model="form.place_of_work" required/>
+                <label for="place_of_work">City </label>
             </div>
-            <div clsss="p-float-label">
-              <label for="working_hours" class="p-sr-only">Working hours </label>
-              <InputText id="working_hours" type="text" v-model="form.phone_number" placeholder="Working hours" required/>
+            <div class="p-float-label">
+              <InputText id="working_hours" type="text" v-model="form.phone_number" required/>
+              <label for="working_hours">Working hours </label>
             </div>
             <div class="p-float-label">
               <MultiSelect id="curriculums" v-model="form.curriculums_requested" :options="this.curriculums" placeholder="Select curriculums requested"
                            class="w-full md:w-20rem" />
               <label for="curriculums">Curriculums </label>
             </div>
-        </div>
           <Button type="submit"> Submit </Button>
+          <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+        </div>
     </form>
-    <div>
-      <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
-    </div>
 </template>
 <style scoped>
 
