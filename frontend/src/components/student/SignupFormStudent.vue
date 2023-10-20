@@ -7,6 +7,7 @@ import axios from "axios";
 export default {
     data() {
         return {
+            messages: [],
             schools: null,
             filteredSchools: null,
             form: {
@@ -39,7 +40,16 @@ export default {
                         school: this.form.school,
                         curriculum: this.form.curriculum,
                     }
-                }).then(res => console.log(res));
+                }).then(res => {
+                  let response = res.data
+                  if (response.message.includes('Error')) {
+                    this.messages.push({severity: 'error', content: response.message})
+                  } else {
+                    this.messages.push({severity: 'success', content: response.message})
+                    setTimeout(() => router.replace({name: `home`}), 1000);
+                  }
+                }
+            );
         },
         requestSchools(){
           axios
@@ -99,6 +109,7 @@ export default {
             </div>
         </div>
         <Button type="submit"> Submit </Button>
+        <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
     </form>
 </template>
 

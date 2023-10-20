@@ -1,9 +1,12 @@
-<script setup></script>
+<script setup>
+import router from "@/router";
+</script>
 
 <script>
 export default {
     data() {
         return {
+            messages: [],
             form: {
                 name: '',
                 city: '',
@@ -31,7 +34,16 @@ export default {
                         phone_number: this.form.phone_number,
                         email: this.form.email
                         }
-                }).then(res => console.log(res));
+                }).then(res => {
+                  let response = res.data
+                  if (response.message.includes('Error')) {
+                    this.messages.push({severity: 'error', content: response.message})
+                  } else {
+                    this.messages.push({severity: 'success', content: response.message})
+                    setTimeout(() => router.replace({name: `home`}), 1000);
+                  }
+                }
+            );
         }
     }
 }
@@ -75,6 +87,7 @@ export default {
             </div>
         </div>
         <Button type="submit"> Submit </Button>
+        <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
     </form>
 </template>
 <style scoped>

@@ -70,7 +70,6 @@ exports.list_companies = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	Company.find().exec((err, company)=> {
 		if (err) res.send(err);
-		console.log(company)
 		res.json(company);
 	});
 };
@@ -79,7 +78,6 @@ exports.list_schools = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	School.find().exec((err, school) => {
 		if (err) res.send(err);
-		console.log(school)
 		res.json(school);
 	});
 };
