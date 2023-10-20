@@ -12,7 +12,8 @@ export default {
           visible: false,
           students: [],
           schools: [],
-          school: ''
+          school: '',
+          student: ''
         };
     },
   methods:{
@@ -48,9 +49,9 @@ export default {
         <CompanyMenu/>
     </nav>
 
-    <div class="card justify-content-center" v-for="student in students">
+    <div class="card justify-content-center">
 
-      <Card>
+      <Card v-for="student in students">
         <template #title> {{student.name}} {{student.surname}} </template>
         <template #subtitle> e-mail: {{student.email}} </template>
         <template #content>
@@ -59,14 +60,16 @@ export default {
           Curriculum: {{student.curriculum}}
         </template>
         <template #footer>
-          <Button label="Show" icon="pi pi-external-link" @click="visible = true" />
+          <Button label="Show" icon="pi pi-external-link" @click="visible = true; this.student=student" />
         </template>
       </Card>
 
-      <Dialog v-model:visible="visible" modal header="Dettaglio studente" :style="{ width: '50vw' }">
+      <Dialog v-model:visible="visible" modal :style="{ width: '50vw' }">
+        <p class="text-900 font-medium mb-2 text-xl"> {{student.name}} {{student.surname}} </p>
+        <p class="mt-0 mb-4 p-0 line-height-3">
+          Email: {{student.email}}
+        </p>
         <p>
-          Name: {{student.name}} {{student.surname}} <br>
-          Email: {{student.email}} <br>
           School: {{getSchool(student.school)["name"]}} <br>
           School type: {{getSchool(student.school)["type"]}} <br>
           Curriculum: {{student.curriculum}} <br>

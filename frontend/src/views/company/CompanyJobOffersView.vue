@@ -13,7 +13,7 @@ export default{
     return {
       jobOffers: null,
       messages: [],
-      addJobOffer: false
+      visible: false
     };
   },
   methods: {
@@ -52,33 +52,34 @@ export default{
       <CompanyMenu/>
     </nav>
 
-    <div>
-      <Button icon="pi pi-plus" rounded @click="addJobOffer=true"></Button>
+    <div class="card flex p-3 border-round justify-content-center">
+      <Button label="Insert Offer" icon="pi pi-plus" rounded @click="visible=true"></Button>
+      <Dialog v-model:visible="visible" modal :style="{ width: '50vw' }" header="Insert a new job offer">
+        <InsertJobOfferForm/>
+      </Dialog>
     </div>
 
-    <InsertJobOfferForm v-if="addJobOffer"></InsertJobOfferForm>
+    <div class="card justify-content-center">
 
-    <div class="card">
-      <DataView :value="jobOffers">
-        <template #list="slotProps">
-          <div class="row d-flex">
-            <div>
-              <div class="text-2xl font-bold text-900">{{ slotProps.data.position }}</div>
-              {{ slotProps.data.place_of_work }}<br>
-              {{ slotProps.data.working_hours }}h/week
-              <p>
-                {{slotProps.data.description}}
-              </p>
-            </div>
-            <div>
-              <Button icon="pi pi-trash" rounded @click="deleteJobOffer(slotProps.data._id)"></Button>
-            </div>
-          </div>
+      <Card v-for="offer in jobOffers">
+        <template #title> {{offer.position}} </template>
+        <template #subtitle>
+          {{offer.place_of_work}} <br>
+          {{offer.working_hours}}h/week
         </template>
-      </DataView>
+        <template #content>
+          {{offer.description}}
+        </template>
+        <template #footer>
+          <Button label="Delete offer" icon="pi pi-trash" @click="deleteJobOffer(offer._id)"/>
+        </template>
+      </Card>
+
+      <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+
     </div>
 
-    <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+
 
   </main>
 </template>
