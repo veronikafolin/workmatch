@@ -27,7 +27,23 @@ export default{
                 }
               }
           )
-    }
+    },
+    confirmDelete() {
+      this.$confirm.require({
+        message: 'Are you sure you want to proceed?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        rejectClass: 'p-button-text p-button-text',
+        acceptClass: 'p-button-danger p-button-text',
+        accept: () => {
+          this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
+          this.deleteProfile();
+        },
+        reject: () => {
+          this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+        }
+      });
+    },
   }
 }
 
@@ -35,14 +51,18 @@ export default{
 
 <template>
   <main>
+
     <nav>
       <CompanyMenu/>
     </nav>
 
-    <div>
-      <Button icon="pi pi-trash" rounded @click="deleteProfile()"></Button>
-      <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+    <div class="card flex flex-wrap gap-2 justify-content-center">
+      <Toast />
+      <ConfirmDialog></ConfirmDialog>
+      <Button @click="confirmDelete()" icon="pi pi-times" label="Delete profile"></Button>
     </div>
+      <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+
 
   </main>
 </template>

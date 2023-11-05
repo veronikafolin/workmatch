@@ -19,11 +19,21 @@ import DataView from 'primevue/dataview';
 import MultiSelect from "primevue/multiselect";
 import Textarea from "primevue/textarea";
 import Dialog from "primevue/dialog";
+import DialogService from 'primevue/dialogservice'
+import Toast from "primevue/toast";
+import ToastService from 'primevue/toastservice';
+import ConfirmDialog from 'primevue/confirmdialog';
+import ConfirmationService from 'primevue/confirmationservice';
 
 const app = createApp(App);
 
 app.use(router);
 app.use(PrimeVue);
+app.use(ConfirmationService);
+app.use(ToastService);
+app.use(DialogService);
+
+
 app.component('InputText', InputText);
 app.component('AutoComplete', AutoComplete);
 app.component('PasswordComp', Password);
@@ -38,5 +48,7 @@ app.component('DataView', DataView);
 app.component('MultiSelect', MultiSelect);
 app.component('TextArea', Textarea);
 app.component('Dialog', Dialog);
+app.component('Toast', Toast);
+app.component('ConfirmDialog', ConfirmDialog);
 
 app.mount('#app');
