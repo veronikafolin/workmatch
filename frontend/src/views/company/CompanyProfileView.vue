@@ -5,10 +5,12 @@ import CompanyMenu from '../../components/company/CompanyMenu.vue'
 <script>
 
 import axios from "axios";
+import router from "../../router";
 
 export default{
   data(){
     return {
+      profileDeleted: false,
       messages: []
     };
   },
@@ -23,7 +25,10 @@ export default{
                 if (response.message.includes('Error')) {
                   this.messages.push({severity: 'error', content: response.message})
                 } else {
-                  this.messages.push({severity: 'success', content: response.message})
+                  let content = response.message + "You will shortly be redirected to the log in page."
+                  this.messages.push({severity: 'success', content: content})
+                  this.profileDeleted = true
+                  setTimeout(() => router.replace('/'), 3000);
                 }
               }
           )
@@ -61,8 +66,13 @@ export default{
       <ConfirmDialog></ConfirmDialog>
       <Button @click="confirmDelete()" icon="pi pi-times" label="Delete profile"></Button>
     </div>
-      <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 
+      <div v-if="profileDeleted" class="card flex justify-content-center">
+        <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="8" fill="var(--surface-ground)"
+                         animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+      </div>
+
+    <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 
   </main>
 </template>

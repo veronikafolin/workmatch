@@ -1,4 +1,5 @@
 const controller = require("../controllers/controller");
+const authController = require("../controllers/authController");
 module.exports = (app) => {
     const controller = require('../controllers/controller');
     const authController = require('../controllers/authController');
@@ -32,9 +33,11 @@ module.exports = (app) => {
     app
         .route('/api/signup')
         .post(jsonParser, authController.signup);
+
     app
         .route('/api/login')
         .post(jsonParser, authController.login);
+
     app
         .route('/api/schools')
         .get(jsonParser, controller.list_schools);

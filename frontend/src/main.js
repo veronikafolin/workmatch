@@ -24,6 +24,7 @@ import Toast from "primevue/toast";
 import ToastService from 'primevue/toastservice';
 import ConfirmDialog from 'primevue/confirmdialog';
 import ConfirmationService from 'primevue/confirmationservice';
+import ProgressSpinner from 'primevue/progressspinner';
 
 const app = createApp(App);
 
@@ -50,5 +51,6 @@ app.component('TextArea', Textarea);
 app.component('Dialog', Dialog);
 app.component('Toast', Toast);
 app.component('ConfirmDialog', ConfirmDialog);
+app.component('ProgressSpinner', ProgressSpinner);
 
 app.mount('#app');

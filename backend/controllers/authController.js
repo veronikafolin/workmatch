@@ -127,9 +127,9 @@ exports.deleteProfile = (req, res) => {
     let userType = req.query.userType;
     function deleteStudent(req, res) {
         Student
-            .deleteOne({'_id': userId})
+            .findByIdAndDelete({'_id': userId})
             .exec((err, result) => {
-                if (err) {
+                if (err || result == null) {
                     res.json({ message: 'Error on delete.'});
                 }
                 else{
@@ -140,9 +140,9 @@ exports.deleteProfile = (req, res) => {
 
     function deleteCompany(req, res) {
         Company
-            .deleteOne({'_id': userId})
+            .findByIdAndDelete({'_id': userId})
             .exec((err, result) => {
-                if (err) {
+                if (err || result == null) {
                     res.json({ message: 'Error on delete.'});
                 }
                 else{
