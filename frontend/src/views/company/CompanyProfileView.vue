@@ -1,5 +1,6 @@
 <script setup>
 import CompanyMenu from '../../components/company/CompanyMenu.vue'
+import UpdateProfileFormCompany from '../../components/company/UpdateProfileFormCompany.vue'
 </script>
 
 <script>
@@ -10,11 +11,21 @@ import router from "../../router";
 export default{
   data(){
     return {
-      profileDeleted: false,
+      company: '',
+      modifyProfile: false,
+      deleteProfile: false,
       messages: []
     };
   },
   methods:{
+    requestCompany() {
+      let companyId = localStorage.userId;
+      axios
+          .get(`http://localhost:3000/api/company?id=${companyId}`)
+          .then(res => {
+            this.company = res.data;
+          });
+    },
     deleteProfile(){
       let userId = localStorage.userId;
       let userType = localStorage.userType.toLowerCase();
@@ -27,7 +38,7 @@ export default{
                 } else {
                   let content = response.message + "You will shortly be redirected to the log in page."
                   this.messages.push({severity: 'success', content: content})
-                  this.profileDeleted = true
+                  this.deleteProfile = true
                   setTimeout(() => router.replace('/'), 3000);
                 }
               }
@@ -49,6 +60,9 @@ export default{
         }
       });
     },
+  },
+  mounted() {
+    this.requestCompany();
   }
 }
 
@@ -61,16 +75,35 @@ export default{
       <CompanyMenu/>
     </nav>
 
-    <div class="card flex flex-wrap gap-2 justify-content-center">
-      <Toast />
-      <ConfirmDialog></ConfirmDialog>
-      <Button @click="confirmDelete()" icon="pi pi-times" label="Delete profile"></Button>
+    <div class="card justify-content-center">
+
+      <Card>
+        <template #title> {{company.name}} </template>
+        <template #content>
+          City: {{company.city}} <br>
+          Address: {{company.address}} <br>
+          Description: {{company.description}} <br>
+          Phone number: {{company.phone_number}} <br>
+          E-mail: {{company.email}}
+        </template>
+        <template #footer>
+          <Button label="Modify" icon="pi pi-pencil" @click="modifyProfile = true" />
+          <Toast />
+          <ConfirmDialog></ConfirmDialog>
+          <Button @click="confirmDelete()" icon="pi pi-times" label="Delete profile"></Button>
+        </template>
+      </Card>
+
+      <Dialog v-model:visible="modifyProfile" modal :style="{ width: '50vw' }">
+        <UpdateProfileFormCompany></UpdateProfileFormCompany>
+      </Dialog>
+
     </div>
 
-      <div v-if="profileDeleted" class="card flex justify-content-center">
-        <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="8" fill="var(--surface-ground)"
-                         animationDuration=".5s" aria-label="Custom ProgressSpinner" />
-      </div>
+    <div v-if="deleteProfile" class="card flex justify-content-center">
+      <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="8" fill="var(--surface-ground)"
+                       animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+    </div>
 
     <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 

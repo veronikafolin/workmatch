@@ -121,48 +121,6 @@ function loginCompany(user, res) {
         });
 }
 
-exports.deleteProfile = (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    let userId = req.query.id;
-    let userType = req.query.userType;
-    function deleteStudent(req, res) {
-        Student
-            .findByIdAndDelete({'_id': userId})
-            .exec((err, result) => {
-                if (err || result == null) {
-                    res.json({ message: 'Error on delete.'});
-                }
-                else{
-                    res.json({ message: 'Deletion completed successfully.', result: result});
-                }
-            });
-    }
-
-    function deleteCompany(req, res) {
-        Company
-            .findByIdAndDelete({'_id': userId})
-            .exec((err, result) => {
-                if (err || result == null) {
-                    res.json({ message: 'Error on delete.'});
-                }
-                else{
-                    res.json({ message: 'Deletion completed successfully.', result: result});
-                }
-            });
-    }
-
-    switch(userType){
-        case 'student':
-            deleteStudent(req, res);
-            break;
-        case 'company':
-            deleteCompany(req, res)
-            break;
-        default:
-            res.json({message: 'Error! Unknown user type'});
-    }
-}
-
 function generateToken(remoteUser, dbUser){
     if(bcrypt.compareSync(remoteUser.password, dbUser.password)){
         let token = jsonwebtoken.sign({ username: dbUser.username, id: dbUser._id }, SECRET_KEY, { algorithm: 'HS512', expiresIn: '7d' });

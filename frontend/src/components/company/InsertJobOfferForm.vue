@@ -80,6 +80,7 @@ export default {
         </div>
     </form>
 </template>
+
 <style scoped>
 
 .p-float-label {

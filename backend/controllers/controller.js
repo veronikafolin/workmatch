@@ -135,3 +135,92 @@ exports.delete_jobOffer = (req, res) => {
 			}
 	});
 };
+
+exports.deleteProfile = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let userId = req.query.id;
+	let userType = req.query.userType.toLowerCase();
+
+	function deleteStudent(req, res) {
+		Student
+			.findByIdAndDelete({'_id': userId})
+			.exec((err, result) => {
+				if (err || result == null) {
+					res.json({ message: 'Error on delete.'});
+				}
+				else{
+					res.json({ message: 'Deletion completed successfully.', result: result});
+				}
+			});
+	}
+
+	function deleteCompany(req, res) {
+		Company
+			.findByIdAndDelete({'_id': userId})
+			.exec((err, result) => {
+				if (err || result == null) {
+					res.json({ message: 'Error on delete.'});
+				}
+				else{
+					res.json({ message: 'Deletion completed successfully.', result: result});
+				}
+			});
+	}
+
+	switch(userType){
+		case 'student':
+			deleteStudent(req, res);
+			break;
+		case 'company':
+			deleteCompany(req, res)
+			break;
+		default:
+			res.json({message: 'Error! Unknown user type'});
+	}
+}
+
+exports.updateProfile = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let userId = req.body.id;
+	let userType = req.body.userType.toLowerCase();
+
+	let update = req.body.update;
+
+	function updateStudent(req, res) {
+		Student
+			.findByIdAndUpdate({'_id': userId}, update)
+			.exec((err, result) => {
+				if (err || result == null) {
+					res.json({ message: 'Error on update.'});
+				}
+				else{
+					res.json({ message: 'Update completed successfully.', result: result});
+				}
+			});
+	}
+
+	function updateCompany(req, res) {
+		Company
+			.findByIdAndUpdate({'_id': userId}, update)
+			.exec((err, result) => {
+				if (err || result == null) {
+					res.json({ message: 'Error on update.'});
+				}
+				else{
+					res.json({ message: 'Update completed successfully.', result: result});
+				}
+			});
+	}
+
+	switch(userType){
+		case 'student':
+			updateStudent(req, res);
+			break;
+		case 'company':
+			updateCompany(req, res)
+			break;
+		default:
+			res.json({message: 'Error! Unknown user type'});
+	}
+}
+

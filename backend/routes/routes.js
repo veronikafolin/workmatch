@@ -1,5 +1,6 @@
 const controller = require("../controllers/controller");
 const authController = require("../controllers/authController");
+
 module.exports = (app) => {
     const controller = require('../controllers/controller');
     const authController = require('../controllers/authController');
@@ -64,5 +65,9 @@ module.exports = (app) => {
 
     app
         .route('/api/deleteProfile')
-        .delete(jsonParser, authController.deleteProfile);
+        .delete(jsonParser, controller.deleteProfile);
+
+    app
+        .route('/api/updateProfile')
+        .put(jsonParser, controller.updateProfile);
 }
