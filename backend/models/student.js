@@ -9,21 +9,6 @@ const StudentSchema = new mongoose.Schema({
     salt: {type: String},
     grade: {type: String},
     school: {type: mongoose.Schema.Types.ObjectId},
-    curriculum: {type: String},
-    jobs: {
-        type: [{
-            company: {type: String},
-            role: {type: String},
-            sector: {type: String},
-            duration: {type: String}
-        }]
-    },
-    notifications: {
-        type: [{
-            from: {type: mongoose.Schema.Types.ObjectId},
-            timestamp: {type: Date, default: Date.now},
-            message: {type: String}
-        }]
-    }
+    curriculum: {type: String}
 });
 module.exports = mongoose.model('Student', StudentSchema);

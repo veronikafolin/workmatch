@@ -1,9 +1,27 @@
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const path = require('path');
 const routes = require('./routes/routes');
 const cors = require('cors');
+
+const http = createServer(app);
+const io = new Server(http,{});
+
+io.on('connection', (socket)=>{
+    console.log('User has connected.');
+
+    socket.on('sendNotification', (data)=>{
+        io.emit('notification', data);
+    });
+
+    socket.on('disconnect', ()=>{
+        console.log('User has disconnected.');
+    });
+});
 
 global.appRoot = path.resolve(__dirname);
 

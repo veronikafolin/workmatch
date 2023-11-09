@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CompanySchema = new mongoose.Schema({
+const JobOfferSchema = new mongoose.Schema({
     from: {type: mongoose.Schema.Types.ObjectId},
     position: {type: String},
     description: {type: String},
@@ -9,4 +9,4 @@ const CompanySchema = new mongoose.Schema({
     curriculums_requested: {type: [String]}
 });
 
-module.exports = mongoose.model('JobOffer', CompanySchema);
+module.exports = mongoose.model('JobOffer', JobOfferSchema);

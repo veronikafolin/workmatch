@@ -11,7 +11,6 @@
   "description": "",
   "phone_number": "+39 0516514111",
   "email": "info@imagroup.com",
-  "notifications": [],
   "__v": 0
 },{
   "_id": {
@@ -26,7 +25,6 @@
   "description": "",
   "phone_number": "+39 02 535761",
   "email": "info.data.it@reply.it",
-  "notifications": [],
   "__v": 0
 },{
   "_id": {
@@ -41,6 +39,5 @@
   "description": "",
   "phone_number": "0514391311",
   "email": "info@iconsulting.biz",
-  "notifications": [],
   "__v": 0
 }]
