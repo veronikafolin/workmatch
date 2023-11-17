@@ -2,6 +2,7 @@ const Student = require("../models/student.js")
 const School = require("../models/school.js")
 const Company = require("../models/company.js")
 const JobOffer = require("../models/jobOffer.js")
+const Notification = require("../models/notification.js")
 
 const authController = require('../controllers/authController');
 
@@ -117,7 +118,7 @@ exports.insert_jobOffer = (req, res) => {
 				res.json({ message: 'Insertion completed successfully.', result: result});
 			}
 		});
-}
+};
 
 exports.delete_jobOffer = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -177,7 +178,7 @@ exports.deleteProfile = (req, res) => {
 		default:
 			res.json({message: 'Error! Unknown user type'});
 	}
-}
+};
 
 exports.updateProfile = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -222,5 +223,33 @@ exports.updateProfile = (req, res) => {
 		default:
 			res.json({message: 'Error! Unknown user type'});
 	}
-}
+
+};
+
+exports.saveNotification = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	var newNotification = new Notification(req.body.notification);
+	newNotification
+		.save((err, result) => {
+			if (err) {
+				res.json({ message: 'Error on insert the notification.'});
+			}
+			else{
+				res.json({ message: 'Insertion completed successfully.', result: result});
+			}
+		});
+};
+
+exports.get_notifications = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let userId = req.query.id;
+	Notification
+		.find()
+		.where('to')
+		.equals(userId)
+		.exec((err, notifications) => {
+			if (err) res.send(err);
+			res.json(notifications);
+		});
+};
 

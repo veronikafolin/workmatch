@@ -37,6 +37,7 @@ export default {
                     localStorage.token = response.token
                     localStorage.userId = response.id
                     localStorage.userType = this.selectedRole
+                    localStorage.username = this.form.username
                     router.replace({name: `${this.selectedRole.toLowerCase()}home`})
                 }
             });

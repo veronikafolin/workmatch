@@ -3,9 +3,14 @@
 </script>
 
 <script>
+
+import io from 'socket.io-client';
+
 export default {
     data() {
         return {
+            socket: io(),
+            notification: '',
             items: [
                 {
                     label:'People',
@@ -34,7 +39,13 @@ export default {
                 }
             ]
         };
-    }
+    },
+  beforeMount() {
+    this.socket.on('notification', (data) => {
+      this.notification = data.notification
+      this.$toast.add({ severity: 'info', summary: 'New notification', detail: this.notification, life: 3000 });
+    })
+  }
 }
 </script>
 
@@ -45,6 +56,8 @@ export default {
     </TabMenu>
     <router-view />
   </div>
+
+  <Toast />
 
 </template>
 

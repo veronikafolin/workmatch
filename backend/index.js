@@ -1,20 +1,18 @@
-import { createServer } from 'http';
-import { Server } from 'socket.io';
-
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const path = require('path');
 const routes = require('./routes/routes');
 const cors = require('cors');
+const http = require("http");
 
-const http = createServer(app);
-const io = new Server(http,{});
+const server = http.createServer(app)
+const io = require('socket.io')(server)
 
 io.on('connection', (socket)=>{
     console.log('User has connected.');
 
-    socket.on('sendNotification', (data)=>{
+    socket.on('notification', function(data) {
         io.emit('notification', data);
     });
 

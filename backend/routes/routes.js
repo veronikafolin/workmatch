@@ -70,4 +70,12 @@ module.exports = (app) => {
     app
         .route('/api/updateProfile')
         .put(jsonParser, controller.updateProfile);
+
+    app
+        .route('/api/notifications')
+        .get(jsonParser, controller.get_notifications);
+
+    app
+        .route('/api/saveNotification')
+        .post(jsonParser, controller.saveNotification);
 }
