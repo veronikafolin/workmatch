@@ -4,22 +4,26 @@ import StudentMenu from '../../components/student/StudentMenu.vue'
 
 <script>
 
+import axios from "axios";
+
 export default {
   data() {
     return {
-          message: "",
+        student: '',
         };
     },
   methods:{
-    requestMessage(){
+    requestStudent() {
+      let studentId = localStorage.userId;
       axios
-        .get(`http://localhost:3000/api/message?id=${localStorage.userId}`, { headers: {Authorization: localStorage.token }})
-        .then(res => {
-          this.message = res.data.message });
+          .get(`http://localhost:3000/api/student?id=${studentId}`)
+          .then(res => {
+            this.student = res.data;
+          });
     }
   },
-  mounted(){
-    this.requestMessage()
+  beforeMount(){
+    this.requestStudent();
   }
 }
 
@@ -31,7 +35,11 @@ export default {
     <nav>
         <StudentMenu/>
     </nav>
-    Message from backend: {{ this.message }}
+
+    <div>
+      <h1>Welcome {{student.name}}!</h1>
+    </div>
+
   </main>
 </template>
 

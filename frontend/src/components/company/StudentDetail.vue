@@ -2,7 +2,6 @@
 
 <script>
 import axios from "axios";
-import io from "socket.io-client";
 
 export default {
     props: {
@@ -11,33 +10,36 @@ export default {
     },
     data() {
       return {
-        socket: io()
       }
     },
     methods:{
       sendNotificationToStudent(studentId){
-        this.socket.emit('notification', {notification: "prova"})
-        this.$toast.add({ severity: 'info', summary: 'New notification', detail: "Notification sended to the student.", life: 3000 });
         var today = new Date();
         var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
         var time = today.getHours() + ":" + today.getMinutes();
         var dateTime = date + ' ' + time;
+
+        const notification = {
+          from: localStorage.userId,
+          senderUsername: localStorage.username,
+          to: studentId,
+          timestamp: dateTime,
+          title: "A company is interested in your profile",
+          read: false
+        }
+
+        //const socketInstance = io("http://localhost:3000");
+        this.$socket.emit('notification', notification);
+
         axios
             .post('http://localhost:3000/api/saveNotification', {
-              notification: {
-                from: localStorage.userId,
-                senderUsername: localStorage.username,
-                to: studentId,
-                timestamp: dateTime,
-                title: "A company is interested in your profile",
-                message: "Prova"
-              }
+              notification: notification,
             }).then(res => {
               let response = res.data
               if (response.message.includes('Error')) {
                 console.log("Error on saving the notification.")
               } else {
-                console.log("The notification has been saved.")
+                this.$toast.add({ severity: 'info', summary: 'New notification', detail: "Notification sent to the student.", life: 3000 });
               }
             }
         );
