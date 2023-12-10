@@ -53,6 +53,10 @@ module.exports = (app) => {
 
     app
         .route('/api/jobOffers')
+        .get(jsonParser, controller.list_jobOffers);
+
+    app
+        .route('/api/jobOffersOfCompany')
         .get(jsonParser, controller.get_jobOffers);
 
     app

@@ -93,6 +93,14 @@ exports.list_curriculums = (req, res) => {
 		});
 };
 
+exports.list_jobOffers = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	JobOffer.find().exec((err, jobOffer) => {
+			if (err) res.send(err);
+			res.json(jobOffer);
+		});
+};
+
 exports.get_jobOffers = (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	let companyId = req.query.id;

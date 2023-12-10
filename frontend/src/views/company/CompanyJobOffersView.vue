@@ -20,7 +20,7 @@ export default{
     requestJobOffers() {
       let companyId = localStorage.userId;
       axios
-          .get(`http://localhost:3000/api/jobOffers?id=${companyId}`)
+          .get(`http://localhost:3000/api/jobOffersOfCompany?id=${companyId}`)
           .then(res => {
             this.jobOffers = res.data;
           });
