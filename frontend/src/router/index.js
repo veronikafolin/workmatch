@@ -7,6 +7,9 @@ import CompanyNotificationView from '../views/company/CompanyNotificationView.vu
 import CompanyProfileView from '../views/company/CompanyProfileView.vue'
 import CompanyJobOffersView from '../views/company/CompanyJobOffersView.vue'
 import CompanyStudentListView from '../views/company/CompanyStudentListView.vue'
+import StudentJobOffersView from '../views/student/StudentJobOffersView.vue'
+import StudentNotificationView from '../views/student/StudentNotificationView.vue'
+import StudentProfileView from '../views/student/StudentProfileView.vue'
 
 
 const router = createRouter({
@@ -51,6 +54,21 @@ const router = createRouter({
       path: '/studenthome',
       name: 'studenthome',
       component: StudentHomeView
+    },
+    {
+      path: '/studentjoboffers',
+      name: 'studentjoboffers',
+      component: StudentJobOffersView
+    },
+    {
+      path: '/studentnotification',
+      name: 'studentnotification',
+      component: StudentNotificationView
+    },
+    {
+      path: '/studentprofile',
+      name: 'studentprofile',
+      component: StudentProfileView
     }
   ]
 })
