@@ -6,7 +6,8 @@ import axios from "axios";
 export default {
     props: {
       student: {type:Object},
-      school: {type:Object}
+      school: {type:Object},
+      imageUrl: {type: String}
     },
     data() {
       return {
@@ -51,6 +52,9 @@ export default {
 <template>
 
   <Dialog modal :style="{ width: '50vw' }">
+    <div>
+      <img :src="imageUrl" alt="Image" />
+    </div>
     <p class="text-900 font-medium mb-2 text-xl"> {{student.name}} {{student.surname}} </p>
     <p class="mt-0 mb-4 p-0 line-height-3">
       Email: {{student.email}}

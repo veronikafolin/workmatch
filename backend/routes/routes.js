@@ -1,11 +1,23 @@
-const controller = require("../controllers/controller");
-const authController = require("../controllers/authController");
-
 module.exports = (app) => {
+
     const controller = require('../controllers/controller');
     const authController = require('../controllers/authController');
+    const uploadController = require('../controllers/upload');
     const bodyParser = require('body-parser');
     const jsonParser = bodyParser.json();
+
+    const multer = require('multer');
+
+    const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, '../uploads/'); // Destination folder for storing uploads
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.originalname);
+        },
+    });
+
+    const upload = multer({ storage: storage });
 
     app
         .route('/api/greet/')
@@ -82,4 +94,13 @@ module.exports = (app) => {
     app
         .route('/api/saveNotification')
         .post(jsonParser, controller.saveNotification);
+
+    app
+        .route('/api/uploadImage')
+        .post(upload.single('image'), uploadController.saveImage);
+
+    app
+        .route('/api/getImage')
+        .get(jsonParser, uploadController.getImage);
+
 }

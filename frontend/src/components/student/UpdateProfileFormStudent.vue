@@ -9,6 +9,7 @@ export default {
       messages: [],
       schools: null,
       filteredSchools: null,
+      userId: localStorage.userId,
       form: {
         name: '',
         surname: '',
@@ -76,6 +77,9 @@ export default {
           });
         }
       }, 250);
+    },
+    onAdvancedUpload() {
+      this.$toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
     }
   },
   beforeMount() {
@@ -106,6 +110,16 @@ export default {
 
         <label for="curriculum">Curriculum </label>
         <Dropdown id="curriculum" v-model="form.curriculum" :placeholder=form.curriculum :options="form.school.curriculums" class="w-full md:w-14rem" />
+
+        <label for="image">Image </label>
+        <div id="image" class="card">
+          <Toast />
+          <FileUpload name="image" :url="`http://localhost:3000/api/uploadImage?id=${userId}`" @upload="onAdvancedUpload($event)" accept="image/*" :maxFileSize="1000000">
+            <template #empty>
+              <p>Drag and drop files to here to upload.</p>
+            </template>
+          </FileUpload>
+        </div>
 
         <Button type="submit"> Submit </Button>
         <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>

@@ -1,7 +1,6 @@
 <script setup>
 import StudentMenu from '../../components/student/StudentMenu.vue'
-import UpdateProfileFormStudent from '../../components/student/UpdateProfileFormStudent.vue'
-</script>
+import UpdateProfileFormStudent from '../../components/student/UpdateProfileFormStudent.vue'</script>
 
 <script>
 
@@ -16,7 +15,8 @@ export default{
       school: '',
       modifyProfile: false,
       deleteProfile: false,
-      messages: []
+      messages: [],
+      imageUrl: ''
     };
   },
   methods:{
@@ -70,11 +70,31 @@ export default{
           this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
         }
       });
+    },
+    async getProfileImage() {
+      let studentId = localStorage.userId;
+      try {
+        const response = await axios.get(`http://localhost:3000/api/getImage?id=${studentId}`, {
+          responseType: 'arraybuffer',
+        });
+        // Convert binary data to Base64 for image display
+        const base64Image = btoa(
+            new Uint8Array(response.data).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                ''
+            )
+        );
+        // Create the image URL using Base64 representation
+        this.imageUrl = `data:image/png;base64,${base64Image}`; // Adjust based on image type
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
     }
   },
   beforeMount() {
     this.requestStudent();
     this.requestSchools();
+    this.getProfileImage();
   }
 }
 
@@ -92,6 +112,9 @@ export default{
       <Card>
         <template #title> {{student.name}} {{student.surname}}</template>
         <template #content>
+          <div>
+            <img :src="this.imageUrl" alt="Image" />
+          </div>
           E-mail: {{student.email}} <br>
           School: {{getSchool(student.school)}} <br>
           Grade: {{student.grade}} <br>

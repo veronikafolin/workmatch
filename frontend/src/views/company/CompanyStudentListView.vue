@@ -14,7 +14,8 @@ export default {
           students: [],
           schools: [],
           school: '',
-          student: ''
+          student: '',
+          imageUrl: ''
         };
     },
   methods:{
@@ -31,6 +32,24 @@ export default {
     getSchool(schoolId){
       return this.schools.find(school => {
         return school._id === schoolId;})
+    },
+    async getProfileImage(studentId) {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/getImage?id=${studentId}`, {
+          responseType: 'arraybuffer',
+        });
+        // Convert binary data to Base64 for image display
+        const base64Image = btoa(
+            new Uint8Array(response.data).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                ''
+            )
+        );
+        // Create the image URL using Base64 representation
+        this.imageUrl = `data:image/png;base64,${base64Image}`; // Adjust based on image type
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
     }
   },
     beforeMount() {
@@ -55,11 +74,11 @@ export default {
       <Card v-for="student in students">
         <template #title> {{student.name}} {{student.surname}} </template>
         <template #footer>
-          <Button label="Show" icon="pi pi-external-link" @focus="this.school=this.getSchool(student.school); this.student=student;" @click="dialogVisible = true"/>
+          <Button label="Show student" icon="pi pi-external-link" @focus="this.school=this.getSchool(student.school); this.student=student; this.imageUrl=getProfileImage(student._id);" @click="dialogVisible = true"/>
         </template>
       </Card>
 
-      <StudentDetail v-model:visible="dialogVisible" :student=this.student :school=this.school></StudentDetail>
+      <StudentDetail v-model:visible="dialogVisible" :student=this.student :school=this.school :imageUrl=this.imageUrl ></StudentDetail>
 
     </div>
 
