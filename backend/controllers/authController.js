@@ -60,11 +60,11 @@ function registerStudent(user, res) {
                 user.password = hash;
                 var newStudent = new Student(user);
                 newStudent.save((err, st) => {
-                    if(err) res.json({ message: 'Error! Retry later' });
-                    else res.json({ message: 'OK! User registerd! '});
+                    if(err) res.json({ message: 'Error! Retry later.' });
+                    else res.json({ message: 'OK! User registerd!'});
                 });
             } else{
-                res.json({ message: 'Error! User already registered' })
+                res.json({ message: 'Error! User already registered.' })
             }
         });
 }
