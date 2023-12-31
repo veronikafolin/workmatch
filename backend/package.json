@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidedomini/workmatch.git"
+    "url": "git+https://github.com/veronikafolin/workmatch"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davidedomini/workmatch/issues"
+    "url": "https://github.com/veronikafolin/workmatch/issues"
   },
-  "homepage": "https://github.com/davidedomini/workmatch#readme",
+  "homepage": "https://github.com/veronikafolin/workmatch#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
