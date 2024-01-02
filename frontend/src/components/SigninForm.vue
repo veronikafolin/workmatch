@@ -1,9 +1,11 @@
 <script setup>
-import Button from 'primevue/button';
-import router from "@/router";
 </script>
 
 <script>
+import Button from "primevue/button";
+import router from "../router";
+import axios from "axios";
+
 export default {
     data() {
         return {
@@ -41,42 +43,45 @@ export default {
                     router.replace({name: `${this.selectedRole.toLowerCase()}home`})
                 }
             });
-        },
-        resetForm() {
-            this.form.username = ""
-            this.form.password = ""
         }
     },
-    components: { Button }
+  components: { Button }
 }
 </script>
 
-<template id="loginsection">
+<template>
 
-    <div id="login" class="surface-card p-4 shadow-2 border-round">
-    
-        <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
+    <div id="login" class="card flex justify-content-center shadow-2">
 
-        <form id="loginform" @submit.prevent="signin" class="center">
-          <div class="p-form-group-inline">
-            <div class="p-float-label">
-                  <InputText id="username" type="text" v-model="form.username" required/>
-                  <label for="username">Username</label>
-              </div>
-              <div class="p-float-label">
-                  <InputText id="password" type="password" v-model="form.password" :feedback="false" required/>
-                  <label for="password">Password</label>
-              </div>
-              <div>
-                  <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
-                  <label for="roleselector">Please select your role </label>
-              </div>
-                <Button id="loginBtn" type="submit" label="Login" icon="pi pi-check" />
-                <RouterLink to="/signup">Don't have an account yet? Sign Up</RouterLink>
-              <div>
-                  <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
-              </div>
-          </div>
+        <form @submit.prevent="signin" class="flex flex-column gap-3 align-items-center">
+
+            <span class="title_form">Login</span>
+
+            <span class="p-input-icon-left">
+                <i class="pi pi-user" />
+                <InputText id="username" type="text" v-model="form.username" placeholder="Username" required/>
+            </span>
+
+            <span class="p-input-icon-left">
+                <i class="pi pi-lock" />
+                <InputText id="password" type="password" v-model="form.password" :feedback="false" placeholder="Password" required/>
+            </span>
+
+<!--            <span class="p-input-icon-left">-->
+<!--                <Dropdown id="roleselector" v-model="selectedRole" :options="roles" placeholder="Select your role" class="w-full" />-->
+<!--            </span>-->
+
+            <span class="p-input-icon-left role-selector-container">
+              <label class="label" for="roleselector">Please select your role: </label>
+              <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
+            </span>
+
+            <Button class="w-full" type="submit" label="Login" />
+
+            <RouterLink to="/signup">Don't have an account yet? Sign Up</RouterLink>
+
+            <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+
         </form>
 
     </div>
@@ -85,55 +90,47 @@ export default {
 
 <style>
 
+.title_form{
+  font-weight: bold;
+  font-size: 200%;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.label{
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
 #login {
     margin: auto;
-    width: 50%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 40%;
 }
+
 #roleselector{
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.role-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
 }
 
-#logo{
-    width: 350px;
+.p-input-icon-left {
+  width: 100%;
 }
 
-@media screen and (max-width: 500px){
-    #title{
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size:20pt;
-    font-style: italic;
-    }
+@media screen and (max-width: 1000px) {
 
     #login {
-        width: 90%;
+        width: 80%;
     }
 
-    #logo{
-    width: 200px;
-    }
-
-    #username, #password{
-        width:180px;
-        height: 40px;
-    }
-
-    .p-button{
-        font-size: 8pt !important;
-    }
-
-}
-
-@media screen and (min-width: 501px) and (max-width: 1000px){
-    #logo{
-        width: 260px;
-    }
 }
 
 </style>

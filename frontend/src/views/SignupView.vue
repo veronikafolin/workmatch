@@ -18,19 +18,21 @@ export default {
 </script>
 
 <template>
-  <main>
-    <div id="login" class="surface-card p-4 shadow-2 border-round">
 
-      <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
+  <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
 
-      <div>
-        <label for="roleselector" >Please select your role </label>
-        <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
-      </div>
+  <div id="login" class="card flex justify-content-center shadow-2 align-items-center flex-column">
 
-      <SignupFormStudent v-if="selectedRole === 'Student'"/>
-      <SignupFormCompany v-if="selectedRole === 'Company'"/>
+    <span class="title_form">Register</span>
 
-    </div>
-  </main>
+    <span class="p-input-icon-left role-selector-container">
+            <label class="label" for="roleselector">Please select your role: </label>
+            <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
+    </span>
+
+    <SignupFormStudent v-if="selectedRole === 'Student'"/>
+    <SignupFormCompany v-if="selectedRole === 'Company'"/>
+
+  </div>
+
 </template>

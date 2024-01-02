@@ -72,52 +72,45 @@ export default {
 </script>
 
 <template>
-    <form @submit.prevent="registerStudent">
 
-        <div class="p-form-group-inline">
-            <div class="p-float-label">
-                <InputText id="name" type="text" v-model="form.name" required/>
-                <label for="name">Name </label>
-            </div>
-            <div class="p-float-label">
-                <InputText id="surname" type="text" v-model="form.surname" required/>
-                <label for="surname">Surname </label>
-            </div>
-            <div class="p-float-label">
-                <InputText id="email" type="text" v-model="form.email" required/>
-                <label for="email">Email </label>
-            </div>
-            <div class="p-float-label">
-                <AutoComplete id="school" v-model="form.school" optionLabel="name" :suggestions="filteredSchools"  @complete="search"/>
-                <label for="school">School </label>
-            </div>
-            <div class="p-float-label">
-              <Dropdown id="curriculum" v-model="form.curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" />
-              <label for="curriculum">Curriculum </label>
-            </div>
-            <div class="p-float-label">
-                <InputText id="grade" type="text" v-model="form.grade" required/>
-                <label for="grade">Grade </label>
-            </div>
-            <div class="p-float-label">
-              <InputText id="username" type="text" v-model="form.username" required/>
-              <label for="username">Username </label>
-            </div>
-            <div class="p-float-label">
-              <PasswordComp id="password" v-model="form.password" toggleMask />
-              <label for="password">Password </label>
-            </div>
-        </div>
-        <Button type="submit"> Submit </Button>
+    <form @submit.prevent="registerStudent" class="flex flex-column gap-3 align-items-center">
+
+        <span class="p-input">
+            <InputText id="name" type="text" v-model="form.name" placeholder="Name" required/>
+        </span>
+
+        <span class="p-input">
+            <InputText id="surname" type="text" v-model="form.surname" placeholder="Surname" required/>
+        </span>
+
+        <span class="p-input">
+            <InputText id="email" type="text" v-model="form.email" placeholder="Email" required/>
+        </span>
+
+        <span class="p-input">
+              <AutoComplete id="school" v-model="form.school" optionLabel="name" placeholder="School" :suggestions="filteredSchools"  @complete="search"/>
+        </span>
+
+        <span class="p-input">
+          <Dropdown id="curriculum" v-model="form.curriculum" placeholder="Curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" />
+        </span>
+
+        <span class="p-input">
+            <InputText id="grade"  type="number" placeholder="Grade" min="60" max="100" v-model="form.grade" required/>
+        </span>
+
+        <span class="p-input">
+          <InputText id="username" type="text" v-model="form.username" placeholder="Username" required/>
+        </span>
+
+        <span class="p-input">
+          <Password id="password" v-model="form.password" placeholder="Password" toggleMask required/>
+        </span>
+
+        <Button class="w-full" type="submit" label="Submit"/>
+
         <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+
     </form>
+
 </template>
-
-<style scoped>
-
-.p-float-label {
-    margin-top: 15px;
-    text-align: left;
-  }
-
-</style>
