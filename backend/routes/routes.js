@@ -1,3 +1,4 @@
+const uploadController = require("../controllers/upload");
 module.exports = (app) => {
 
     const controller = require('../controllers/controller');
@@ -86,6 +87,10 @@ module.exports = (app) => {
     app
         .route('/api/updateProfile')
         .put(jsonParser, controller.updateProfile);
+
+    app
+        .route('/api/markNotificationAsRead')
+        .put(jsonParser, controller.markNotificationAsRead);
 
     app
         .route('/api/notifications')
