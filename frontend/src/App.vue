@@ -9,5 +9,7 @@ import { RouterView } from 'vue-router'
     </div>
   </header>
 
+  <ConfirmDialog />
+
   <RouterView />
 </template>
