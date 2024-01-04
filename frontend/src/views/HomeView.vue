@@ -14,7 +14,13 @@ export default {
 <template>
   <main>
 
-    <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
+    <a href="/" class="w-full">
+      <span id="logo" class="center">
+        <img src="../assets/logo.jpeg" id="img_logo" alt="Workmatch logo"/>
+  <!--      <br>-->
+  <!--      WorkMatch-->
+      </span>
+    </a>
 
     <SigninForm />
   </main>
@@ -22,22 +28,8 @@ export default {
 
 <style>
 
-#logo{
-  width: 30%;
-}
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-@media screen and (max-width: 1000px){
 
-  #logo{
-    width: 50%;
-  }
-
-}
 
 </style>
