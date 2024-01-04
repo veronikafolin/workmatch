@@ -10,6 +10,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      messages: [],
       notifications: [],
       dialogVisible: false,
       companies: [],
@@ -33,6 +34,35 @@ export default {
     getCompany(companyId){
       return this.companies.find(company => {
         return company._id === companyId;})
+    },
+    markNotificationAsRead(notification){
+      axios
+          .put('http://localhost:3000/api/markNotificationAsRead', {
+            id: notification._id,
+            update: {
+              from: notification.from,
+              senderUsername: notification.senderUsername,
+              to: notification.to,
+              title: notification.title,
+              description: notification.description,
+              read: true
+            }
+          }).then(res => {
+            let response = res.data
+            if (response.message.includes('Error')) {
+              this.messages.push({severity: 'error', content: response.message})
+            } else {
+              this.requestNotifications();
+            }
+          }
+      );
+    },
+    setColorNotification(read){
+      if (read) {
+        return "notification-read"
+      } else {
+        return "notification-unread"
+      }
     }
     },
     beforeMount() {
@@ -53,14 +83,23 @@ export default {
     <div class="card justify-content-center">
 
       <Card v-for="notification in notifications">
-        <template #title> {{notification.title}} </template>
+        <template #title>
+          <span :class="setColorNotification(notification.read)">
+            {{notification.title}}
+          </span>
+        </template>
         <template #subtitle>
-          when: {{notification.timestamp}} <br>
-          from: {{notification.senderUsername}}
+          when: {{notification.timestamp}}
         </template>
         <template #footer>
-          <Button label="Show company" icon="pi pi-external-link" @focus="this.company=getCompany(notification.from);" @click="dialogVisible = true"/>
-        </template>
+          <div class="button-container justify-content-start">
+            <Button label="More info" icon="pi pi-external-link" @focus="this.company=getCompany(notification.from);" @click="dialogVisible = true"/>
+            <Button label="Mark as read" icon="pi pi-eye" @click="markNotificationAsRead(notification); setColorNotification(notification.read);" :disabled="notification.read" />
+          </div>
+         </template>
+
+        <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
+
       </Card>
 
       <CompanyDetail v-model:visible="dialogVisible" :company=this.company></CompanyDetail>
@@ -70,10 +109,14 @@ export default {
   </main>
 </template>
 
-
-
 <style>
-.p-card {
-  margin-top: 30px;
+
+.notification-unread {
+  background-color: var(--red-500);
 }
+
+.notification-read {
+  background-color: white;
+}
+
 </style>

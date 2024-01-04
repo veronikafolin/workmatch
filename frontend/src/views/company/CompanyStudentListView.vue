@@ -1,11 +1,13 @@
 <script setup>
 import CompanyMenu from '../../components/company/CompanyMenu.vue'
 import StudentDetail from '../../components/company/StudentDetail.vue'
+import StudentImage from '../../components/company/StudentImage.vue'
 </script>
 
 <script>
 
 import axios from "axios";
+import path from "path";
 
 export default {
   data() {
@@ -15,7 +17,8 @@ export default {
           schools: [],
           school: '',
           student: '',
-          imageUrl: ''
+          imageUrl: '',
+          imageVisible: false
         };
     },
   methods:{
@@ -50,12 +53,38 @@ export default {
       } catch (error) {
         console.error('Error fetching image:', error);
       }
+    },
+    sendNotificationToStudent(studentId){
+      var today = new Date();
+      var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+      var time = today.getHours() + ":" + today.getMinutes();
+      var dateTime = date + ' ' + time;
+
+      const notification = {
+        from: localStorage.userId,
+        senderUsername: localStorage.username,
+        to: studentId,
+        timestamp: dateTime,
+        title: localStorage.username + " is interested in your profile.",
+        read: false
+      }
+
+      axios
+          .post('http://localhost:3000/api/saveNotification', {
+            notification: notification,
+          }).then(res => {
+            let response = res.data
+            if (response.message.includes('Error')) {
+              console.log("Error on saving the notification.")
+            } else {
+              this.$toast.add({ severity: 'info', summary: 'New notification', detail: "You have notified the student that you are interested in.", life: 3000 });
+            }
+          }
+      );
     }
   },
     beforeMount() {
       this.requestSchools();
-    },
-    mounted() {
       this.requestStudents();
     }
 }
@@ -64,26 +93,38 @@ export default {
 
 
 <template>
+
   <main>
+
     <nav>
         <CompanyMenu/>
     </nav>
 
-    <div class="card justify-content-center">
+    <div class="card justify-content-center cards-container">
 
-      <Card v-for="student in students">
+      <Card class="single-card" v-for="student in students">
+
         <template #title> {{student.name}} {{student.surname}} </template>
+
+        <template #subtitle> {{student.email}} </template>
+
+        <template #content >
+          <StudentImage :imageUrl=this.imageUrl></StudentImage>
+          <strong>School: </strong> {{this.getSchool(student.school)["name"]}} <br>
+          <strong>School type: </strong> {{this.getSchool(student.school)["type"]}} <br>
+          <strong>Curriculum: </strong> {{student.curriculum}} <br>
+          <strong>Grade: </strong> {{student.grade}}
+        </template>
+
         <template #footer>
-          <Button label="Show student" icon="pi pi-external-link" @focus="this.school=this.getSchool(student.school); this.student=student; this.imageUrl=getProfileImage(student._id);" @click="dialogVisible = true"/>
+          <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="sendNotificationToStudent(student._id); " text />
         </template>
       </Card>
 
-      <StudentDetail v-model:visible="dialogVisible" :student=this.student :school=this.school :imageUrl=this.imageUrl ></StudentDetail>
 
     </div>
 
+    <Toast/>
+
   </main>
 </template>
-
-<style>
-</style>
