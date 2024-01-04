@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SignupView from '../views/SignupView.vue'
 import HomeView from '../views/HomeView.vue'
-import CompanyHomeView from '../views/company/CompanyHomeView.vue'
-import StudentHomeView from '../views/student/StudentHomeView.vue'
 import CompanyNotificationView from '../views/company/CompanyNotificationView.vue'
 import CompanyProfileView from '../views/company/CompanyProfileView.vue'
 import CompanyJobOffersView from '../views/company/CompanyJobOffersView.vue'
@@ -28,11 +26,6 @@ const router = createRouter({
     {
       path: '/companyhome',
       name: 'companyhome',
-      component: CompanyHomeView
-    },
-    {
-      path: '/studentlist',
-      name: 'studentlist',
       component: CompanyStudentListView
     },
     {
@@ -53,11 +46,6 @@ const router = createRouter({
     {
       path: '/studenthome',
       name: 'studenthome',
-      component: StudentHomeView
-    },
-    {
-      path: '/studentjoboffers',
-      name: 'studentjoboffers',
       component: StudentJobOffersView
     },
     {
