@@ -4,15 +4,17 @@
 
 <script>
 import router from "../../router";
+import axios from "axios";
 
 export default {
     data() {
         return {
+            student: '',
             items: [
                 {
-                    label:'Jobs',
-                    icon:'pi pi-fw pi-search',
-                    to: '/studentjoboffers'
+                    label:'Home',
+                    icon:'pi pi-fw pi-home',
+                    to: '/studenthome'
                 }, 
                 {
                     label:'Notifications',
@@ -40,30 +42,57 @@ export default {
           message: 'Are you sure you want to log out?',
           header: 'Confirmation',
           icon: 'pi pi-exclamation-triangle',
-          rejectClass: 'p-button-text p-button-text',
+          rejectClass: 'p-button-text',
           acceptClass: 'p-button-danger p-button-text',
           accept: () => {
-            this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
             router.replace({name: 'home'})
           },
           reject: () => {
-            this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+
           }
         });
+      },
+      requestStudent() {
+        let studentId = localStorage.userId;
+        axios
+            .get(`http://localhost:3000/api/student?id=${studentId}`)
+            .then(res => {
+              this.student = res.data;
+            });
       }
-    }
+    },
+  beforeMount(){
+    this.requestStudent();
+  }
 }
 </script>
 
 <template>
 
   <div class="card">
-    <TabMenu :model="items">
-    </TabMenu>
-    <router-view />
+
+    <Menubar :model="items">
+
+      <template #start>
+        <div class="flex align-items-center gap-2">
+          <img class="h-3rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
+          <span id="welcome">Welcome, {{student.name}}!</span>
+        </div>
+      </template>
+
+    </Menubar>
+
   </div>
 
-  <Toast />
-  <ConfirmDialog></ConfirmDialog>
-
 </template>
+
+<style>
+
+#welcome{
+  font-weight: bold;
+  font-size: 100%;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+</style>

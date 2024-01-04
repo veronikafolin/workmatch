@@ -25,6 +25,8 @@ import ToastService from 'primevue/toastservice';
 import ConfirmDialog from 'primevue/confirmdialog';
 import ConfirmationService from 'primevue/confirmationservice';
 import ProgressSpinner from 'primevue/progressspinner';
+import FileUpload from 'primevue/fileupload';
+import Avatar from 'primevue/avatar';
 
 const app = createApp(App);
 
@@ -37,7 +39,7 @@ app.use(DialogService);
 
 app.component('InputText', InputText);
 app.component('AutoComplete', AutoComplete);
-app.component('PasswordComp', Password);
+app.component('Password', Password);
 app.component('Button', Button);
 app.component('Dropdown', Dropdown);
 app.component('SelectButton', SelectButton);
@@ -52,5 +54,7 @@ app.component('Dialog', Dialog);
 app.component('Toast', Toast);
 app.component('ConfirmDialog', ConfirmDialog);
 app.component('ProgressSpinner', ProgressSpinner);
+app.component('FileUpload', FileUpload);
+app.component('Avatar', Avatar);
 
 app.mount('#app');

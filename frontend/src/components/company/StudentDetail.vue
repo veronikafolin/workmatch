@@ -25,12 +25,9 @@ export default {
           senderUsername: localStorage.username,
           to: studentId,
           timestamp: dateTime,
-          title: "A company is interested in your profile",
+          title: localStorage.username + " is interested in your profile.",
           read: false
         }
-
-        //const socketInstance = io("http://localhost:3000");
-        this.$socket.emit('notification', notification);
 
         axios
             .post('http://localhost:3000/api/saveNotification', {
@@ -40,7 +37,7 @@ export default {
               if (response.message.includes('Error')) {
                 console.log("Error on saving the notification.")
               } else {
-                this.$toast.add({ severity: 'info', summary: 'New notification', detail: "Notification sent to the student.", life: 3000 });
+                this.$toast.add({ severity: 'info', summary: 'New notification', detail: "You have notified the student that you are interested in.", life: 3000 });
               }
             }
         );

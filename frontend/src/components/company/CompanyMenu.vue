@@ -4,18 +4,18 @@
 
 <script>
 
-import io from 'socket.io-client';
+import router from "../../router";
+import axios from "axios";
 
 export default {
     data() {
         return {
-            socket: io(),
-            notification: '',
+            company: '',
             items: [
                 {
-                    label:'People',
-                    icon:'pi pi-fw pi-search',
-                    to: '/studentlist'
+                    label:'Home',
+                    icon:'pi pi-fw pi-home',
+                    to: '/companyhome'
                 },
                 {
                   label:'Job Offers',
@@ -33,18 +33,42 @@ export default {
                   to: '/companyprofile'
                 },
                 {
-                  label:'Sign out',
+                  label:'Logout',
                   icon:'pi pi-fw pi-sign-out',
-                  to: '/'
+                  command: () => {
+                    this.confirmLogOut();
+                  }
                 }
             ]
         };
     },
+  methods:{
+    confirmLogOut() {
+      this.$confirm.require({
+        message: 'Are you sure you want to log out?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        rejectClass: 'p-button-text p-button-text',
+        acceptClass: 'p-button-danger p-button-text',
+        accept: () => {
+          router.replace({name: 'home'})
+        },
+        reject: () => {
+
+        }
+      });
+    },
+    requestCompany() {
+      let companyId = localStorage.userId;
+      axios
+          .get(`http://localhost:3000/api/company?id=${companyId}`)
+          .then(res => {
+            this.company = res.data;
+          });
+    }
+  },
   beforeMount() {
-    this.socket.on('notification', (data) => {
-      this.notification = data.notification
-      this.$toast.add({ severity: 'info', summary: 'New notification', detail: this.notification, life: 3000 });
-    })
+      this.requestCompany();
   }
 }
 </script>
@@ -52,12 +76,19 @@ export default {
 <template>
 
   <div class="card">
-    <TabMenu :model="items">
-    </TabMenu>
-    <router-view />
-  </div>
 
-  <Toast />
+    <Menubar :model="items">
+
+      <template #start>
+        <div class="flex align-items-center gap-2">
+          <img class="h-2rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
+          <span id="welcome">Welcome, {{company.name}}!</span>
+        </div>
+      </template>
+
+    </Menubar>
+
+  </div>
 
 </template>
 

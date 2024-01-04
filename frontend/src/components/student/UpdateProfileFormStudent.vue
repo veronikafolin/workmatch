@@ -39,7 +39,7 @@ export default {
             if (response.message.includes('Error')) {
               this.messages.push({severity: 'error', content: response.message})
             } else {
-              this.messages.push({severity: 'success', content: response.message})
+              this.$emit('send-data', response);
             }
           }
       );
@@ -90,49 +90,52 @@ export default {
 </script>
 
 <template>
-  <form @submit.prevent="updateProfile">
-    <div class="card flex flex-column justify-content-center gap-2">
 
-        <label for="name">Name</label>
-        <InputText id="name" type="text" v-model="form.name"/>
+  <form @submit.prevent="updateProfile" class="flex flex-column gap-3 align-items-center">
 
-        <label for="surname">Surname </label>
+    <span class="title_form">Edit Profile</span>
+
+    <span class="p-float-label">
+        <InputText id="name" type="text" placeholder="Name" v-model="form.name"/>
+        <label for="name">Name </label>
+    </span>
+
+    <span class="p-float-label">
         <InputText id="surname" type="text" v-model="form.surname"/>
+        <label for="surname">Surname </label>
+    </span>
 
-        <label for="email">Email </label>
+    <span class="p-float-label">
         <InputText id="email" type="text" v-model="form.email"/>
+        <label for="email">Email </label>
+    </span>
 
+    <span class="p-float-label">
+        <InputText id="grade" type="number" min="60" max="100" v-model="form.grade" />
         <label for="grade">Grade </label>
-        <InputText id="grade" type="text" v-model="form.grade"/>
+    </span>
 
-        <label for="school">School </label>
+    <span class="p-float-label">
         <AutoComplete id="school" v-model="form.school" optionLabel="name" :suggestions="filteredSchools"  @complete="search"/>
+        <label for="school">School </label>
+    </span>
 
+    <span class="p-float-label">
+        <Dropdown id="curriculum" v-model="form.curriculum" :placeholder=form.curriculum :options="form.school.curriculums" class="w-full md:w-14rem" editable />
         <label for="curriculum">Curriculum </label>
-        <Dropdown id="curriculum" v-model="form.curriculum" :placeholder=form.curriculum :options="form.school.curriculums" class="w-full md:w-14rem" />
+    </span>
 
-        <label for="image">Image </label>
-        <div id="image" class="card">
-          <Toast />
-          <FileUpload name="image" :url="`http://localhost:3000/api/uploadImage?id=${userId}`" @upload="onAdvancedUpload($event)" accept="image/*" :maxFileSize="1000000">
-            <template #empty>
-              <p>Drag and drop files to here to upload.</p>
-            </template>
-          </FileUpload>
-        </div>
-
-        <Button type="submit"> Submit </Button>
-        <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
-
+    <div class="card">
+      <Toast />
+      <FileUpload id="image" name="image" :url="`http://localhost:3000/api/uploadImage?id=${userId}`" @upload="onAdvancedUpload($event)" accept="image/*" :maxFileSize="1000000">
+        <template #empty>
+          <p>Drag and drop files here to upload.</p>
+        </template>
+      </FileUpload>
     </div>
+
+    <Button type="submit" label="Submit" />
+    <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
+
   </form>
 </template>
-
-<style scoped>
-
-.p-float-label {
-  margin-top: 15px;
-  text-align: left;
-}
-
-</style>
