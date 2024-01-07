@@ -19,7 +19,13 @@ export default {
 
 <template>
 
-  <img src="../assets/logo.png" id="logo" class="center" alt="Workmatch logo"/>
+  <a href="/" class="w-full">
+      <span id="logo" class="center">
+        <img src="../assets/logo.jpeg" id="img_logo" alt="Workmatch logo"/>
+        <!--      <br>-->
+        <!--      WorkMatch-->
+      </span>
+  </a>
 
   <div id="login" class="card flex justify-content-center shadow-2 align-items-center flex-column">
 
