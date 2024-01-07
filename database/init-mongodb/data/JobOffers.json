@@ -3,14 +3,52 @@
     "$oid": "652e511791e864510df5a691"
   },
   "position": "Support Junior Analyst",
-  "description": "Il/La candidato/a selezionato/a sarà inserito all’interno di un team di lavoro condiviso che si occuperà della gestione di più servizi presso diversi clienti, sviluppati su tecnologie e architetture diverse tra loro. La persona si occuperà del presidio quotidiano dei servizi running presso il cliente per verificarne il corretto funzionamento e intervenire tempestivamente in caso di anomalie o guasti, dandone comunicazione direttamente al cliente, e lavorerà alla risoluzione dei ticket e delle richieste aperte per risolverli nei tempi preposti (SLA). Il/La candidato/a selezionato/a è appassionato del mondo informatico, curioso di capire il funzionamento dei processi e non si ferma di fronte a tematiche non note: dimostra attitudine al problem solving e al multi-tasking. E’ inoltre interessato a crescere in un contesto giovane, dinamico e collaborativo. Cerchiamo persone con grande curiosità e voglia di imparare e mettersi in gioco, interessati alla risoluzione di problemi e alla creazione di soluzioni orientate al miglioramento del servizio di assistenza verso il cliente.",
+  "description": "The selected candidate will be placed within a shared work team that will manage multiple services for different customers, developed on different technologies and architectures. The person will take care of the daily monitoring of the running services at the customer's premises to verify their correct functioning and intervene promptly in the event of anomalies or faults, communicating them directly to the customer, and will work on the resolution of tickets and open requests to resolve them within the designated timeframes. The selected candidate is passionate about the IT world, curious to understand how processes work and does not stop when faced with unknown topics: he demonstrates an aptitude for problem solving and multi-tasking. He is also interested in growing in a young, dynamic and collaborative context. We are looking for people with great curiosity and a desire to learn and get involved, interested in solving problems and creating solutions aimed at improving customer service.",
   "place_of_work": "Casalecchio di Reno",
   "working_hours": 40,
   "curriculums_requested": [
-    "computer science",
-    "accounting"
+    "Computer Science",
+    "Accounting"
   ],
   "from": {
     "$oid": "652e4278f07e553fc658ec2c"
-  }
+  },
+  "timestamp": "3-1-2024 9:50"
+},{
+  "_id": {
+    "$oid": "659992eebd1835c977fcfa5a"
+  },
+  "from": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "position": "AI Consultant",
+  "description": "The sought-after profile will fit into our Artificial Intelligence Team, specialized in the definition and implementation of innovative cross-industry value cases using predictive analytics & machine learning, advanced forecasting, optimization & planning, cognitive services, computer vision and generative AI methodologies and technologies .\n\nWe are looking for professionals passionate about innovation who have gained at least 2 years of proven experience in Analytics & AI projects at leading consultancy or industry entities. The candidate must be able to understand and qualify the impacts of AI on our clients' key processes, translate business requirements into an AI-driven analytical process capable of generating measurable value, while leveraging the latest technological paradigms and frameworks of AI on the market. The selected profile will approach innovative projects through the analysis of data sources, the design and development of ML models and algorithms, and the automation of processes to support market-leading national and international clients.\n\nFinally, the profile will contribute to the AI Community with innovation activities, technological scouting, concepts of new solutions and support for business development.",
+  "place_of_work": "Bologna",
+  "working_hours": 40,
+  "curriculums_requested": [
+    "Computer Science",
+    "Applied Sciences"
+  ],
+  "__v": 0,
+  "timestamp": "3-1-2024 9:52"
+},{
+  "_id": {
+    "$oid": "65999335bd1835c977fcfa5d"
+  },
+  "from": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "position": "IT & Service Desk Junior Support",
+  "description": "We are looking for high school graduates to be included to strengthen the Help Desk activities in our Application Maintenance teams to support our important customers.\n\nThe selected candidate will be included in a shared work team, which will be responsible for managing multiple services for different clients, developed on different technologies and architectures.\n\nThe person will take care of the daily monitoring of the running services at the customer's premises to verify their correct functioning and intervene promptly in the event of anomalies or faults, communicating this directly to the customer; and working on the resolution of tickets and open requests to resolve them within the designated times (SLA).\n\nThe selected candidate is passionate about the IT world, curious to understand how processes work and does not stop when faced with unknown issues: he demonstrates an aptitude for problem solving and multi-tasking. He is also interested in growing in a young, dynamic and collaborative context.\n\nWe are looking for people with great curiosity and desire to learn and get involved, interested in making themselves available in solving problems and creating improvement solutions aimed at improving customer assistance service.",
+  "place_of_work": "Bologna",
+  "working_hours": 20,
+  "curriculums_requested": [
+    "Accounting",
+    "Applied Sciences",
+    "Computer Science",
+    "Scientific",
+    "Surveyor"
+  ],
+  "__v": 0,
+  "timestamp": "3-1-2024 9:55"
 }]

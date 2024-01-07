@@ -12,23 +12,23 @@
   "school": {
     "$oid": "6385fac6713127b57f4028df"
   },
-  "curriculum": "accounting",
+  "curriculum": "Accounting",
   "__v": 0
 },{
   "_id": {
     "$oid": "6525152f34e4bdf9c653a608"
   },
-  "email": "billy96@gmail.com",
+  "email": "billy97@gmail.com",
   "name": "Luca",
   "surname": "Ragazzi",
   "username": "lucaragazzi",
   "password": "$2b$10$.L4rizAMZas3n5kk1xmiheiUSP.fjsE4L06QSKzhyaVC/qaP8Yy56",
   "salt": "$2b$10$.L4rizAMZas3n5kk1xmihe",
-  "grade": "77",
+  "grade": "78",
   "school": {
-    "$oid": "65265615296c18b4abf6fce9"
+    "$oid": "6385f89a713127b57f4028de"
   },
-  "curriculum": "scientific",
+  "curriculum": "Logistics",
   "__v": 0
 },{
   "_id": {
@@ -44,6 +44,6 @@
   "school": {
     "$oid": "6385fac6713127b57f4028df"
   },
-  "curriculum": "accounting",
+  "curriculum": "Accounting",
   "__v": 0
 }]

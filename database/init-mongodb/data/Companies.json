@@ -8,7 +8,7 @@
   "password": "$2b$10$0BzwSL21TBpyv1B8WsxY9u2x6U.30v0GgtGlKzkibhDFvYBx/JRma",
   "salt": "$2b$10$0BzwSL21TBpyv1B8WsxY9u",
   "address": "Via Emilia, 428",
-  "description": "",
+  "description": "Founded in 1961, IMA is a world leader in the design and production of automatic machines for the processing and packaging of pharmaceutical, cosmetic, food, tea and coffee products.\n\nA leadership acquired thanks to significant investments in research and development, constant and constructive dialogue with end-users in the reference sectors, and the Group's ability to internationalize and conquer new markets. Its history is in fact characterized by constant growth.\n\nThe Group chaired by Alberto Vacchi has over 6,200 employees, of which over 2,600 abroad, and is present in around 80 countries, supported by a commercial network made up of 29 branches with sales and assistance services in Italy, France, Switzerland, the United Kingdom United Kingdom, Germany, Austria, Spain, Poland, Israel, Russia, United States, India, China, Malaysia, Thailand and Brazil, representative offices in Central and Eastern Europe and more than 50 agencies.\n\nThe Group uses 45 production plants in Italy, Germany, France, Switzerland, Spain, the United Kingdom, the United States, India, Malaysia and China.\n\nIMA S.p.A. It has been listed on the Milan Stock Exchange since 1995 and entered the STAR segment in 2001.\n\nThe IMA Group is the owner of over 1,700 active patents and patent applications worldwide, has over 500 designers engaged in product innovation and has launched numerous new machine models in recent years.",
   "phone_number": "+39 0516514111",
   "email": "info@imagroup.com",
   "__v": 0
@@ -22,7 +22,7 @@
   "password": "$2b$10$C.mSkyYxySoIp8yd.1pBR.xKvFR0MYWMoNwJGKikNfSgXA2cFs2oi",
   "salt": "$2b$10$C.mSkyYxySoIp8yd.1pBR.",
   "address": "Viale Masini, 12",
-  "description": "",
+  "description": "Data Reply is the Reply group company that offers excellent services to extract value from data through Advanced Analytics and AI solutions.\nCollaborating closely with executive level professionals and Chief Officers, we operate across the various industries and company functions. From idea to implementation, with a data and design oriented approach, we create high-value solutions for end users, reconciling business needs and application constraints and ensuring data security and cybersecurity.\nWe build Big Data platforms and implement ML and AI models, in a secure, efficient, replicable and scalable way, through skills in Big Data Engineering, Data Science and IPA.\nWe have been active for three years in the field of Quantum and Accelerated Computing, with an innovative approach to support the development of optimization algorithms, for greater computational power where needed.",
   "phone_number": "+39 02 535761",
   "email": "info.data.it@reply.it",
   "__v": 0
@@ -34,9 +34,9 @@
   "username": "iconsulting",
   "password": "$2b$10$86E/86DgRNS9plJ5NE30SeNEW3mwemNkW0AO5Gu8YT348NFMj3lXO",
   "salt": "$2b$10$86E/86DgRNS9plJ5NE30Se",
-  "address": "Via Bazzanese, 32",
+  "address": "Via Bazzanese, 33",
   "city": "Casalecchio di Reno",
-  "description": "",
+  "description": "We are a Data Driven Transformation Company specialized in the design and delivery of solutions, methodologies, algorithms and technologies capable of transforming and strengthening client companies by enhancing the main and most abundant asset in today's market: data. Our company was born from a group of university researchers and today we are a strategic partner of over 200 client companies and all the most important international technology vendors. We have more than 1,000 successful projects under our belt in over 20 years of constant and continuous growth. With offices in Bologna, Rome, Milan and Naples we boast a structure of over 400 highly specialized professionals. Thanks to Advisory, Application Maintenance, Big Data Platform, Integrated Platforms, Blockchain, Business Analytics, Location Analytics, AI & Machine Learning, Performance Management and Customer Data Platform services, we support all levels of our customers' business, giving shape and concreteness to their vision .",
   "phone_number": "0514391311",
   "email": "info@iconsulting.biz",
   "__v": 0

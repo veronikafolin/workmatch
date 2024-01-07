@@ -4,3 +4,5 @@ db.createCollection('students', function(err, collection){}) //creates the colle
 db.createCollection('schools', function(err, collection){}) //creates the collection
 db.createCollection('companies', function(err, collection){}) //creates the collection
 db.createCollection('jobOffers', function(err, collection){}) //creates the collection
+db.createCollection('notifications', function(err, collection){}) //creates the collection
+db.createCollection('images', function(err, collection){}) //creates the collection

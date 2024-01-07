@@ -4,15 +4,15 @@
   },
   "name": "ITIS Nullo Baldini",
   "city": "Ravenna",
-  "type": "technical institute",
+  "type": "Technical Institute",
   "curriculums": [
-    "computer science",
-    "mechanics",
-    "logistics",
-    "electronics",
-    "chemistry",
-    "electrotechnical",
-    "naval"
+    "Computer Science",
+    "Mechanics",
+    "Logistics",
+    "Electronics",
+    "Chemistry",
+    "Electrotechnical",
+    "Naval"
   ],
   "phone_number": "0544404002",
   "email": "itis.ra@gmail.com"
@@ -22,10 +22,10 @@
   },
   "name": "ITCG Pier Crescenzi Pacinotti",
   "city": "Bologna",
-  "type": "technical institute",
+  "type": "Technical Institute",
   "curriculums": [
-    "accounting",
-    "surveyor"
+    "Accounting",
+    "Surveyor"
   ],
   "phone_number": "0513397411",
   "email": "BOIS02700V@istruzione.it"
@@ -35,12 +35,12 @@
   },
   "city": "Forlì",
   "curriculums": [
-    "scientific",
-    "applied sciences",
-    "sports"
+    "Scientific",
+    "Applied Sciences",
+    "Sports"
   ],
   "name": "Liceo Scientifico Statale Fulcieri Paulucci di Calboli",
-  "type": "scientific high school",
+  "type": "Scientific High School",
   "email": "fops040002@istruzione.it",
   "phone_number": "0543 63095"
 }]
