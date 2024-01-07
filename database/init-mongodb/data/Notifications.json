@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "659ab68b6631488032860ede"
+  },
+  "from": {
+    "$oid": "6525152f34e4bdf9c653a608"
+  },
+  "senderUsername": "lucaragazzi",
+  "to": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "timestamp": "7-1-2024 15:34",
+  "title": "lucaragazzi is interested in your company.",
+  "description": "The student is interested in the job offer IT & Service Desk Junior Support",
+  "aboutJobOffer": {
+    "$oid": "65999335bd1835c977fcfa5d"
+  },
+  "read": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659ab6bf6631488032860ee9"
+  },
+  "from": {
+    "$oid": "6525152f34e4bdf9c653a608"
+  },
+  "senderUsername": "lucaragazzi",
+  "to": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "timestamp": "7-1-2024 15:35",
+  "title": "lucaragazzi is interested in your company.",
+  "description": "The student is interested in the job offer AI Consultant",
+  "aboutJobOffer": {
+    "$oid": "659992eebd1835c977fcfa5a"
+  },
+  "read": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659ab6ce6631488032860ef5"
+  },
+  "from": {
+    "$oid": "652578c88d2399c8a9b47b99"
+  },
+  "senderUsername": "marioverdi",
+  "to": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "timestamp": "7-1-2024 15:35",
+  "title": "marioverdi is interested in your company.",
+  "description": "The student is interested in the job offer Support Junior Analyst",
+  "aboutJobOffer": {
+    "$oid": "652e511791e864510df5a691"
+  },
+  "read": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659ab6d86631488032860f03"
+  },
+  "from": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "senderUsername": "iconsulting",
+  "to": {
+    "$oid": "6525152f34e4bdf9c653a608"
+  },
+  "timestamp": "7-1-2024 15:36",
+  "title": "iconsulting is interested in your profile.",
+  "read": false,
+  "__v": 0
+}]
