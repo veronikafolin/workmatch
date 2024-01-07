@@ -7,6 +7,7 @@ const NotificationSchema = new mongoose.Schema({
     timestamp: {type: String},
     title: {type: String},
     description: {type:String},
+    aboutJobOffer: {type: mongoose.Schema.Types.ObjectId},
     read: {type: Boolean}
 });
 
