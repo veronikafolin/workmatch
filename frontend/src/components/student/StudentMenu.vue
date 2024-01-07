@@ -69,14 +69,33 @@ export default {
 
 <template>
 
-  <div class="card">
+  <div class="card" id="menu">
 
     <Menubar :model="items">
 
       <template #start>
+        <img class="h-2rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
+      </template>
+
+<!--      <template #item="{item, props, root}">-->
+<!--        <div class="flex align-items-center gap-2">-->
+<!--          <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>-->
+<!--            <a v-ripple class="flex align-items-center" @click="navigate">-->
+<!--              <span :class="item.icon" />-->
+<!--              <span class="ml-2">{{ item.label }}</span>-->
+<!--              <Badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" ></Badge>-->
+<!--            </a>-->
+<!--          </router-link>-->
+<!--          <a v-else v-ripple class="flex align-items-center">-->
+<!--            <span :class="item.icon" />-->
+<!--            <span class="ml-2">{{ item.label }}</span>-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </template>-->
+
+      <template #end>
         <div class="flex align-items-center gap-2">
-          <img class="h-3rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
-          <span id="welcome">Welcome, {{student.name}}!</span>
+          <span id="welcome">Hi, {{student.name}}!</span>
         </div>
       </template>
 
@@ -85,14 +104,3 @@ export default {
   </div>
 
 </template>
-
-<style>
-
-#welcome{
-  font-weight: bold;
-  font-size: 100%;
-  text-align: center;
-  font-family: 'Roboto', Arial, sans-serif;
-}
-
-</style>
