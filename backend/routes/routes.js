@@ -1,4 +1,3 @@
-const uploadController = require("../controllers/upload");
 module.exports = (app) => {
 
     const controller = require('../controllers/controller');
@@ -97,8 +96,16 @@ module.exports = (app) => {
         .get(jsonParser, controller.get_notifications);
 
     app
+        .route('/api/interests')
+        .get(jsonParser, controller.get_interests);
+
+    app
         .route('/api/saveNotification')
         .post(jsonParser, controller.saveNotification);
+
+    app
+        .route('/api/deleteNotificationsFrom')
+        .delete(jsonParser, controller.deleteNotificationsFrom);
 
     app
         .route('/api/uploadImage')
