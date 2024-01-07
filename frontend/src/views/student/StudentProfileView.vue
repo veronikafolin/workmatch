@@ -14,7 +14,7 @@ export default{
       schools: [],
       school: '',
       modifyProfile: false,
-      deleteProfile: false,
+      profileDeleted: false,
       messages: [],
       imageUrl: ''
     };
@@ -35,7 +35,7 @@ export default{
     },
     getSchool(schoolId){
       return this.schools.find(school => {
-        return school._id === schoolId;})?.name
+        return school._id === schoolId;})
     },
     deleteProfile(){
       let userId = localStorage.userId;
@@ -49,7 +49,7 @@ export default{
                 } else {
                   let content = response.message + "You will shortly be redirected to the log in page."
                   this.messages.push({severity: 'success', content: content})
-                  this.deleteProfile = true
+                  this.profileDeleted = true
                   setTimeout(() => router.replace('/'), 3000);
                 }
               }
@@ -63,11 +63,10 @@ export default{
         rejectClass: 'p-button-text p-button-text',
         acceptClass: 'p-button-danger p-button-text',
         accept: () => {
-          this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
           this.deleteProfile();
         },
         reject: () => {
-          this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+
         }
       });
     },
@@ -89,6 +88,12 @@ export default{
       } catch (error) {
         console.error('Error fetching image:', error);
       }
+    },
+    receiveChangesFromChild(data) {
+      // Handle the received data from the child component
+      this.messages.push({severity: 'success', content: data.message})
+      this.requestStudent();
+      this.modifyProfile = false;
     }
   },
   beforeMount() {
@@ -107,39 +112,42 @@ export default{
       <StudentMenu/>
     </nav>
 
+    <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
+
     <div class="card justify-content-center">
 
-      <Card>
+      <Card class="profile-card flex flex-column align-items-center">
         <template #title> {{student.name}} {{student.surname}}</template>
         <template #content>
           <div>
-            <img :src="this.imageUrl" alt="Image" />
+            <img id="profileImage" :src="this.imageUrl" alt="Image" />
           </div>
-          E-mail: {{student.email}} <br>
-          School: {{getSchool(student.school)}} <br>
-          Grade: {{student.grade}} <br>
-          Curriculum: {{student.curriculum}}
+          <br>
+          <strong> Username: </strong> {{student.username}} <br>
+          <strong> E-mail: </strong> {{student.email}} <br>
+          <strong> School: </strong> {{getSchool(student.school)?.name}} <br>
+          <strong> School type: </strong> {{getSchool(student.school)?.type}} <br>
+          <strong> Grade: </strong> {{student.grade}} <br>
+          <strong> Curriculum: </strong> {{student.curriculum}}
         </template>
         <template #footer>
-          <Button label="Modify" icon="pi pi-pencil" @click="modifyProfile = true" />
-          <Toast />
-          <ConfirmDialog></ConfirmDialog>
-          <Button @click="confirmDelete()" icon="pi pi-times" label="Delete profile"></Button>
+          <div class="button-container">
+            <Button label="Edit" icon="pi pi-pencil" @click="modifyProfile = true" />
+            <Button id="button-danger" @click="confirmDelete()" icon="pi pi-trash" label="Delete" />
+          </div>
         </template>
       </Card>
 
-      <Dialog v-model:visible="modifyProfile" modal :style="{ width: '50vw' }">
-        <UpdateProfileFormStudent></UpdateProfileFormStudent>
+      <Dialog v-model:visible="modifyProfile" id="modify-profile-form">
+        <UpdateProfileFormStudent @send-data="receiveChangesFromChild"></UpdateProfileFormStudent>
       </Dialog>
 
     </div>
 
-    <div v-if="deleteProfile" class="card flex justify-content-center">
+    <div v-if="profileDeleted" class="card flex justify-content-center">
       <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="8" fill="var(--surface-ground)"
                        animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>
-
-    <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 
   </main>
 </template>
