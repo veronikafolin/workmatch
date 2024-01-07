@@ -13,8 +13,9 @@ export default{
     return {
       company: '',
       modifyProfile: false,
-      deleteProfile: false,
-      messages: []
+      profileDeleted: false,
+      messages: [],
+      imageUrl: ''
     };
   },
   methods:{
@@ -38,7 +39,7 @@ export default{
                 } else {
                   let content = response.message + "You will shortly be redirected to the log in page."
                   this.messages.push({severity: 'success', content: content})
-                  this.deleteProfile = true
+                  this.profileDeleted = true
                   setTimeout(() => router.replace('/'), 3000);
                 }
               }
@@ -52,17 +53,42 @@ export default{
         rejectClass: 'p-button-text p-button-text',
         acceptClass: 'p-button-danger p-button-text',
         accept: () => {
-          this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
           this.deleteProfile();
         },
         reject: () => {
-          this.$toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-        }
+
+          }
       });
     },
+    receiveChangesFromChild(data) {
+      // Handle the received data from the child component
+      this.messages.push({severity: 'success', content: data.message})
+      this.requestCompany();
+      this.modifyProfile = false;
+    },
+    async getProfileImage() {
+      let studentId = localStorage.userId;
+      try {
+        const response = await axios.get(`http://localhost:3000/api/getImage?id=${studentId}`, {
+          responseType: 'arraybuffer',
+        });
+        // Convert binary data to Base64 for image display
+        const base64Image = btoa(
+            new Uint8Array(response.data).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                ''
+            )
+        );
+        // Create the image URL using Base64 representation
+        this.imageUrl = `data:image/png;base64,${base64Image}`; // Adjust based on image type
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
+    }
   },
   mounted() {
     this.requestCompany();
+    this.getProfileImage();
   }
 }
 
@@ -75,37 +101,48 @@ export default{
       <CompanyMenu/>
     </nav>
 
+    <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
+
     <div class="card justify-content-center">
 
-      <Card>
+      <Card class="profile-card flex flex-column align-items-center">
+
         <template #title> {{company.name}} </template>
+
         <template #content>
-          City: {{company.city}} <br>
-          Address: {{company.address}} <br>
-          Description: {{company.description}} <br>
-          Phone number: {{company.phone_number}} <br>
-          E-mail: {{company.email}}
+          <div>
+            <img id="profileImage" :src="this.imageUrl" alt="Image" />
+          </div>
+          <br>
+          <strong> Email: </strong> {{company.email}} <br>
+          <strong> City: </strong> {{company.city}} <br>
+          <strong> Address: </strong> {{company.address}} <br>
+          <strong> Phone number: </strong> {{company.phone_number}}
+
+          <p>
+            {{company.description}}
+          </p>
+
         </template>
+
         <template #footer>
-          <Button label="Modify" icon="pi pi-pencil" @click="modifyProfile = true" />
-          <Toast />
-          <ConfirmDialog></ConfirmDialog>
-          <Button @click="confirmDelete()" icon="pi pi-times" label="Delete profile"></Button>
+          <div class="button-container">
+            <Button label="Edit" icon="pi pi-pencil" @click="modifyProfile = true" />
+            <Button id="button-danger" @click="confirmDelete()" icon="pi pi-trash" label="Delete"></Button>
+          </div>
         </template>
       </Card>
 
-      <Dialog v-model:visible="modifyProfile" modal :style="{ width: '50vw' }">
-        <UpdateProfileFormCompany></UpdateProfileFormCompany>
+      <Dialog v-model:visible="modifyProfile" id="modify-profile-form">
+        <UpdateProfileFormCompany @send-data="receiveChangesFromChild"></UpdateProfileFormCompany>
       </Dialog>
 
     </div>
 
-    <div v-if="deleteProfile" class="card flex justify-content-center">
+    <div v-if="profileDeleted" class="card flex justify-content-center">
       <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="8" fill="var(--surface-ground)"
                        animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>
-
-    <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 
   </main>
 </template>
