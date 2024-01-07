@@ -61,7 +61,7 @@ function registerStudent(user, res) {
                 var newStudent = new Student(user);
                 newStudent.save((err, st) => {
                     if(err) res.json({ message: 'Error! Retry later.' });
-                    else res.json({ message: 'OK! User registerd!'});
+                    else res.json({ message: 'OK! User registered, you will be redirected to the login page.'});
                 });
             } else{
                 res.json({ message: 'Error! User already registered.' })
@@ -85,7 +85,7 @@ function registerCompany(user, res) {
                     if(err){
                         res.json({ message: 'Error! Retry later'});
                     }
-                    else res.json({ message: 'OK! User registerd! '});
+                    else res.json({ message: 'OK! User registered, you will be redirected to the login page. '});
                 });
             } else{
                 res.json({ message: 'Error! User already registered' })
