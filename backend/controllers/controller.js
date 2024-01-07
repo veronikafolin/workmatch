@@ -146,6 +146,7 @@ exports.delete_jobOffer = (req, res) => {
 };
 
 exports.deleteProfile = (req, res) => {
+
 	res.header("Access-Control-Allow-Origin", "*");
 	let userId = req.query.id;
 	let userType = req.query.userType.toLowerCase();
@@ -176,16 +177,36 @@ exports.deleteProfile = (req, res) => {
 			});
 	}
 
+	function deleteNotificationsFrom(req, res) {
+		Notification
+			.deleteMany({'from': userId})
+			.exec((err, result) => {
+			});
+	}
+
+	function deleteJobOffersFrom(req, res) {
+		JobOffer
+			.deleteMany({'from': userId})
+			.exec((err, result) => {
+
+			});
+	}
+
+
 	switch(userType){
 		case 'student':
 			deleteStudent(req, res);
+			deleteNotificationsFrom(req, res);
 			break;
 		case 'company':
-			deleteCompany(req, res)
+			deleteCompany(req, res);
+			deleteNotificationsFrom(req, res);
+			deleteJobOffersFrom(req, res);
 			break;
 		default:
 			res.json({message: 'Error! Unknown user type'});
 	}
+
 };
 
 exports.updateProfile = (req, res) => {
@@ -261,3 +282,48 @@ exports.get_notifications = (req, res) => {
 		});
 };
 
+exports.get_interests = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let userId = req.query.id;
+	Notification
+		.find()
+		.where('from')
+		.equals(userId)
+		.exec((err, notifications) => {
+			if (err) res.send(err);
+			res.json(notifications);
+		});
+};
+
+exports.markNotificationAsRead = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let notificationId = req.body.id;
+	let update = req.body.update;
+
+	Notification
+		.findByIdAndUpdate({'_id': notificationId}, update)
+		.exec((err, result) => {
+			if (err || result == null) {
+				res.json({ message: 'Error on update.'});
+			}
+			else{
+				res.json({ message: 'Update completed successfully.', result: result});
+			}
+		});
+};
+
+exports.deleteNotificationsFrom = (req, res) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	let userId = req.query.from;
+	console.log("Viene richiamata la funzione di backend");
+	Notification
+		.findOneAndDelete({'from': userId})
+		.exec((err, result) => {
+			if (err || result == null) {
+				res.json({ message: 'Error on delete.'});
+			}
+			else{
+				res.json({ message: 'Deletion completed successfully.', result: result});
+			}
+		});
+};
