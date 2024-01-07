@@ -3,6 +3,7 @@
 
 <script>
 import axios from "axios";
+import router from "../../router";
 
 export default {
     data() {
@@ -45,8 +46,8 @@ export default {
                   if (response.message.includes('Error')) {
                     this.messages.push({severity: 'error', content: response.message})
                   } else {
-                    this.messages.push({severity: 'success', content: response.message})
-                    setTimeout(() => router.replace({name: `home`}), 1000);
+                    this.messages.push({severity: 'success', content: response.message});
+                    setTimeout(() => router.replace({name: `home`}), 3000);
                   }
                 }
             );
@@ -92,7 +93,7 @@ export default {
         </span>
 
         <span class="p-input">
-          <Dropdown id="curriculum" v-model="form.curriculum" placeholder="Curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" />
+          <Dropdown id="curriculum" v-model="form.curriculum" placeholder="Curriculum" :options="this.form.school.curriculums" class="w-full md:w-14rem" editable/>
         </span>
 
         <span class="p-input">
@@ -107,9 +108,9 @@ export default {
           <Password id="password" v-model="form.password" placeholder="Password" toggleMask required/>
         </span>
 
-        <Button class="w-full" type="submit" label="Submit"/>
+        <Button type="submit" label="Submit"/>
 
-        <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
+        <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
 
     </form>
 

@@ -1,8 +1,7 @@
-<script setup>
-import router from "@/router";
-</script>
-
 <script>
+import router from "../../router";
+import axios from "axios";
+
 export default {
     data() {
         return {
@@ -39,8 +38,8 @@ export default {
                   if (response.message.includes('Error')) {
                     this.messages.push({severity: 'error', content: response.message})
                   } else {
-                    this.messages.push({severity: 'success', content: response.message})
-                    setTimeout(() => router.replace({name: `home`}), 1000);
+                    this.messages.push({severity: 'success', content: response.message});
+                    setTimeout(() => router.replace({name: `home`}), 3000);
                   }
                 }
             );
@@ -84,7 +83,7 @@ export default {
             <Password id="password" v-model="form.password" toggleMask placeholder="Password" required/>
       </span>
 
-      <Button class="w-full" type="submit" label="Submit"/>
+      <Button type="submit" label="Submit"/>
 
       <Message v-for="msg of messages" :severity="msg.severity">{{msg.content}}</Message>
 
