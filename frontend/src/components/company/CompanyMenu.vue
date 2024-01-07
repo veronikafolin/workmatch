@@ -75,14 +75,17 @@ export default {
 
 <template>
 
-  <div class="card">
+  <div class="card" id="menu">
 
     <Menubar :model="items">
 
       <template #start>
+        <img class="h-2rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
+      </template>
+
+      <template #end>
         <div class="flex align-items-center gap-2">
-          <img class="h-2rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
-          <span id="welcome">Welcome, {{company.name}}!</span>
+          <span id="welcome">Hi, {{company.name}}!</span>
         </div>
       </template>
 
