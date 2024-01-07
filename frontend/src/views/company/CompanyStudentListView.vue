@@ -1,7 +1,6 @@
 <script setup>
 import CompanyMenu from '../../components/company/CompanyMenu.vue'
 import StudentDetail from '../../components/company/StudentDetail.vue'
-import StudentImage from '../../components/company/StudentImage.vue'
 </script>
 
 <script>
@@ -18,9 +17,22 @@ export default {
           school: '',
           student: '',
           imageUrl: '',
-          imageVisible: false
+          curriculums: [],
+          curriculumSelected: null,
+          interests: []
         };
     },
+  computed: {
+    studentFiltered(){
+      if (this.curriculumSelected !== null){
+        return this.students.filter(student => {
+          return student.curriculum === this.curriculumSelected;
+        } )
+      } else {
+        return this.students;
+      }
+    }
+  },
   methods:{
     requestStudents(){
       axios
@@ -35,6 +47,24 @@ export default {
     getSchool(schoolId){
       return this.schools.find(school => {
         return school._id === schoolId;})
+    },
+    requestCurriculums(){
+      axios
+          .get("http://localhost:3000/api/curriculums")
+          .then(res => { this.curriculums = res.data });
+    },
+    requestInterests(){
+      let userId = localStorage.userId;
+      axios
+          .get(`http://localhost:3000/api/interests?id=${userId}`)
+          .then(res => {
+            this.interests = res.data;
+          });
+    },
+    alreadyInterested(studentId){
+      return this.interests.some(
+          notification => notification.to === studentId
+      );
     },
     async getProfileImage(studentId) {
       try {
@@ -77,15 +107,21 @@ export default {
             if (response.message.includes('Error')) {
               console.log("Error on saving the notification.")
             } else {
+              this.requestInterests();
               this.$toast.add({ severity: 'info', summary: 'New notification', detail: "You have notified the student that you are interested in.", life: 3000 });
             }
           }
       );
+    },
+    receiveChangesFromChild(data) {
+      this.requestInterests();
     }
   },
     beforeMount() {
       this.requestSchools();
       this.requestStudents();
+      this.requestCurriculums();
+      this.requestInterests();
     }
 }
 
@@ -100,27 +136,38 @@ export default {
         <CompanyMenu/>
     </nav>
 
-    <div class="card justify-content-center cards-container">
+    <div id="filter-dropdown" class="card flex justify-content-end">
+      <span class="p-float-label">
+        <Dropdown id="curriculums-selector" v-model="this.curriculumSelected" :options="this.curriculums" class="w-full md:w-14rem" editable showClear />
+        <label for="curriculums-selector">Filter by curriculum </label>
+      </span>
+    </div>
 
-      <Card class="single-card" v-for="student in students">
+    <div class="card cards-container">
+
+      <Card class="single-card" v-for="student in studentFiltered">
 
         <template #title> {{student.name}} {{student.surname}} </template>
 
-        <template #subtitle> {{student.email}} </template>
+<!--        <template #subtitle> {{student.email}} </template>-->
 
         <template #content >
-          <StudentImage :imageUrl=this.imageUrl></StudentImage>
           <strong>School: </strong> {{this.getSchool(student.school)["name"]}} <br>
           <strong>School type: </strong> {{this.getSchool(student.school)["type"]}} <br>
           <strong>Curriculum: </strong> {{student.curriculum}} <br>
-          <strong>Grade: </strong> {{student.grade}}
+<!--          <strong>Grade: </strong> {{student.grade}}-->
         </template>
 
         <template #footer>
-          <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="sendNotificationToStudent(student._id); " text />
+          <div class="button-container justify-content-end">
+            <Button class="button-more-info" label="More info" icon="pi pi-external-link" @focus="this.student=student; this.school=this.getSchool(student.school); this.imageUrl=getProfileImage(student._id);" @click="dialogVisible = true"/>
+            <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="sendNotificationToStudent(student._id); " text :disabled="this.alreadyInterested(student._id)" />
+          </div>
         </template>
+
       </Card>
 
+      <StudentDetail @send-data="receiveChangesFromChild" v-model:visible="dialogVisible" :student=this.student :school=this.school :imageUrl=this.imageUrl :interests=this.interests ></StudentDetail>
 
     </div>
 
