@@ -12,10 +12,28 @@ export default{
     return {
       jobOffers: [],
       companies: [],
+      companyNames: [],
       company: '',
       jobOffer: '',
-      dialogVisible: false
+      imageUrl: '',
+      dialogVisible: false,
+      selectedCompany: null,
+      interests: []
     };
+  },
+  computed: {
+    jobOffersSelected(){
+      if (this.selectedCompany !== null){
+        let company = this.companies.find(company => {
+          return company.name === this.selectedCompany;
+        })
+        return this.jobOffers.filter(jobOffer => {
+          return jobOffer.from === company._id;
+        } )
+      } else {
+        return this.jobOffers;
+      }
+    }
   },
   methods: {
     requestJobOffers() {
@@ -28,13 +46,16 @@ export default{
     requestCompanies(){
       axios
           .get("http://localhost:3000/api/companies")
-          .then(res => { this.companies = res.data });
+          .then(res => {
+            this.companies = res.data;
+            this.companies.forEach(c => this.companyNames.push(c.name));
+          });
     },
     getCompany(companyId){
       return this.companies.find(company => {
         return company._id === companyId;})
     },
-    sendNotificationToCompany(companyId){
+    sendNotificationToCompany(){
       var today = new Date();
       var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
       var time = today.getHours() + ":" + today.getMinutes();
@@ -43,10 +64,11 @@ export default{
       const notification = {
         from: localStorage.userId,
         senderUsername: localStorage.username,
-        to: companyId,
+        to: this.company._id,
         timestamp: dateTime,
         title: localStorage.username + " is interested in your company.",
-        description: "The student is interested in the job offer " + this.jobOffer.position + " with id " + this.jobOffer._id,
+        aboutJobOffer: this.jobOffer._id,
+        description: "The student is interested in the job offer " + this.jobOffer.position,
         read: false
       }
 
@@ -58,17 +80,48 @@ export default{
             if (response.message.includes('Error')) {
               console.log("Error on saving the notification.")
             } else {
+              this.requestInterests();
               this.$toast.add({ severity: 'info', summary: 'New notification sent', detail: "You have notified the company that you are interested in the job offer.", life: 3000 });
             }
           }
+      );
+    },
+    async getProfileImage(studentId) {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/getImage?id=${studentId}`, {
+          responseType: 'arraybuffer',
+        });
+        // Convert binary data to Base64 for image display
+        const base64Image = btoa(
+            new Uint8Array(response.data).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                ''
+            )
+        );
+        // Create the image URL using Base64 representation
+        this.imageUrl = `data:image/png;base64,${base64Image}`; // Adjust based on image type
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
+    },
+    requestInterests(){
+      let userId = localStorage.userId;
+      axios
+          .get(`http://localhost:3000/api/interests?id=${userId}`)
+          .then(res => {
+            this.interests = res.data;
+          });
+    },
+    alreadyInterested(jobOfferId){
+      return this.interests.some(
+          notification => notification.aboutJobOffer === jobOfferId
       );
     }
   },
   beforeMount() {
     this.requestCompanies();
-  },
-  mounted() {
     this.requestJobOffers();
+    this.requestInterests();
   }
 }
 
@@ -82,23 +135,35 @@ export default{
       <StudentMenu/>
     </nav>
 
-    <div class="card justify-content-center cards-container">
+    <div id="filter-dropdown" class="card flex justify-content-end">
+      <span class="p-float-label">
+        <Dropdown id="companies-selector" v-model="this.selectedCompany" :options="this.companyNames" class="w-full md:w-14rem" editable showClear />
+        <label for="companies-selector">Filter by company </label>
+      </span>
+    </div>
 
-      <Card class="single-card" v-for="offer in jobOffers">
+    <div class="card cards-container">
+
+      <Card class="single-card" v-for="offer in jobOffersSelected">
 
         <template #title> {{offer.position}} </template>
 
         <template #subtitle>
-          {{getCompany(offer.from)["name"]}} ({{offer.place_of_work}})
+          when: {{offer.timestamp}}
         </template>
 
         <template #content>
+
+          <strong>Company:</strong> {{getCompany(offer.from)["name"]}} <br>
+
+          <strong>Place of work:</strong> {{offer.place_of_work}} <br>
+
           <strong> Curriculums requested: </strong>
           <ul>
             <li v-for="curriculum in offer.curriculums_requested"> {{curriculum}} </li>
           </ul>
 
-          <strong> Work hours: </strong> {{offer.working_hours}}h/week <br>
+          <strong> Working hours: </strong> {{offer.working_hours}}h/week <br>
 
           <p>
             <strong> Description: </strong>
@@ -107,9 +172,9 @@ export default{
         </template>
 
         <template #footer>
-          <div class="button-container justify-content-start">
-            <Button label="More info" icon="pi pi-external-link" @focus="this.company=this.getCompany(offer.from);" @click="dialogVisible = true"/>
-            <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="this.jobOffer=offer; sendNotificationToCompany(company._id); " text />
+          <div class="button-container justify-content-end">
+            <Button class="button-more-info" label="More info" icon="pi pi-external-link" @focus="this.company=this.getCompany(offer.from); this.imageUrl=getProfileImage(company._id);" @click="dialogVisible = true"/>
+            <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="this.jobOffer=offer; this.company=this.getCompany(offer.from); sendNotificationToCompany(); " text :disabled="this.alreadyInterested(offer._id)" />
           </div>
         </template>
 
@@ -117,33 +182,10 @@ export default{
 
       <Toast />
 
-      <CompanyDetail v-model:visible="dialogVisible" :company=this.company></CompanyDetail>
+      <CompanyDetail v-model:visible="dialogVisible" :company=this.company :imageUrl=this.imageUrl></CompanyDetail>
 
     </div>
 
   </main>
 
 </template>
-
-<style>
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.single-card {
-  width: calc(50% - 10px);
-}
-
-@media screen and (max-width: 1000px) {
-
-  .single-card {
-    width: 100%;
-  }
-
-}
-
-</style>
