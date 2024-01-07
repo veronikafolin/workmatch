@@ -7,13 +7,28 @@ export default {
     props: {
       student: {type:Object},
       school: {type:Object},
-      imageUrl: {type: String}
+      imageUrl: {type: String},
+      interests: {type: Array}
     },
     data() {
       return {
+
       }
     },
     methods:{
+      requestInterests(){
+        let userId = localStorage.userId;
+        axios
+            .get(`http://localhost:3000/api/interests?id=${userId}`)
+            .then(res => {
+              this.interests = res.data;
+            });
+      },
+      alreadyInterested(studentId){
+        return this.interests.some(
+            notification => notification.to === studentId
+        );
+      },
       sendNotificationToStudent(studentId){
         var today = new Date();
         var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
@@ -37,44 +52,47 @@ export default {
               if (response.message.includes('Error')) {
                 console.log("Error on saving the notification.")
               } else {
+                this.requestInterests();
+                this.$emit('send-data', response);
                 this.$toast.add({ severity: 'info', summary: 'New notification', detail: "You have notified the student that you are interested in.", life: 3000 });
               }
             }
         );
       }
-    }
+    },
+  beforeMount() {
+      this.requestInterests();
+  }
 }
 </script>
 
 <template>
 
   <Dialog modal :style="{ width: '50vw' }">
-    <div>
-      <img :src="imageUrl" alt="Image" />
-    </div>
-    <p class="text-900 font-medium mb-2 text-xl"> {{student.name}} {{student.surname}} </p>
-    <p class="mt-0 mb-4 p-0 line-height-3">
-      Email: {{student.email}}
-    </p>
-    <p>
-      School: {{school.name}} <br>
-      School type: {{school.type}} <br>
-      Curriculum: {{student.curriculum}} <br>
-      Grade: {{student.grade}}
-    </p>
-    <template #footer>
-      <Toast />
-      <Button label="I'm interested!" icon="pi pi-thumbs-up" @click=sendNotificationToStudent(student._id) text />
+
+    <template #header>
+      <h2>{{student.name}} {{student.surname}}</h2>
     </template>
+
+    <div>
+      <img id="profileImage" :src="this.imageUrl" alt="Image" />
+    </div>
+    <br>
+    <strong> Username: </strong> {{student.username}} <br>
+    <strong> E-mail: </strong> {{student.email}} <br>
+    <strong> School: </strong> {{school.name}} <br>
+    <strong> School type: </strong> {{school.type}} <br>
+    <strong> Grade: </strong> {{student.grade}} <br>
+    <strong> Curriculum: </strong> {{student.curriculum}}
+
+    <template #footer>
+      <div class="button-container justify-content-end">
+        <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="sendNotificationToStudent(student._id); " text :disabled="this.alreadyInterested(student._id)" />
+      </div>
+    </template>
+
+    <Toast />
+
   </Dialog>
 
 </template>
-
-<style scoped>
-
-.p-float-label {
-    margin-top: 15px;
-    text-align: left;
-  }
-
-</style>
