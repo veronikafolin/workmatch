@@ -1,4 +1,4 @@
-# Workmatch
+# WorkMatch
 
 Project for Web Services and Applications' course (University of Bologna).
 
