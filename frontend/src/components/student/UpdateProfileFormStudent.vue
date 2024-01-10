@@ -43,6 +43,7 @@ export default {
             }
           }
       );
+      this.deleteOldImageProfile();
     },
     requestStudent() {
       let studentId = localStorage.userId;
@@ -80,6 +81,20 @@ export default {
     },
     onAdvancedUpload() {
       this.$toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+    },
+    deleteOldImageProfile(){
+      let studentId = localStorage.userId;
+      axios
+          .delete(`http://localhost:3000/api/deleteImage?id=${studentId}`)
+          .then(res => {
+                let response = res.data
+                if (response.message.includes('Error')) {
+                  this.messages.push({severity: 'error', content: response.message})
+                } else {
+                  this.$emit('send-data', response);
+                }
+              }
+          );
     }
   },
   beforeMount() {
@@ -91,7 +106,7 @@ export default {
 
 <template>
 
-  <form @submit.prevent="updateProfile" class="flex flex-column gap-3 align-items-center">
+  <form id="update-student-form" @submit.prevent="updateProfile" class="flex flex-column">
 
     <span class="title_form">Edit Profile</span>
 
@@ -115,7 +130,7 @@ export default {
         <label for="grade">Grade </label>
     </span>
 
-    <span class="p-float-label">
+    <span class="p-float-label school-id">
         <AutoComplete id="school" v-model="form.school" optionLabel="name" :suggestions="filteredSchools"  @complete="search"/>
         <label for="school">School </label>
     </span>
@@ -134,7 +149,7 @@ export default {
       </FileUpload>
     </div>
 
-    <Button type="submit" label="Submit" />
+    <Button id="submit-btn" label="Submit" type="submit"/>
     <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
 
   </form>

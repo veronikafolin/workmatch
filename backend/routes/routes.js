@@ -1,3 +1,4 @@
+const uploadController = require("../controllers/upload");
 module.exports = (app) => {
 
     const controller = require('../controllers/controller');
@@ -114,5 +115,9 @@ module.exports = (app) => {
     app
         .route('/api/getImage')
         .get(jsonParser, uploadController.getImage);
+
+    app
+        .route('/api/deleteImage')
+        .delete(jsonParser, uploadController.deleteImage);
 
 }

@@ -41,6 +41,21 @@ export default {
             }
           }
       );
+      this.deleteOldImageProfile();
+    },
+    deleteOldImageProfile(){
+      let companyId = localStorage.userId;
+      axios
+          .delete(`http://localhost:3000/api/deleteImage?id=${companyId}`)
+          .then(res => {
+                let response = res.data
+                if (response.message.includes('Error')) {
+                  this.messages.push({severity: 'error', content: response.message})
+                } else {
+                  this.$emit('send-data', response);
+                }
+              }
+          );
     },
     requestCompany() {
       let companyId = localStorage.userId;
@@ -68,7 +83,7 @@ export default {
 
 <template>
 
-  <form @submit.prevent="updateProfile" class="flex flex-column gap-3 align-items-center">
+  <form id="update-company-form" @submit.prevent="updateProfile" class="flex flex-column">
 
     <span class="title_form">Edit Profile</span>
 
@@ -111,7 +126,7 @@ export default {
       </FileUpload>
     </div>
 
-    <Button type="submit"> Submit </Button>
+    <Button id="submit-btn" label="Submit" type="submit"/>
     <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
 
   </form>
