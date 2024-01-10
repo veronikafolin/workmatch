@@ -19,7 +19,7 @@
     "$oid": "659992eebd1835c977fcfa5a"
   },
   "from": {
-    "$oid": "652e4278f07e553fc658ec2c"
+    "$oid": "65254901fbe25d1cbd3b57cf"
   },
   "position": "AI Consultant",
   "description": "The sought-after profile will fit into our Artificial Intelligence Team, specialized in the definition and implementation of innovative cross-industry value cases using predictive analytics & machine learning, advanced forecasting, optimization & planning, cognitive services, computer vision and generative AI methodologies and technologies .\n\nWe are looking for professionals passionate about innovation who have gained at least 2 years of proven experience in Analytics & AI projects at leading consultancy or industry entities. The candidate must be able to understand and qualify the impacts of AI on our clients' key processes, translate business requirements into an AI-driven analytical process capable of generating measurable value, while leveraging the latest technological paradigms and frameworks of AI on the market. The selected profile will approach innovative projects through the analysis of data sources, the design and development of ML models and algorithms, and the automation of processes to support market-leading national and international clients.\n\nFinally, the profile will contribute to the AI Community with innovation activities, technological scouting, concepts of new solutions and support for business development.",
@@ -36,7 +36,7 @@
     "$oid": "65999335bd1835c977fcfa5d"
   },
   "from": {
-    "$oid": "652e4278f07e553fc658ec2c"
+    "$oid": "65254822fbe25d1cbd3b57cc"
   },
   "position": "IT & Service Desk Junior Support",
   "description": "We are looking for high school graduates to be included to strengthen the Help Desk activities in our Application Maintenance teams to support our important customers.\n\nThe selected candidate will be included in a shared work team, which will be responsible for managing multiple services for different clients, developed on different technologies and architectures.\n\nThe person will take care of the daily monitoring of the running services at the customer's premises to verify their correct functioning and intervene promptly in the event of anomalies or faults, communicating this directly to the customer; and working on the resolution of tickets and open requests to resolve them within the designated times (SLA).\n\nThe selected candidate is passionate about the IT world, curious to understand how processes work and does not stop when faced with unknown issues: he demonstrates an aptitude for problem solving and multi-tasking. He is also interested in growing in a young, dynamic and collaborative context.\n\nWe are looking for people with great curiosity and desire to learn and get involved, interested in making themselves available in solving problems and creating improvement solutions aimed at improving customer assistance service.",
@@ -51,4 +51,60 @@
   ],
   "__v": 0,
   "timestamp": "3-1-2024 9:55"
+},{
+  "_id": {
+    "$oid": "659e6dbd73aa7ea6085520cf"
+  },
+  "from": {
+    "$oid": "652e4278f07e553fc658ec2c"
+  },
+  "timestamp": "10-1-2024 11:13",
+  "position": "Data Engineer",
+  "description": "We are looking for a Data Engineer for our project teams, who will be involved in the implementation of Data projects.\n\nWe are looking for profiles with problem solving skills, oriented towards collaboration and team work, interested in developing Cloud, Big Data and Business Intelligence projects with the latest market tools.\n\nThe selected figures will be included in technically advanced projects, supported by a dedicated tutor and specific training, interfacing with the most advanced technologies and methodologies in the sector.",
+  "place_of_work": "Casalecchio di Reno",
+  "working_hours": 20,
+  "curriculums_requested": [
+    "Computer Science",
+    "Applied Sciences",
+    "Scientific"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659e6f4c73aa7ea6085520dc"
+  },
+  "from": {
+    "$oid": "65254901fbe25d1cbd3b57cf"
+  },
+  "timestamp": "10-1-2024 11:19",
+  "position": "AWS Data Engineer",
+  "description": "Your role as an AWS Data Engineer will be work on AWS Data Platform projects, working in partnership with business analysts and solution architects to understand use cases, data needs, and outcome objectives. In this role, you will deliver data acquisition, transformations and improvement, cleansing, conversion, compression, and loading of data into data lakes in order to be consumed by analytics and machine learning models\n\n Understand the current application infrastructure and suggest changes to it \n Define and document best practices and strategies regarding application deployment and infrastructure maintenance. \n Migrate our infrastructure with zero downtime to a highly available, scalable one. \n Set up a monitoring stack such as CloudWatch, Prometheus, and the ELK stack. \n Define service capacity planning strategies. \n Implement the application’s CI/CD pipeline using the AWS CI/CD stack. \n Write infrastructure as code using CloudFormation or similar. ",
+  "place_of_work": "Bologna",
+  "working_hours": 40,
+  "curriculums_requested": [
+    "Scientific",
+    "Electronics",
+    "Computer Science",
+    "Applied Sciences",
+    "Accounting"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659e70f073aa7ea6085520e8"
+  },
+  "from": {
+    "$oid": "65254822fbe25d1cbd3b57cc"
+  },
+  "timestamp": "10-1-2024 11:26",
+  "position": "Mechanical",
+  "description": "The candidate is a traveling mechanical fitter with 5 years' experience, of electromechanical and mechatronic technical origin, preferably from companies in the technical automation and metalworking sectors. He will take care of the assembly and finishing of machines for the Coffee division in Ozzano dell'Emilia.\n\nHe takes care of the assembly and testing of the machines and machine lines, managing the progress of the work, in compliance with the assigned times and specifications. He receives machine parts and pre-assembled mechanical assemblies from external suppliers. He takes care of aggregating the parts received and assembling the missing assemblies. He proceeds with the testing of the basic machine, with the installation and subsequent testing of groups and formats, for the customization of the same. He follows the FAT tests in the presence of the customer. In case of non-conformity detected during the testing phase, he interfaces with the Manager to find the solution with the bodies involved. Once the tests have been successfully completed, he dismantles the machine and/or line into different parts and loads them into numbered boxes, verifying the completeness of what was sent, in compliance with local laws on safety in the workplace. At the customer's site, he takes care of the installation, commissioning and SAT of the machine/line. He is the Company's representative to the customer. He issues the final work declaration to the customer once the machine/line has been set up. He carries out post-sales assistance interventions (repairs, maintenance, installation of new supplementary groups (GR), spare parts) and takes care of training on the machine / line and / or customer. Upon returning from each trip he reports to the PV and draws up an intervention report which he shares with the interested bodies.",
+  "place_of_work": "Ozzano dell'Emilia",
+  "working_hours": 40,
+  "curriculums_requested": [
+    "Mechanics",
+    "Electrotechnical",
+    "Electronics"
+  ],
+  "__v": 0
 }]

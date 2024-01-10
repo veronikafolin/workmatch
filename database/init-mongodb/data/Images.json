@@ -1,21 +1,53 @@
 [{
   "_id": {
-    "$oid": "65904ae390b5706ce9d6886c"
+    "$oid": "659e55bdb069623744ceaee2"
   },
   "of": {
-    "$oid": "659024918a14196f4bde6adb"
+    "$oid": "65254822fbe25d1cbd3b57cc"
   },
-  "name": "prova.jpeg",
-  "url": "..\\uploads\\prova.jpeg",
+  "name": "ima_logo-300x118.png",
+  "url": "..\\uploads\\ima_logo-300x118.png",
+  "timestamp": {
+    "$date": "2024-01-10T08:30:53.916Z"
+  },
   "__v": 0
 },{
   "_id": {
-    "$oid": "659427f8aadde5d52310d92a"
+    "$oid": "659e55ebb069623744ceaefb"
   },
   "of": {
-    "$oid": "6525152f34e4bdf9c653a608"
+    "$oid": "652e4278f07e553fc658ec2c"
   },
-  "name": "prova.jpeg",
-  "url": "..\\uploads\\prova.jpeg",
+  "name": "143_iconsulting_logo_giallo.jpg",
+  "url": "..\\uploads\\143_iconsulting_logo_giallo.jpg",
+  "timestamp": {
+    "$date": "2024-01-10T08:31:39.870Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659e5618b069623744ceaf0d"
+  },
+  "of": {
+    "$oid": "65254901fbe25d1cbd3b57cf"
+  },
+  "name": "data-reply-logo.png",
+  "url": "..\\uploads\\data-reply-logo.png",
+  "timestamp": {
+    "$date": "2024-01-10T08:32:24.996Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "659e57b073aa7ea608552022"
+  },
+  "of": {
+    "$oid": "65242439912d7093678627b0"
+  },
+  "name": "veronika.jpg",
+  "url": "..\\uploads\\veronika.jpg",
+  "timestamp": {
+    "$date": "2024-01-10T08:39:12.799Z"
+  },
   "__v": 0
 }]
