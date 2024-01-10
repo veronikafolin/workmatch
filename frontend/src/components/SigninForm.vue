@@ -72,7 +72,7 @@ export default {
             </span>
 
             <span class="p-input-icon-left role-selector-container">
-              <label class="label" for="roleselector">Please select your role: </label>
+              <label class="label" for="roleselector">Select your role: </label>
               <SelectButton id="roleselector" v-model="selectedRole" :options="roles" aria-labelledby="single"/>
             </span>
 

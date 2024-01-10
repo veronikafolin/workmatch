@@ -109,7 +109,7 @@ export default {
       <StudentMenu/>
     </nav>
 
-    <div class="card justify-content-center flex flex-column gap-3">
+    <div class="card cards-container">
 
       <span class="notification-section">To read</span>
 
@@ -117,7 +117,7 @@ export default {
         Nothing to read!
       </span>
 
-      <Card v-for="notification in unReadNotifications" :class="setColorNotification(notification.read)">
+      <Card class="single-card student-card" v-for="notification in unReadNotifications" :class="setColorNotification(notification.read)">
         <template #title>
           {{notification.title}}
         </template>
@@ -125,7 +125,7 @@ export default {
           when: {{notification.timestamp}}
         </template>
         <template #footer>
-          <div class="button-container justify-content-end">
+          <div class="button-container justify-content-end foot-student-details">
             <Button class="button-more-info" label="More info" icon="pi pi-external-link" @focus="this.company=getCompany(notification.from); this.imageUrl=getProfileImage(company._id);" @click="dialogVisible = true"/>
             <Button label="Mark as read" icon="pi pi-eye" @click="markNotificationAsRead(notification); setColorNotification(notification.read);" :disabled="notification.read" />
           </div>
@@ -136,7 +136,7 @@ export default {
 
       <span class="notification-section" v-if="readNotifications.length !== 0">Read</span>
 
-      <Card v-for="notification in readNotifications" :class="setColorNotification(notification.read)">
+      <Card class="single-card student-card" v-for="notification in readNotifications" :class="setColorNotification(notification.read)">
         <template #title>
           {{notification.title}}
         </template>
@@ -144,7 +144,7 @@ export default {
           when: {{notification.timestamp}}
         </template>
         <template #footer>
-          <div class="button-container justify-content-end">
+          <div class="button-container justify-content-end foot-student-details">
             <Button class="button-more-info" label="More info" icon="pi pi-external-link" @focus="this.company=getCompany(notification.from); this.imageUrl=getProfileImage(company._id);" @click="dialogVisible = true"/>
             <Button label="Mark as read" icon="pi pi-eye" @click="markNotificationAsRead(notification); setColorNotification(notification.read);" :disabled="notification.read" />
           </div>

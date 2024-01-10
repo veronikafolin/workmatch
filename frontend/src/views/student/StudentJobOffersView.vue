@@ -172,7 +172,7 @@ export default{
         </template>
 
         <template #footer>
-          <div class="button-container justify-content-end">
+          <div class="button-container justify-content-end foot-student-details">
             <Button class="button-more-info" label="More info" icon="pi pi-external-link" @focus="this.company=this.getCompany(offer.from); this.imageUrl=getProfileImage(company._id);" @click="dialogVisible = true"/>
             <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="this.jobOffer=offer; this.company=this.getCompany(offer.from); sendNotificationToCompany(); " text :disabled="this.alreadyInterested(offer._id)" />
           </div>

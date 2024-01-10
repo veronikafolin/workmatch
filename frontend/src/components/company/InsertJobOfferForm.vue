@@ -59,9 +59,9 @@ export default {
 </script>
 
 <template>
-    <form @submit.prevent="insertJobOffer" class="flex flex-column gap-3 align-items-center">
+  <form id="form-new-offer" @submit.prevent="insertJobOffer" class="flex flex-column">
 
-      <span class="title_form">Insert a new job offer</span>
+      <span class="title_form">New job offer</span>
 
       <div class="p-float-label">
           <InputText id="position" type="text" v-model="form.position" required/>
@@ -88,7 +88,7 @@ export default {
         <label for="curriculums">Curriculums </label>
       </div>
 
-      <Button type="submit" > Submit </Button>
+      <Button label="Submit" type="submit"/>
 
       <Message v-for="msg of messages" :severity="msg.severity" :sticky="false" :life="3000">{{msg.content}}</Message>
 

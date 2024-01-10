@@ -27,7 +27,7 @@ export default {
       </span>
   </a>
 
-  <div id="login" class="card flex justify-content-center shadow-2 align-items-center flex-column">
+  <div id="register" class="register-class card flex justify-content-center shadow-2 flex-column">
 
     <span class="title_form">Register</span>
 

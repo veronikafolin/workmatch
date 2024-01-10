@@ -64,6 +64,7 @@ export default{
       // Handle the received data from the child component
       this.messages.push({severity: 'success', content: data.message})
       this.requestCompany();
+      this.getProfileImage();
       this.modifyProfile = false;
     },
     async getProfileImage() {
@@ -113,20 +114,22 @@ export default{
           <div>
             <img id="profileImage" :src="this.imageUrl" alt="Image" />
           </div>
-          <br>
-          <strong> Email: </strong> {{company.email}} <br>
-          <strong> City: </strong> {{company.city}} <br>
-          <strong> Address: </strong> {{company.address}} <br>
-          <strong> Phone number: </strong> {{company.phone_number}}
+          <div class="card-profile-content">
+            <br>
+            <strong> Email: </strong> {{company.email}} <br>
+            <strong> City: </strong> {{company.city}} <br>
+            <strong> Address: </strong> {{company.address}} <br>
+            <strong> Phone number: </strong> {{company.phone_number}}
 
-          <p>
-            {{company.description}}
-          </p>
+            <p>
+              {{company.description}}
+            </p>
+          </div>
 
         </template>
 
         <template #footer>
-          <div class="button-container">
+          <div class="button-container justify-content-end foot-student-details">
             <Button label="Edit" icon="pi pi-pencil" @click="modifyProfile = true" />
             <Button id="button-danger" @click="confirmDelete()" icon="pi pi-trash" label="Delete"></Button>
           </div>

@@ -68,7 +68,7 @@ export default {
 
 <template>
 
-  <Dialog modal :style="{ width: '50vw' }">
+  <Dialog modal class="card justify-content-center profile-card flex flex-column align-items-center">
 
     <template #header>
       <h2>{{student.name}} {{student.surname}}</h2>
@@ -77,13 +77,16 @@ export default {
     <div>
       <img id="profileImage" :src="this.imageUrl" alt="Image" />
     </div>
-    <br>
-    <strong> Username: </strong> {{student.username}} <br>
-    <strong> E-mail: </strong> {{student.email}} <br>
-    <strong> School: </strong> {{school.name}} <br>
-    <strong> School type: </strong> {{school.type}} <br>
-    <strong> Grade: </strong> {{student.grade}} <br>
-    <strong> Curriculum: </strong> {{student.curriculum}}
+
+    <div class="card-profile-content">
+      <br>
+      <strong> Username: </strong> {{student.username}} <br>
+      <strong> E-mail: </strong> {{student.email}} <br>
+      <strong> School: </strong> {{school.name}} <br>
+      <strong> School type: </strong> {{school.type}} <br>
+      <strong> Grade: </strong> {{student.grade}} <br>
+      <strong> Curriculum: </strong> {{student.curriculum}}
+    </div>
 
     <template #footer>
       <div class="button-container justify-content-end">

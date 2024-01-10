@@ -159,7 +159,7 @@ export default {
         </template>
 
         <template #footer>
-          <div class="button-container justify-content-end">
+          <div class="button-container justify-content-end foot-student-details">
             <Button class="button-more-info" label="More info" icon="pi pi-external-link" @focus="this.student=student; this.school=this.getSchool(student.school); this.imageUrl=getProfileImage(student._id);" @click="dialogVisible = true"/>
             <Button label="I'm interested!" icon="pi pi-thumbs-up" @click="sendNotificationToStudent(student._id); " text :disabled="this.alreadyInterested(student._id)" />
           </div>

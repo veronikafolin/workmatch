@@ -93,6 +93,7 @@ export default{
       // Handle the received data from the child component
       this.messages.push({severity: 'success', content: data.message})
       this.requestStudent();
+      this.getProfileImage();
       this.modifyProfile = false;
     }
   },
@@ -122,16 +123,18 @@ export default{
           <div>
             <img id="profileImage" :src="this.imageUrl" alt="Image" />
           </div>
-          <br>
-          <strong> Username: </strong> {{student.username}} <br>
-          <strong> E-mail: </strong> {{student.email}} <br>
-          <strong> School: </strong> {{getSchool(student.school)?.name}} <br>
-          <strong> School type: </strong> {{getSchool(student.school)?.type}} <br>
-          <strong> Grade: </strong> {{student.grade}} <br>
-          <strong> Curriculum: </strong> {{student.curriculum}}
+          <div class="card-profile-content">
+            <br>
+            <strong> Username: </strong> {{student.username}} <br>
+            <strong> E-mail: </strong> {{student.email}} <br>
+            <strong> School: </strong> {{getSchool(student.school)?.name}} <br>
+            <strong> School type: </strong> {{getSchool(student.school)?.type}} <br>
+            <strong> Grade: </strong> {{student.grade}} <br>
+            <strong> Curriculum: </strong> {{student.curriculum}}
+          </div>
         </template>
         <template #footer>
-          <div class="button-container">
+          <div class="button-container justify-content-end foot-student-details">
             <Button label="Edit" icon="pi pi-pencil" @click="modifyProfile = true" />
             <Button id="button-danger" @click="confirmDelete()" icon="pi pi-trash" label="Delete" />
           </div>

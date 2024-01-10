@@ -76,8 +76,8 @@ export default{
       <CompanyMenu/>
     </nav>
 
-    <div class="card flex p-3 border-round justify-content-center">
-      <Button label="Insert Offer" icon="pi pi-plus" rounded @click="visible=true"></Button>
+    <div class="card flex justify-content-end btn-new-offer">
+      <Button label="New Offer" icon="pi pi-plus" @click="visible=true"></Button>
       <Dialog v-model:visible="visible" id="insert-job-offer-form">
         <InsertJobOfferForm @send-data="receiveJobOfferFromChild"/>
       </Dialog>
@@ -89,7 +89,9 @@ export default{
 
       <Card class="single-card" v-for="offer in jobOffers">
 
-        <template #title> {{offer.position}} </template>
+        <template #title>
+          {{offer.position}}
+        </template>
 
         <template #subtitle>
           when: {{offer.timestamp}}
@@ -110,7 +112,7 @@ export default{
         </template>
 
         <template #footer>
-          <div class="button-container justify-content-end">
+          <div class="btn-delete-joboffer justify-content-end">
             <Button id="button-danger" label="Delete" icon="pi pi-trash" @click="confirmDelete(offer._id)"/>
           </div>
         </template>

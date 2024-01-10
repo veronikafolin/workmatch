@@ -80,13 +80,14 @@ export default {
     <Menubar :model="items">
 
       <template #start>
-        <img class="h-2rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
+          <img class="h-2rem logo-navbar-left" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
       </template>
 
       <template #end>
         <div class="flex align-items-center gap-2">
           <span id="welcome">Hi, {{company.name}}!</span>
         </div>
+        <img class="h-2rem logo-navbar-right" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
       </template>
 
     </Menubar>

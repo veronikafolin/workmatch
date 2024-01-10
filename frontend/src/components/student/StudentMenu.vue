@@ -74,29 +74,14 @@ export default {
     <Menubar :model="items">
 
       <template #start>
-        <img class="h-2rem" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
+        <img class="h-2rem logo-navbar-left" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
       </template>
-
-<!--      <template #item="{item, props, root}">-->
-<!--        <div class="flex align-items-center gap-2">-->
-<!--          <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>-->
-<!--            <a v-ripple class="flex align-items-center" @click="navigate">-->
-<!--              <span :class="item.icon" />-->
-<!--              <span class="ml-2">{{ item.label }}</span>-->
-<!--              <Badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" ></Badge>-->
-<!--            </a>-->
-<!--          </router-link>-->
-<!--          <a v-else v-ripple class="flex align-items-center">-->
-<!--            <span :class="item.icon" />-->
-<!--            <span class="ml-2">{{ item.label }}</span>-->
-<!--          </a>-->
-<!--        </div>-->
-<!--      </template>-->
 
       <template #end>
         <div class="flex align-items-center gap-2">
           <span id="welcome">Hi, {{student.name}}!</span>
         </div>
+        <img class="h-2rem logo-navbar-right" src="../../assets/logo.jpeg" alt="Workmatch logo"/>
       </template>
 
     </Menubar>
