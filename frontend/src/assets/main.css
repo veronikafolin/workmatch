@@ -1,0 +1,464 @@
+@import "primevue/resources/primevue.min.css";
+/*@import "primevue/resources/themes/md-light-deeppurple/theme.css";*/
+@import "primevue/resources/themes/lara-light-indigo/theme.css";
+
+
+#logo {
+    text-align: center;
+}
+
+#img_logo {
+    width: 40%;
+}
+
+#login,
+#register {
+    width: 80%;
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.logo-navbar-left {
+    display: none;
+}
+
+nav {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#menu {
+    display: inline-block;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.btn-new-offer {
+    width: 95%;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.title_form {
+    font-weight: bold;
+    font-size: 200%;
+    text-align: center;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.notification-section {
+    font-weight: bold;
+    font-size: 150%;
+    font-family: 'Roboto', Arial, sans-serif;
+    width: 90%;
+}
+
+.notification-section-message {
+    font-size: 100%;
+    font-family: 'Roboto', Arial, sans-serif;
+    width: 90%;
+}
+
+.label {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+#roleselector {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.role-selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.p-input-icon-left {
+    width: 100%;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#insert-job-offer-form {
+    width: 40%;
+}
+
+#button-danger {
+    background-color: indianred;
+    border-color: indianred;
+}
+
+#button-signup {
+    background-color: indigo;
+    border-color: indigo;
+}
+
+.button-more-info {
+    background-color: indigo;
+    border-color: indigo;
+}
+
+.single-card {
+    width: calc(33% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.p-float-label {
+    margin-top: 23px;
+    text-align: left;
+}
+
+.notification-unread {
+    background-color: aliceblue;
+}
+
+.notification-read {
+    background-color: white;
+}
+
+#menu {
+    margin-bottom: 20px
+}
+
+.dialog-student-details {
+    /*width: 30 vw; */
+    width: 40%;
+}
+
+.btn-delete-joboffer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 1; /* Fill remaining space in the card */
+    margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+#app {
+    padding: 0;
+}
+
+#welcome {
+    display: none;
+    font-weight: bold;
+    font-size: 100%;
+    text-align: center;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin-right: 10px;
+}
+
+.profile-card {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 90%;
+}
+
+.profile-card .p-card-content {
+    padding-top: 0;
+}
+
+#modify-profile-form {
+    width: 80%;
+}
+
+#insert-job-offer-form {
+    width: 80%;
+}
+
+.dialog-student-details {
+    width: 90%;
+}
+
+#profileImage {
+    width: 50%;
+    margin-top: 20px;
+}
+
+.card-profile-content {
+    text-align: left;
+}
+
+#filter-dropdown {
+    margin-bottom: 20px;
+    width: 95%;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.single-card {
+    width: 90%;
+}
+
+.button-container {
+    gap: 7px;
+}
+
+.p-card .p-card-footer {
+    padding-top: 1.25rem;
+}
+
+.p-card .p-card-content {
+    padding-bottom: 0;
+}
+
+.foot-student-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.p-dialog .p-dialog-content {
+    width: 100%;
+}
+
+.p-dialog-header {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.p-dialog-footer {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.p-confirm-dialog .p-dialog-header,
+.p-confirm-dialog .p-dialog-content,
+.p-confirm-dialog .p-dialog-footer {
+    padding: 1rem;
+}
+
+
+#form-new-offer #position,
+#form-new-offer #description,
+#form-new-offer #place_of_work,
+#form-new-offer #working_hours,
+#form-new-offer #curriculums {
+    width: 100%;
+}
+
+#update-company-form #name,
+#update-company-form #city,
+#update-company-form #address,
+#update-company-form #description,
+#update-company-form #phone_number,
+#update-company-form #email {
+    width: 100%;
+}
+
+#update-company-form #description{
+    height: 500px;
+}
+
+.p-fileupload-buttonbar,
+#form-new-offer Button,
+#update-company-form #submit-btn,
+#update-student-form #submit-btn{
+    margin-top: 1rem;
+}
+
+.p-fileupload-buttonbar .p-button {
+    width: 100%;
+}
+
+.register-class .p-input .p-inputtext {
+    width: 100%;
+}
+
+#register .p-input,
+#register .p-button {
+    width: 80%;
+}
+
+#register #school,
+#register #password {
+    width: 100%;
+}
+
+#register #roleselector .p-button {
+    width: 50%;
+}
+
+.student-card .p-card-content {
+    display: none;
+}
+
+#update-student-form #name,
+#update-student-form #surname,
+#update-student-form #email,
+#update-student-form #grade,
+#update-student-form #school,
+#update-student-form #curriculum {
+    width: 100%;
+}
+
+#update-student-form input {
+    width: 100%;
+}
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px) {
+    #login, #register {
+        width: 50%;
+    }
+
+    #img_logo {
+        width: 20%;
+    }
+
+    #filter-dropdown {
+        width: 90%;
+    }
+
+    .foot-student-details {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .single-card {
+        width: 80%;
+    }
+
+    #menu {
+        width: 80%;
+    }
+
+    .btn-new-offer {
+        width: 90%;
+    }
+
+    #profileImage {
+        width: 25%;
+    }
+
+    .profile-card {
+        width: 80%;
+    }
+
+    .notification-section {
+        width: 80%;
+    }
+
+    .notification-section-message {
+        width: 80%;
+    }
+
+    #update-company-form #description{
+        height: 350px;
+    }
+
+}
+
+@media only screen and (min-device-width: 1025px) {
+    #app {
+        margin: 0 auto;
+        padding: 2rem;
+        font-weight: normal;
+        width: 100%;
+    }
+
+    #login, #register {
+        width: 25%;
+    }
+
+    #img_logo {
+        width: 10%;
+    }
+
+    #filter-dropdown {
+        width: 90%;
+    }
+
+    #profileImage {
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    #welcome {
+        display: inline;
+        font-weight: bold;
+        font-size: 100%;
+        text-align: center;
+        font-family: 'Roboto', Arial, sans-serif;
+        margin-right: 10px;
+    }
+
+    #modify-profile-form {
+        width: 40%;
+    }
+
+    .profile-card {
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        text-align: center;
+        width: 40%;
+    }
+
+    #profileImage {
+        width: 30%;
+    }
+
+    .foot-student-details {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #filter-dropdown {
+        width: 95%;
+    }
+
+    .single-card {
+        width: 90%;
+    }
+
+    #welcome {
+        display: block;
+        font-weight: bold;
+        font-size: 100%;
+        text-align: center;
+        font-family: 'Roboto', Arial, sans-serif;
+        margin-right: 10px;
+    }
+
+    .logo-navbar-left {
+        display: block;
+    }
+
+    .logo-navbar-right {
+        display: none;
+    }
+
+    nav {
+        margin-top: 0;
+    }
+
+    .notification-section {
+        width: 90%;
+    }
+
+    .notification-section-message {
+        width: 90%;
+    }
+}
+
