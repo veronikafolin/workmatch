@@ -264,6 +264,10 @@ nav {
     width: 100%;
 }
 
+#form-new-offer #description{
+    height: 300px;
+}
+
 #update-company-form #description{
     height: 500px;
 }
